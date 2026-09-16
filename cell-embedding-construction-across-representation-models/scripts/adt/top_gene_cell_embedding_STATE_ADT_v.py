@@ -1,0 +1,320 @@
+#!/usr/bin/env python3
+"""
+Cell embedding calculation from STATE gene embeddings
+
+Features:
+1. Load 5120-dimensional STATE gene embeddings (h5ad format)
+2. Select the top k highly expressed genes per cell
+3. Retrieve the corresponding STATE gene embeddings
+4. Average them to obtain a cell embedding
+5. Preserve the original RNA-seq cell order and save to top_gene_cell_embedding.npy
+
+Date: 2025-09-09
+"""
+
+import argparse
+import json
+import os
+import numpy as np
+import anndata as ad
+import logging
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from top_gene_utils import get_top_genes_per_cell
+from gene_to_protein_embedding_mapper import load_rna_seq_data
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+
+def load_state_gene_embeddings(state_h5ad_path):
+    """
+    Load STATE gene embeddings
+    
+    Args:
+        state_h5ad_path (str): Path to STATE_tok_5120_Emb.h5ad
+        
+    Returns:
+        dict: Mapping from gene names to embedding vectors
+        int: Embedding dimension
+    """
+    logger.info(f"Loading STATE gene embeddings: {state_h5ad_path}")
+    
+    if not os.path.exists(state_h5ad_path):
+        raise FileNotFoundError(f"STATE embedding file does not exist: {state_h5ad_path}")
+    
+    # Load the AnnData object
+    state_adata = ad.read_h5ad(state_h5ad_path)
+    
+    logger.info(f"STATE embedding data shape: {state_adata.shape}")
+    logger.info(f"Gene count: {state_adata.n_obs}")
+    logger.info(f"Embedding dimension: {state_adata.n_vars}")
+    
+    # Create a gene-name-to-embedding mapping
+    gene_to_embedding = {}
+    gene_names = state_adata.obs.index.tolist()
+    embeddings = state_adata.X
+    
+    for i, gene_name in enumerate(gene_names):
+        if hasattr(embeddings, 'toarray'):
+            # Sparse matrix
+            gene_embedding = embeddings[i, :].toarray().flatten()
+        else:
+            # Dense matrix
+            gene_embedding = embeddings[i, :].flatten()
+        gene_to_embedding[gene_name] = gene_embedding
+    
+    embedding_dim = state_adata.n_vars
+    
+    logger.info(f"Successfully loaded embeddings for {len(gene_to_embedding)} genes")
+    
+    return gene_to_embedding, embedding_dim
+
+
+def calculate_cell_embeddings_from_state(top_genes_per_cell, gene_to_embedding, embedding_dim, output_dir):
+    """
+    Compute cell embeddings from STATE gene embeddings while preserving cell order
+    """
+    logger.info("Computing cell embeddings from STATE gene embeddings...")
+    
+    os.makedirs(output_dir, exist_ok=True)
+    
+    cell_embeddings = []
+    embedding_stats = {
+        "total_cells": len(top_genes_per_cell),
+        "cells_with_embeddings": 0,
+        "mean_available_genes": 0,
+        "available_gene_count_distribution": {},
+        "embedding_dim": embedding_dim,
+        "state_gene_library_size": len(gene_to_embedding)
+    }
+    
+    available_gene_counts = []
+    total_genes_in_state = 0
+    total_genes_requested = 0
+    
+    # Process cells in their original order
+    for cell_idx, top_genes in enumerate(top_genes_per_cell):
+        # Collect STATE embeddings for this cell's top genes
+        embeddings_for_cell = []
+        available_genes = []
+        
+        total_genes_requested += len(top_genes)
+        
+        for gene in top_genes:
+            if gene in gene_to_embedding:
+                embeddings_for_cell.append(gene_to_embedding[gene])
+                available_genes.append(gene)
+                total_genes_in_state += 1
+        
+        if embeddings_for_cell:
+            # Average embeddings to obtain the cell embedding
+            cell_embedding = np.mean(embeddings_for_cell, axis=0)
+            cell_embeddings.append(cell_embedding)
+            
+            available_gene_count = len(embeddings_for_cell)
+            available_gene_counts.append(available_gene_count)
+            
+            # Track the distribution of available gene counts
+            if available_gene_count not in embedding_stats["available_gene_count_distribution"]:
+                embedding_stats["available_gene_count_distribution"][available_gene_count] = 0
+            embedding_stats["available_gene_count_distribution"][available_gene_count] += 1
+            
+            embedding_stats["cells_with_embeddings"] += 1
+        else:
+            # Use a zero vector when no genes are available
+            cell_embedding = np.zeros(embedding_dim, dtype=np.float32)
+            cell_embeddings.append(cell_embedding)
+    
+    # Convert to a NumPy array while preserving cell order
+    cell_embeddings = np.array(cell_embeddings, dtype=np.float32)
+    
+    # Verify that cell counts match
+    assert cell_embeddings.shape[0] == len(top_genes_per_cell), \
+        f"Cell count mismatch: {cell_embeddings.shape[0]} vs {len(top_genes_per_cell)}"
+    
+    # Compute statistics
+    if available_gene_counts:
+        embedding_stats["mean_available_genes"] = float(np.mean(available_gene_counts))
+        embedding_stats["gene_coverage"] = f"{total_genes_in_state/total_genes_requested*100:.2f}%"
+        embedding_stats["total_requested_genes"] = total_genes_requested
+        embedding_stats["genes_found_in_state"] = total_genes_in_state
+    
+    # Save with the fixed filename: top_gene_cell_embedding.npy
+    cell_emb_file = os.path.join(output_dir, "top_gene_cell_embedding.npy")
+    np.save(cell_emb_file, cell_embeddings)
+    
+    # Save statistics
+    stats_file = os.path.join(output_dir, "embedding_statistics.json")
+    with open(stats_file, 'w', encoding='utf-8') as f:
+        json.dump(embedding_stats, f, indent=2, ensure_ascii=False)
+    
+    logger.info(f"Cell embeddings saved to: {cell_emb_file}")
+    logger.info(f"Embedding shape: {cell_embeddings.shape}")
+    logger.info(f"Statistics saved to: {stats_file}")
+    
+    # Print statistics
+    print(f"\n=== STATE cell embedding statistics ===")
+    print(f"Total cells: {embedding_stats['total_cells']}")
+    print(f"Cells with successfully computed embeddings: {embedding_stats['cells_with_embeddings']}")
+    print(f"Mean available genes: {embedding_stats['mean_available_genes']:.2f}")
+    print(f"Gene coverage: {embedding_stats.get('gene_coverage', 'N/A')}")
+    print(f"Embedding dimension: {embedding_stats['embedding_dim']}")
+    print(f"STATE gene library size: {embedding_stats['state_gene_library_size']}")
+    
+    return cell_embeddings, embedding_stats
+
+
+def analyze_gene_matching_state(rna_seq_genes, state_genes, output_dir):
+    """
+    Analyze matching between RNA-seq genes and STATE genes
+    """
+    logger.info("Analyzing gene matching...")
+    
+    # Ensure the output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+    
+    rna_seq_set = set(rna_seq_genes)
+    state_set = set(state_genes)
+    
+    # Compute intersections and differences
+    matched_genes = rna_seq_set & state_set
+    unmatched_in_rna = rna_seq_set - state_set
+    
+    matching_stats = {
+        "total_rna_genes": len(rna_seq_genes),
+        "total_state_genes": len(state_genes),
+        "matched_gene_count": len(matched_genes),
+        "unmatched_rna_gene_count": len(unmatched_in_rna),
+        "match_rate": f"{len(matched_genes)/len(rna_seq_genes)*100:.2f}%",
+        "state_coverage": f"{len(matched_genes)/len(state_genes)*100:.2f}%"
+    }
+    
+    # Save detailed matching information
+    matching_details = {
+        "matched_genes": sorted(list(matched_genes)),
+        "unmatched_rna_genes": sorted(list(unmatched_in_rna))[:100],  # Save only the first 100
+        "statistics": matching_stats
+    }
+    
+    matching_file = os.path.join(output_dir, "gene_matching_analysis.json")
+    with open(matching_file, 'w', encoding='utf-8') as f:
+        json.dump(matching_details, f, indent=2, ensure_ascii=False)
+    
+    logger.info(f"Gene matching analysis saved to: {matching_file}")
+    
+    # Print matching statistics
+    print(f"\n=== Gene matching analysis ===")
+    print(f"Total RNA-seq genes: {matching_stats['total_rna_genes']}")
+    print(f"Total STATE genes: {matching_stats['total_state_genes']}")
+    print(f"Matched genes: {matching_stats['matched_gene_count']}")
+    print(f"Match rate: {matching_stats['match_rate']}")
+    print(f"STATE coverage: {matching_stats['state_coverage']}")
+    
+    return matching_stats
+
+
+def main():
+    """Main entry point."""
+    parser = argparse.ArgumentParser(
+        description="Compute cell embeddings from STATE gene embeddings",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Usage examples:
+  python top_gene_cell_embedding_STATE_v.py \\
+    --embedding_dir "<STATE_GENE_EMBEDDING_DIR>/STATE_tok_5120_Emb.h5ad" \\
+    --h5ad_file "path/to/rna_seq_data.h5ad" \\
+    --save_path "output/directory" \\
+    --top_k 100
+
+Output files:
+  - top_gene_cell_embedding.npy: Cell embedding matrix (rows follow the original RNA-seq cell order)
+  - embedding_statistics.json: Embedding statistics
+  - gene_matching_analysis.json: Gene matching analysis
+        """
+    )
+    
+    parser.add_argument(
+        "--embedding_dir", 
+        type=str, 
+        required=True,
+        help="Path to the STATE gene embedding h5ad file (STATE_tok_5120_Emb.h5ad)"
+    )
+    parser.add_argument(
+        "--h5ad_file", 
+        type=str, 
+        required=True,
+        help="Path to the RNA-seq h5ad data file"
+    )
+    parser.add_argument(
+        "--save_path", 
+        type=str, 
+        required=True,
+        help="Output directory path"
+    )
+    parser.add_argument(
+        "--top_k", 
+        type=int, 
+        default=100,
+        help="Number of top genes selected per cell (default: 100)"
+    )
+    parser.add_argument(
+        "--seed", 
+        type=int, 
+        default=42,
+        help="Random seed (default: 42)"
+    )
+    
+    args = parser.parse_args()
+    
+    # Set the random seed
+    np.random.seed(args.seed)
+    
+    logger.info("=== Cell embeddings from STATE gene embeddings ===")
+    logger.info(f"STATE embedding file: {args.embedding_dir}")
+    logger.info(f"RNA-seq file: {args.h5ad_file}")
+    logger.info(f"Output directory: {args.save_path}")
+    logger.info(f"Top gene count: {args.top_k}")
+    logger.info(f"Random seed: {args.seed}")
+    
+    try:
+        # Step 1: Load STATE gene embeddings
+        gene_to_embedding, embedding_dim = load_state_gene_embeddings(args.embedding_dir)
+        state_genes = list(gene_to_embedding.keys())
+        
+        # Step 2: Load RNA-seq data (reuse the existing function)
+        adata, rna_seq_genes = load_rna_seq_data(args.h5ad_file)
+        
+        # Step 3: Analyze gene matching
+        matching_stats = analyze_gene_matching_state(rna_seq_genes, state_genes, args.save_path)
+        
+        # Step 4: Get top genes per cell (reuse the existing function and preserve order)
+        top_genes_per_cell = get_top_genes_per_cell(adata, args.top_k)
+        
+        # Step 5: Compute cell embeddings (preserving order)
+        cell_embeddings, embedding_stats = calculate_cell_embeddings_from_state(
+            top_genes_per_cell, gene_to_embedding, embedding_dim, args.save_path)
+        
+        # Verify outputs
+        logger.info(f"\n=== Output verification ===")
+        logger.info(f"Input RNA-seq cell count: {adata.n_obs}")
+        logger.info(f"Output embedding cell count: {cell_embeddings.shape[0]}")
+        logger.info(f"Cell order consistency: {'✓' if cell_embeddings.shape[0] == adata.n_obs else '✗'}")
+        logger.info(f"Output file: {os.path.join(args.save_path, 'top_gene_cell_embedding.npy')}")
+        
+        logger.info("\n=== Processing complete ===")
+        
+    except Exception as e:
+        logger.error(f"Error during processing: {str(e)}")
+        raise
+        return 1
+    
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())

@@ -1,0 +1,6 @@
+{
+  "multilabel_configs": {
+    "label_data_directory": "examples/data/homo-sapiens-swissprot/labels",
+    "label_start_column": "Subcellular location [CC]"
+  }
+}

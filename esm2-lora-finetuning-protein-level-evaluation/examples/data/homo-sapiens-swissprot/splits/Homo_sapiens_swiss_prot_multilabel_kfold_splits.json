@@ -1,0 +1,129 @@
+{
+  "species": "Homo sapiens",
+  "dataset_type": "swiss_prot",
+  "label_names": [
+    "Cell junction",
+    "Cell membrane",
+    "Cell projection",
+    "Cytoplasm",
+    "Endoplasmic reticulum",
+    "Golgi apparatus",
+    "Lysosome",
+    "Mitochondrion",
+    "Nucleus",
+    "Secreted",
+    "cytoskeleton"
+  ],
+  "splits": {
+    "fold_0": {
+      "train_protein_ids": [
+        "A0FGR9",
+        "A0AVF1",
+        "A0AV96",
+        "A0AVI4",
+        "O00115",
+        "A0A0B4J2F0",
+        "A0A0C5B5G6",
+        "A0MZ66",
+        "A0AVK6",
+        "A0JLT2",
+        "A0JNW5",
+        "A0M8Q6"
+      ],
+      "val_protein_ids": [
+        "A4UGR9",
+        "A4D1B5",
+        "A0A0K2S4Q6",
+        "A0PK00"
+      ]
+    },
+    "fold_1": {
+      "train_protein_ids": [
+        "A4UGR9",
+        "A0AVF1",
+        "A0AV96",
+        "A0AVI4",
+        "A4D1B5",
+        "A0A0B4J2F0",
+        "A0A0C5B5G6",
+        "A0MZ66",
+        "A0A0K2S4Q6",
+        "A0JLT2",
+        "A0JNW5",
+        "A0M8Q6",
+        "A0PK00"
+      ],
+      "val_protein_ids": [
+        "A0FGR9",
+        "O00115",
+        "A0AVK6"
+      ]
+    },
+    "fold_2": {
+      "train_protein_ids": [
+        "A4UGR9",
+        "A0FGR9",
+        "A0AV96",
+        "A0AVI4",
+        "A4D1B5",
+        "O00115",
+        "A0A0C5B5G6",
+        "A0MZ66",
+        "A0A0K2S4Q6",
+        "A0AVK6",
+        "A0JNW5",
+        "A0M8Q6",
+        "A0PK00"
+      ],
+      "val_protein_ids": [
+        "A0AVF1",
+        "A0A0B4J2F0",
+        "A0JLT2"
+      ]
+    },
+    "fold_3": {
+      "train_protein_ids": [
+        "A4UGR9",
+        "A0FGR9",
+        "A0AVF1",
+        "A0AVI4",
+        "A4D1B5",
+        "O00115",
+        "A0A0B4J2F0",
+        "A0MZ66",
+        "A0A0K2S4Q6",
+        "A0AVK6",
+        "A0JLT2",
+        "A0M8Q6",
+        "A0PK00"
+      ],
+      "val_protein_ids": [
+        "A0AV96",
+        "A0A0C5B5G6",
+        "A0JNW5"
+      ]
+    },
+    "fold_4": {
+      "train_protein_ids": [
+        "A4UGR9",
+        "A0FGR9",
+        "A0AVF1",
+        "A0AV96",
+        "A4D1B5",
+        "O00115",
+        "A0A0B4J2F0",
+        "A0A0C5B5G6",
+        "A0A0K2S4Q6",
+        "A0AVK6",
+        "A0JLT2",
+        "A0JNW5",
+        "A0PK00"
+      ],
+      "val_protein_ids": [
+        "A0AVI4",
+        "A0MZ66",
+        "A0M8Q6"
+      ]
+    }
+  }
+}

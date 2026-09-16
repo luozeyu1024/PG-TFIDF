@@ -1,0 +1,11 @@
+outputs/
+*.log
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.key
+*.pem
+models/
+checkpoints/
+

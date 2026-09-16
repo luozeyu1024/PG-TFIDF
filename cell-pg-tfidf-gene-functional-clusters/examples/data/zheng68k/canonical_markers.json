@@ -1,0 +1,207 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "source": "Web search + CellMarker database + Published literature",
+    "created_date": "2026-03-11",
+    "organism": "mammalian",
+    "tissue": "blood_immune",
+    "tasks_covered": [
+      "cell_type_annotation",
+      "malignancy_status_prediction",
+      "cancer_cell_type_prediction",
+      "tissue_of_origin_prediction",
+      "drug_sensitivity_prediction"
+    ]
+  },
+  "cell_type_annotation": {
+    "CD8+ Cytotoxic T": {
+      "positive_markers": ["CD3E", "CD3D", "CD8A", "CD8B", "GZMA", "GZMB", "PRF1", "NKG7"],
+      "negative_markers": ["CD4", "CD14", "CD19", "MS4A1"],
+      "evidence": "CD3 complex for T lineage; CD8A/CD8B for cytotoxic subset; GZMA/GZMB/PRF1 for effector function",
+      "confidence": "high"
+    },
+    "CD8+/CD45RA+ Naive Cytotoxic": {
+      "positive_markers": ["CD3E", "CD3D", "CD8A", "CD8B", "CCR7", "SELL", "TCF7", "LEF1"],
+      "negative_markers": ["CD4", "CD45RO", "GZMB", "PRF1"],
+      "evidence": "Naive T cells express CCR7, SELL for lymphoid homing; TCF7/LEF1 maintain naive state",
+      "confidence": "high"
+    },
+    "CD4+/CD45RO+ Memory": {
+      "positive_markers": ["CD3E", "CD3D", "CD4", "CD45RO", "CCR7", "IL7R", "CD27"],
+      "negative_markers": ["CD8A", "CD8B", "CD45RA", "GZMB"],
+      "evidence": "Memory T cells express CD45RO; CCR7 distinguishes central vs effector memory",
+      "confidence": "high"
+    },
+    "CD19+ B": {
+      "positive_markers": ["CD19", "MS4A1", "CD79A", "CD79B", "PAX5"],
+      "negative_markers": ["CD3E", "CD3D", "CD4", "CD8A", "CD14"],
+      "evidence": "CD19 and MS4A1 are canonical B cell markers; CD79A/B for BCR signaling; PAX5 is master TF",
+      "confidence": "high"
+    },
+    "CD4+/CD25 T Reg": {
+      "positive_markers": ["CD4", "IL2RA", "FOXP3", "CTLA4", "IKZF2"],
+      "negative_markers": ["CD8A", "CD8B", "IL7R"],
+      "evidence": "Tregs: CD25 (IL2RA), FOXP3 master TF, CTLA4 for suppressive function; low IL7R",
+      "confidence": "high"
+    },
+    "CD56+ NK": {
+      "positive_markers": ["NCAM1", "NKG7", "GNLY", "KLRB1", "KLRD1", "PRF1"],
+      "negative_markers": ["CD3E", "CD3D", "CD4", "CD8A", "CD19"],
+      "evidence": "NCAM1 (CD56) is canonical NK marker; NKG7/GNLY are granule proteins; KLRD1 (CD94)",
+      "confidence": "high"
+    },
+    "CD4+ T Helper2": {
+      "positive_markers": ["CD3E", "CD3D", "CD4", "GATA3", "CCR4", "PTGDR2"],
+      "negative_markers": ["CD8A", "CD8B", "TBX21", "CXCR3"],
+      "evidence": "Th2: GATA3 master TF; CCR4 chemokine receptor; PTGDR2 (CRTH2) is specific marker",
+      "confidence": "high"
+    },
+    "CD4+/CD45RA+/CD25- Naive T": {
+      "positive_markers": ["CD3E", "CD3D", "CD4", "CD45RA", "CCR7", "SELL", "IL7R", "TCF7"],
+      "negative_markers": ["CD8A", "CD8B", "CD45RO", "IL2RA", "FOXP3"],
+      "evidence": "Naive CD4+ T: CD45RA+, CCR7+, SELL+, IL7R+, TCF7+; CD25- distinguishes from Tregs",
+      "confidence": "high"
+    },
+    "CD34+": {
+      "positive_markers": ["CD34", "CD90", "KIT", "PROM1"],
+      "negative_markers": ["CD3E", "CD4", "CD8A", "CD19", "CD14", "NCAM1"],
+      "evidence": "HSPCs: CD34 canonical marker; CD90 (Thy-1) for long-term HSCs; KIT (CD117); PROM1 (CD133)",
+      "confidence": "high"
+    },
+    "Dendritic": {
+      "positive_markers": ["CD1C", "CLEC9A", "XCR1", "FCER1A", "HLA-DRA", "CST3"],
+      "negative_markers": ["CD3E", "CD19", "CD14", "NCAM1"],
+      "evidence": "cDC1: CLEC9A, XCR1; cDC2: CD1C, FCER1A; HLA-DR and CST3 are general DC markers",
+      "confidence": "high"
+    },
+    "CD14+ Monocyte": {
+      "positive_markers": ["CD14", "LYZ", "S100A8", "S100A9", "FCN1", "VCAN"],
+      "negative_markers": ["CD3E", "CD4", "CD8A", "CD19", "NCAM1"],
+      "evidence": "Classical monocytes: high CD14, LYZ; S100A8/A9 calprotectin; FCN1 is classical-specific",
+      "confidence": "high"
+    }
+  },
+  "malignancy_status_prediction": {
+    "Malignant": {
+      "positive_markers": ["MKI67", "PCNA", "TOP2A", "BIRC5", "AURKB"],
+      "pathway_signatures": ["Cell_cycle", "Proliferation", "EMT"],
+      "evidence": "Proliferation markers: MKI67, PCNA, TOP2A; BIRC5 (survivin); AURKB for mitosis",
+      "confidence": "high"
+    },
+    "Non-malignant": {
+      "cell_type_reference": "cell_type_annotation",
+      "positive_markers": ["PTPRC", "B2M"],
+      "evidence": "Normal cells retain tissue identity; reference to cell_type_annotation markers",
+      "confidence": "high"
+    }
+  },
+  "cancer_cell_type_prediction": {
+    "Epithelial-like malignant": {
+      "positive_markers": ["EPCAM", "CDH1", "KRT8", "KRT18"],
+      "pathway_signatures": ["Epithelial_identity"],
+      "evidence": "Epithelial markers: EPCAM, CDH1 (E-cadherin), keratins KRT8/KRT18",
+      "confidence": "high"
+    },
+    "Mesenchymal-like malignant": {
+      "positive_markers": ["VIM", "CDH2", "ZEB1", "ZEB2", "SNAI1"],
+      "pathway_signatures": ["EMT"],
+      "evidence": "EMT markers: VIM (vimentin), CDH2 (N-cadherin), ZEB1/ZEB2/SNAI1 TFs",
+      "confidence": "high"
+    },
+    "Neuroendocrine-like malignant": {
+      "positive_markers": ["CHGA", "CHGB", "SYP", "NCAM1", "INSM1"],
+      "pathway_signatures": ["Neuroendocrine_differentiation"],
+      "evidence": "Neuroendocrine markers: CHGA, CHGB, SYP (synaptophysin), NCAM1, INSM1",
+      "confidence": "high"
+    }
+  },
+  "tissue_of_origin_prediction": {
+    "Immune/Blood-derived": {
+      "positive_markers": ["PTPRC", "CD3E", "CD19", "CD14", "LYZ"],
+      "evidence": "Hematopoietic lineage: PTPRC (CD45) pan-leukocyte; CD3E, CD19, CD14 for subtypes",
+      "confidence": "high"
+    },
+    "Epithelial tissue": {
+      "positive_markers": ["EPCAM", "CDH1", "KRT8", "KRT18"],
+      "evidence": "Epithelial lineage: EPCAM, CDH1 (E-cadherin), keratins KRT8/KRT18",
+      "confidence": "high"
+    },
+    "Stromal/Connective": {
+      "positive_markers": ["COL1A1", "COL3A1", "VIM", "DCN", "LUM"],
+      "evidence": "Stromal markers: collagens COL1A1/COL3A1, vimentin, decorin (DCN), lumican (LUM)",
+      "confidence": "high"
+    }
+  },
+  "drug_sensitivity_prediction": {
+    "Cisplatin": {
+      "biomarkers": ["ERCC1", "BRCA1"],
+      "sensitivity_markers": ["ERCC1_low", "BRCA1_deficient"],
+      "resistance_markers": ["ERCC1_high", "BRCA1_high"],
+      "evidence": "NER pathway: ERCC1-high=resistance; BRCA-loss=sensitivity to platinum",
+      "confidence": "high"
+    },
+    "Paclitaxel": {
+      "biomarkers": ["TUBB3", "ABCB1", "STMN1"],
+      "sensitivity_markers": ["TUBB3_low", "ABCB1_low"],
+      "resistance_markers": ["TUBB3_high", "ABCB1_high"],
+      "evidence": "Microtubule: TUBB3 overexpression reduces binding; ABCB1 efflux causes resistance",
+      "confidence": "high"
+    },
+    "Docetaxel": {
+      "biomarkers": ["TUBB3", "ABCB1", "STMN1"],
+      "sensitivity_markers": ["TUBB3_low", "ABCB1_low"],
+      "resistance_markers": ["TUBB3_high", "ABCB1_high"],
+      "evidence": "Shared mechanisms with paclitaxel: ABCB1 efflux, TUBB3 alterations confer resistance",
+      "confidence": "high"
+    },
+    "Gemcitabine": {
+      "biomarkers": ["RRM1", "dCK", "hENT1"],
+      "sensitivity_markers": ["RRM1_low", "dCK_high"],
+      "resistance_markers": ["RRM1_high", "dCK_low"],
+      "evidence": "Nucleoside analog: RRM1 is target; dCK required for activation; hENT1 for uptake",
+      "confidence": "medium"
+    },
+    "Gefitinib": {
+      "biomarkers": ["EGFR", "MET"],
+      "sensitivity_markers": ["EGFR_exon19del", "EGFR_L858R"],
+      "resistance_markers": ["EGFR_T790M", "MET_amp"],
+      "evidence": "EGFR-TKI: T790M gatekeeper mutation causes resistance; MET amplification bypass",
+      "confidence": "high"
+    },
+    "Erlotinib": {
+      "biomarkers": ["EGFR", "MET"],
+      "sensitivity_markers": ["EGFR_exon19del", "EGFR_L858R"],
+      "resistance_markers": ["EGFR_T790M", "MET_amp"],
+      "evidence": "Shared resistance with gefitinib: T790M increases ATP affinity blocking TKI",
+      "confidence": "high"
+    },
+    "Crizotinib": {
+      "biomarkers": ["ALK", "ROS1", "MET"],
+      "sensitivity_markers": ["ALK_fusion", "ROS1_fusion"],
+      "resistance_markers": ["ALK_L1196M", "ALK_G1202R", "ROS1_G2032R"],
+      "evidence": "Multi-target TKI: ALK/ROS1 fusions predict sensitivity; gatekeeper mutations confer resistance",
+      "confidence": "high"
+    },
+    "Palbociclib": {
+      "biomarkers": ["RB1", "CDKN2A", "CCND1"],
+      "sensitivity_markers": ["CCND1_amp", "CDKN2A_loss"],
+      "resistance_markers": ["RB1_loss", "CCNE1_high"],
+      "evidence": "CDK4/6 inhibitor: requires intact RB1; RB1-loss or p16-high confer resistance",
+      "confidence": "high"
+    },
+    "PLX.4720": {
+      "biomarkers": ["BRAF", "NRAS", "PTEN"],
+      "sensitivity_markers": ["BRAF_V600E"],
+      "resistance_markers": ["NRAS_mutation", "PTEN_loss", "BRAF_amp"],
+      "evidence": "BRAF-V600E inhibitor: RTK-bypass, NRAS-mut, or BRAF-amp confer resistance",
+      "confidence": "high"
+    },
+    "Ibrutinib": {
+      "biomarkers": ["BTK", "PLCG2"],
+      "sensitivity_markers": ["BTK_wildtype", "PLCG2_wildtype"],
+      "resistance_markers": ["BTK_C481S", "PLCG2_mutation"],
+      "evidence": "BTK inhibitor: C481S mutation in binding site prevents covalent attachment",
+      "confidence": "medium"
+    }
+  }
+}

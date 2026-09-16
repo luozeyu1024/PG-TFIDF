@@ -1,0 +1,1150 @@
+{
+  "clusters": [
+    {
+      "cluster_id": "0",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 2231,
+      "title": "Large Multi-Functional Regulatory Supercluster: Transcription, RNA Processing, Ubiquitin-Proteasome, Signaling, and Cytoskeletal Organization",
+      "overall_function": "This very large cluster encompasses a broad array of cellular regulatory functions including transcriptional regulation (Mediator complex, TAF/TFIID, SAGA, PRC1/2, NuRD, NELF), RNA processing and splicing (hnRNPs, SRSF, snRNPs, CELF, MBNL, RBM families), ubiquitin-proteasome system (FBXO/FBXL/FBXW F-box proteins, USPs, RNFs, UBE2/3/4 enzymes, CUL1/4/5), signal transduction (MAP3K/MAPK, PI3K/AKT/mTOR via RPTOR/RICTOR, STAT family, Rho GEFs/GAPs, Wnt/beta-catenin via CTNNB1/AXIN), cytoskeletal and actin dynamics (MYO family, DIAPH, WASF, ARPC, FMNL), autophagy (ATG genes, WIPI1, RUBCN), vesicle trafficking (VPS, TRAPPC, SNX, AP complexes), DNA damage response (CHEK2, NBN, MDC1, XRCC1, RAD21, PARP family), and chromatin remodeling (KDM, SETDB, SMYD, ARID, PHF families). The cluster likely represents a co-regulated gene network active in proliferating or differentiating cells rather than a single coherent pathway.",
+      "key_genes_or_proteins": [
+        "CTNNB1",
+        "STAT3",
+        "MYO9A",
+        "RPTOR",
+        "RICTOR",
+        "SUZ12",
+        "MTA1",
+        "PRPF8",
+        "SNRNP200",
+        "CUL1",
+        "USP9X",
+        "MAP3K1",
+        "PIK3CB",
+        "CHEK2",
+        "SETDB1"
+      ],
+      "cell_type_relevance": [
+        "Proliferating progenitor or stem cells given co-enrichment of cell cycle regulators (CDK8, CDK19, CCNC, CCNK, WEE1, CDC45), chromatin remodelers, and autophagy genes",
+        "Neural progenitors or neurons suggested by NOVA1/2, STMN1-4, DYNC1I1/2, MADD, TANC1/2, NRGN, ARPP21, DLG1-4, MAGI2",
+        "Immune cells (T/B cell signaling) suggested by VAV1, STAT1-6, NFATC1/2/4, RELA/RELB/NFKB2, MALT1, RASGRP1, HCLS1",
+        "Muscle-related cells suggested by TNNI1-3, TNNT1-3, TMOD1-4, LMOD1-3, SMYD1, RYR1/2, CACNB1-4, DMD",
+        "Germline/spermatogenic cells suggested by PIWIL1/2/4, HORMAD1/2, DAZL, TEX11, MARF1, TDRD7/10, BOLL"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Neural tissue: strong representation of neuronal cytoskeletal (STMN1-4, DYNC1I1/2), synaptic (DLG1-4, MAGI2, UNC13A/B), and RNA-binding (NOVA1/2, CELF3-6, MBNL1-3) genes",
+        "Muscle/cardiac tissue: TNNI1-3, TNNT1-3, TMOD1-4, LMOD1-3, RYR1/2, CACNB1-4, DMD, SMYD1, JPH2, MUSTN1",
+        "Testis/germline: PIWIL1/2/4, DAZL, HORMAD1/2, TEX11, TDRD7/10, BOLL, IQCF2/3/5/6, SPATA1/17",
+        "Hematopoietic: VAV1, STAT1-6, NFATC1/2/4, RELA/RELB, MALT1, RASGRP1, SPIC",
+        "Broadly expressed across many tissues given the housekeeping-like transcription/splicing/ubiquitin machinery components"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Oncogenic programs: MYCN, STAT3, CTNNB1, BRAF, ARAF, AKT2, PIK3CB, PIK3CG, RPTOR/RICTOR (mTORC1/2), MTA1/2/3 (NuRD), SETDB1, DOT1L suggest active oncogenic signaling",
+        "Breast cancer: BCAS2/3/4, NCOA1/3, MTDH, SERBP1, STAT3, PIK3CB are frequently amplified/overexpressed in breast cancer",
+        "Hematologic malignancies: MALT1, NFKB2, RELA/RELB, STAT3/5, BCL2/BCL2L11, CTNNB1, CUL1/SKP2 suggest lymphoma/leukemia relevance",
+        "Neuroblastoma/neural tumors: MYCN, ALK, STMN1, PHOX2B-related signaling, DYNC1I1/2",
+        "Prostate/endocrine cancers: NCOA1/3, STAT5A/5B, SREBF1, MLXIP"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Pro-malignancy markers: MYCN, STAT3, CTNNB1, AKT2, BRAF, RPTOR, RICTOR, MTA1, SETDB1, SKP2, MDM4 are established oncogenes or pro-tumorigenic regulators",
+        "Tumor suppressor activity: CYLD, AXIN1/2, CDKN1A/1B/1C, FLCN, TSC1, PHLPP1/2, SOCS2, SMAD7, RASSF2/5, CDC73, MEN1 suggest non-malignant or tumor-suppressive contexts",
+        "DNA damage response genes (CHEK2, NBN, MDC1, XRCC1, PARP1, RAD21) may mark genomic instability in malignant cells",
+        "The mixture of oncogenes and tumor suppressors makes binary malignancy classification difficult from this cluster alone",
+        "Autophagy genes (ATG3/4/5/16L1, WIPI1, RUBCN) may reflect stress adaptation in malignant cells"
+      ],
+      "drug_sensitivity_relevance": [
+        "mTOR pathway (RPTOR, RICTOR, PIK3CB, PIK3CG, AKT2): sensitivity to rapamycin/rapalogs, PI3K inhibitors (idelalisib, copanlisib), AKT inhibitors",
+        "PARP inhibitors: PARP1/4/6/8/9/11 expression; co-occurrence with DNA repair genes (XRCC1, NBN, CHEK2) suggests PARP inhibitor sensitivity context",
+        "Proteasome/ubiquitin pathway (CUL1/4/5, SKP1/2, multiple USPs, RNFs): sensitivity to neddylation inhibitors (MLN4924/pevonedistat), proteasome inhibitors (bortezomib)",
+        "BCL2 family (BCL2, BCL2L11, BOK, BNIP3): venetoclax and BH3-mimetic sensitivity",
+        "CDK8/19 (CCNC complex): CDK8/19 inhibitors (cortistatin A analogs) relevant given MED12L/CDK8/CDK19 presence",
+        "JAK-STAT (STAT1-6): JAK inhibitors (ruxolitinib, tofacitinib) relevant",
+        "BRAF/RAF (BRAF, ARAF): BRAF inhibitors (vemurafenib, dabrafenib) in BRAF-mutant contexts"
+      ],
+      "perturbation_modeling_relevance": [
+        "Hub genes for perturbation: CTNNB1, STAT3, RPTOR, RICTOR, CUL1, SUZ12, PRPF8 are high-connectivity nodes whose perturbation would have broad transcriptional consequences",
+        "Genetic interaction (GI) mapping: F-box proteins (FBXO/FBXL/FBXW family, ~30 members) and USPs (~20 members) form paralogue groups ideal for GI screens",
+        "mTORC1/2 perturbation: RPTOR vs RICTOR knockouts would dissect mTORC1 vs mTORC2 dependencies",
+        "Splicing factor perturbations (PRPF8, SNRNP200, SF3B2, SRSF5/6/11, HNRNP family) relevant for splicing-targeted perturbation models",
+        "Autophagy perturbation series: ATG3/4A/4C/5/16L1/2A/2B, WIPI1, RUBCN/RUBCNL form a coherent ATG perturbation module",
+        "PRC2 (SUZ12, MTF2, JARID2) vs NuRD (MTA1/2/3, MBD2/3, GATAD2A/B) perturbation comparisons for epigenetic modeling"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Cluster is extremely large (2231 genes), strongly suggesting over-aggregation or insufficient resolution in the clustering algorithm",
+        "Multiple distinct biological programs are co-clustered: neuronal, muscle, germline, immune, and ubiquitous housekeeping functions",
+        "Presence of tissue-restricted genes (TNNI1-3, TNNT1-3, RYR1/2, PIWIL1/2/4, DAZL, HORMAD1/2, HBA1/HBA2/HBZ/HBM/HBQ1) alongside broadly expressed regulatory genes is a major QC concern suggesting mixed cell type contamination or batch effects",
+        "Hemoglobin genes (HBA1, HBA2, HBM, HBQ1, HBZ) in a large regulatory cluster is suspicious and may indicate red blood cell contamination or ambient RNA",
+        "Germline/piRNA pathway genes (PIWIL1/2/4, DAZL, BOLL, HORMAD1/2, TEX11) co-clustering with ubiquitous transcription factors is biologically implausible in most somatic contexts",
+        "The cluster likely reflects a catch-all bin for genes not fitting tighter clusters rather than a coherent co-expression module"
+      ],
+      "rationale": "The 2231-gene cluster centered on MYO9A contains an extraordinarily diverse set of gene families. Core regulatory machinery (Mediator, TFIID/TAF, SAGA, PRC1/2, NuRD, NELF, spliceosome, hnRNPs, ubiquitin E3 ligases, deubiquitinases) is broadly expressed and could co-cluster due to shared housekeeping expression patterns. However, the simultaneous presence of highly tissue-restricted programs—cardiac/skeletal muscle contractile proteins (TNNI, TNNT, TMOD, LMOD, RYR, CACNB), erythroid hemoglobins (HBA1/2, HBM, HBQ1, HBZ), germline piRNA/meiosis genes (PIWIL1/2/4, DAZL, HORMAD1/2, BOLL, TEX11), and neuronal synaptic genes (DLG1-4, MAGI2, UNC13A/B, NOVA1/2, STMN1-4)—is a strong indicator that this cluster is not biologically coherent. It likely represents an artifact of low clustering resolution, batch effects, or ambient RNA contamination mixing multiple cell type transcriptomes. The oncogenic and signaling components (CTNNB1, STAT3, MYCN, BRAF, PIK3CB, RPTOR/RICTOR) are real and functionally related but are diluted by the tissue-specific noise. Confidence is moderate-low due to the implausible co-clustering of mutually exclusive tissue programs.",
+      "confidence": 0.28,
+      "recommended_followups": [
+        "Re-cluster at higher resolution to split this supercluster into biologically coherent sub-modules (e.g., splicing, ubiquitin, mTOR, muscle, neuronal, germline)",
+        "Check for ambient RNA contamination (SoupX or similar) given hemoglobin gene presence",
+        "Perform pathway enrichment (GO, KEGG, Reactome) on sub-sampled gene sets to identify dominant functional themes",
+        "Assess whether tissue-restricted genes (HBA1/2, TNNI1-3, PIWIL1/2/4) show correlated expression or are outliers within the cluster",
+        "Use UMAP/tSNE of cluster member expression profiles to identify sub-structure and potential batch confounders",
+        "Validate key hub genes (CTNNB1, STAT3, RPTOR, SUZ12, PRPF8) as cluster anchors by examining their co-expression neighborhoods independently"
+      ]
+    },
+    {
+      "cluster_id": "1",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 2074,
+      "title": "Large Cytoskeletal Scaffold, Signaling Hub, and Cell Division Regulatory Network",
+      "overall_function": "This very large cluster encompasses a broad but interconnected set of biological functions centered on cytoskeletal organization, cell polarity, scaffold/adaptor signaling, centrosome/cilia biology, cell division and mitosis, DNA damage response, apoptosis regulation, immune signaling, and vesicle trafficking. Key themes include: (1) extensive cytoskeletal scaffolding via AKAP, CCDC, ANKRD, and PDZ-domain proteins; (2) centrosome/centriole/cilium assembly (CEP family, CFAP family, CCDC39/40, DNAAF proteins); (3) mitotic regulation (BUB1, CENP family, TACC, HAUS, PLK4, STIL, ASPM, KNL1, SGO1/2, INCENP, NUSAP1); (4) Rho/Rac GEF-GAP signaling (ARHGEF/ARHGAP families); (5) DNA damage and repair (BRCA1/2, FANCA/F/M, ATM pathway components, RMI1, SLX4); (6) apoptosis/BCL2 family; (7) immune/NF-kB signaling (IRAK1/2, IRF3/4/7/8/9, CARD family, STING1, NFKB inhibitors); (8) meiosis (SYCP1-3, SYCE, TEX genes, STRA8, MEI1/4); (9) vesicle/membrane trafficking (RAB11FIP, DENND, TBC1D, SNX families).",
+      "key_genes_or_proteins": [
+        "BRCA1",
+        "BRCA2",
+        "CEP152",
+        "CEP290",
+        "PCNT",
+        "PLK4",
+        "STIL",
+        "ASPM",
+        "INCENP",
+        "SYCP1",
+        "SYCP3",
+        "ARHGEF2",
+        "ARHGAP12",
+        "IRF3",
+        "IRF8",
+        "STING1",
+        "BCL2L1",
+        "APC",
+        "TACC3",
+        "KNL1"
+      ],
+      "cell_type_relevance": [
+        "Cycling/proliferating cells: strong mitotic and centrosome gene signature (CEP family, HAUS, TACC, CENP, BUB1, PLK4, STIL, ASPM, NUSAP1, PTTG1/2)",
+        "Immune cells (B/T/myeloid): IRF4/8, SPI1/SPIB, CARD9/10/11, IRAK1/2, STING1, BLNK, LAT, FYB1/2, INPP5D, NCF1/4, CD14 suggest myeloid and lymphoid programs",
+        "Meiotic/germ cells: SYCP1-3, SYCE1/3, TEX genes, STRA8, MEI1/4, SPATA genes, TSGA10 strongly indicate germ cell/meiotic state",
+        "Ciliated cells: CFAP family, DNAAF1/3/8, CCDC39/40, DNAH14, RSPH genes, TEKT genes, ODAD1/3 indicate motile cilia",
+        "Neurons/synaptic cells: SHANK1-3, SYNGAP1, SYT family, HOMER1/3, DLGAP1-5, RIMS1-4, SNAP91 indicate neuronal/synaptic identity"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Testis/gonad: large meiotic and spermatogenesis gene block (SYCP, SYCE, TEX, SPATA, TSGA, SPEM, CFAP, TEKT) strongly points to testicular germ cell origin",
+        "Brain/neural tissue: SYT family, SHANK, HOMER, DLGAP, SYNGAP1, RIMS, SNAP91, RTN1-4, SNCA/B/G suggest neural tissue",
+        "Immune/hematopoietic tissue: IRF4/8, SPI1, CARD11, BLNK, LAT, CD14, INPP5D, NCF1/4 suggest hematopoietic compartment",
+        "Epithelial/polarized tissues: PARD3/6, PATJ, SCRIB, MARVELD2/3, CGN, CGNL1, TJP3 suggest epithelial polarity programs",
+        "Broadly proliferative tissues: centrosome/mitosis genes are tissue-nonspecific markers of proliferation"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Germ cell tumors: meiotic gene expression (SYCP, TEX, SPATA, STRA8) is a hallmark of testicular germ cell tumors and some seminomas",
+        "Hematologic malignancies: IRF4/8, SPI1/SPIB, CARD11, BCL10, BLNK, INPP5D are key drivers/markers in B-cell lymphomas, AML, and related cancers",
+        "Highly proliferative cancers: CEP, TACC3, PLK4, ASPM, NUSAP1, PTTG1/2, BUB1, KIFC1 are overexpressed in many aggressive solid tumors",
+        "NF-kB-driven cancers: CARD9/10/11/14, IRAK1/2, STING1, NFKBIA/B/D/E, TNIP1/2/3 implicate NF-kB pathway-dependent malignancies",
+        "Neuroblastoma/neural tumors: SNCA, SYT, SHANK, HOMER genes may mark neural lineage tumors"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Malignant cells likely marked by: overexpression of mitotic/centrosome genes (PLK4, TACC3, ASPM, NUSAP1, PTTG1/2, BUB1, KIFC1, STIL) which are broadly upregulated in cancer vs normal",
+        "DNA damage response genes (BRCA1/2, FANCA/F/M, RMI1, SLX4, RBBP8, CLSPN, TICRR) may indicate replication stress common in malignant cells",
+        "Apoptosis regulators (BCL2L1, MCL1, BAX, BID, BMF, BIK, BCL2A1) could distinguish malignant cells with anti-apoptotic programs",
+        "Non-malignant immune infiltrate: IRF4/8, SPI1, CD14, NCF1/4, INPP5D, LAT, BLNK genes likely mark non-malignant immune cells in tumor microenvironment",
+        "Mixed signal: the cluster contains both proliferation/malignancy markers and normal tissue-specific (germ cell, neuronal, immune) markers, complicating binary malignancy calls"
+      ],
+      "drug_sensitivity_relevance": [
+        "PLK4/STIL/ASPM/TACC3 overexpression: sensitivity to centrosome-targeting agents (centrinone/PLK4 inhibitors, TACC3 inhibitors)",
+        "BRCA1/2/FANCA pathway: sensitivity to PARP inhibitors and platinum-based chemotherapy (homologous recombination deficiency)",
+        "BCL2L1/MCL1 anti-apoptotic genes: sensitivity to BH3 mimetics (navitoclax, venetoclax, MCL1 inhibitors)",
+        "IRAK1/2, CARD11, NF-kB pathway: sensitivity to IRAK inhibitors, BTK inhibitors, IKK inhibitors in lymphoma/AML contexts",
+        "IRF4/SPI1 axis: sensitivity to IRF4-targeting strategies relevant in multiple myeloma and B-cell lymphoma",
+        "ROCK1 (present): sensitivity to ROCK inhibitors (fasudil, Y-27632) in cytoskeletal-dependent cancers"
+      ],
+      "perturbation_modeling_relevance": [
+        "Centrosome/mitosis gene network (CEP, HAUS, PLK4, STIL, TACC, CENP): strong candidates for essential gene perturbation screens; loss causes mitotic catastrophe",
+        "ARHGEF/ARHGAP Rho-GEF/GAP network: perturbation of these hubs would broadly affect cytoskeletal dynamics and cell migration programs",
+        "BRCA1/2 and FA pathway: canonical perturbation targets for DNA repair pathway modeling; synthetic lethality with PARP inhibition",
+        "NF-kB/IRAK/CARD signaling axis: perturbation modeling of innate immune signaling cascades relevant to inflammation and lymphoma",
+        "Apoptosis network (BCL2L1, MCL1, BAX, BID): perturbation of pro- vs anti-apoptotic balance; relevant for BH3 profiling models",
+        "Meiotic gene network (SYCP, SYCE, TEX, MEI): perturbation relevant for fertility/germ cell biology models but less relevant for somatic cancer perturbation",
+        "SYT/SHANK/HOMER synaptic network: perturbation modeling of synaptic vesicle release and postsynaptic density assembly"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Cluster is extremely large (2074 genes), strongly suggesting over-aggregation or insufficient resolution in the clustering algorithm",
+        "Biologically heterogeneous: contains at least 5-6 distinct functional modules (meiosis/germ cell, centrosome/mitosis, immune signaling, neuronal/synaptic, cytoskeletal scaffolding, DNA repair) that would normally be expected to separate into distinct clusters",
+        "High proportion of uncharacterized/poorly annotated genes (C#orf, FAM, CCDC, PRR, NUTM2 families) may be inflating cluster size artificially",
+        "Presence of both highly tissue-specific genes (SYCP3, SHANK1, CD14) and broadly expressed scaffolding genes suggests possible batch effect or embedding artifact pulling disparate programs together",
+        "Many CCDC (coiled-coil domain containing) genes may cluster together due to shared domain architecture rather than shared biological function, representing a technical artifact",
+        "Large number of PRR (proline-rich) and FAM genes with unknown function reduces interpretability and confidence",
+        "Mixed immune + meiotic + neuronal + mitotic signatures in one cluster is biologically implausible for any single cell type, suggesting this cluster should be split"
+      ],
+      "rationale": "The cluster of 2074 gene symbols is dominated by several recognizable biological themes: (1) centrosome/cilia biology via the CEP, CFAP, CCDC, and DNAAF gene families; (2) mitotic regulation via CENP, HAUS, TACC, BUB1, PLK4, STIL, ASPM, KNL1, SGO1/2, INCENP, NUSAP1; (3) meiosis/spermatogenesis via SYCP1-3, SYCE1/3, TEX genes, SPATA genes, STRA8, MEI1/4; (4) Rho GTPase signaling via extensive ARHGEF/ARHGAP families; (5) immune signaling via IRF3/4/7/8/9, CARD9/10/11/14, IRAK1/2, STING1, SPI1/SPIB, BLNK, LAT; (6) neuronal/synaptic function via SYT family, SHANK1-3, HOMER1/3, DLGAP1-5, RIMS1-4; (7) DNA damage response via BRCA1/2, FANCA/F/M, SLX4, RMI1; (8) apoptosis via BCL2L1, MCL1, BAX, BID, BMF. The co-clustering of these diverse programs in a single cluster of >2000 genes is biologically implausible for any single cell type and strongly suggests over-clustering, insufficient embedding resolution, or shared low-level features (coiled-coil domains, proline-rich regions, scaffold/adaptor architecture) driving spurious co-clustering. The cluster has value as a broad 'signaling scaffold and cell biology' module but should be computationally subdivided for meaningful biological inference.",
+      "confidence": 0.38,
+      "recommended_followups": [
+        "Re-cluster at higher resolution to split this mega-cluster into biologically coherent sub-clusters (meiotic, mitotic/centrosome, immune, neuronal, cytoskeletal)",
+        "Perform gene ontology enrichment analysis to identify dominant GO terms and assess whether sub-modules can be separated",
+        "Check if CCDC/FAM/PRR/C#orf uncharacterized genes are driving spurious co-clustering via shared sequence features",
+        "Validate immune sub-module (IRF4/8, SPI1, CARD11, BLNK) against known immune cell type marker databases (CellMarker, PanglaoDB)",
+        "Validate meiotic sub-module (SYCP1-3, TEX genes) against germ cell atlas data",
+        "Assess whether centrosome/mitosis genes (CEP, HAUS, PLK4, TACC3) correlate with cell cycle phase scores to confirm proliferation association",
+        "Examine batch effects and embedding quality metrics to rule out technical artifacts driving this large cluster"
+      ]
+    },
+    {
+      "cluster_id": "18",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 190,
+      "title": "Calcium-Binding Proteins, Myosin Light Chains, S100 Family, and Mitochondrial Carriers (SLC25A)",
+      "overall_function": "This cluster is dominated by three major functional groups: (1) EF-hand calcium-binding proteins spanning multiple subfamilies (calmodulins, S100 proteins, calbindins, parvalbumins, neuronal calcium sensors, CABP family, KCNIP/KChIPs, recoverin/GUCA family, calcineurin regulatory subunits); (2) myosin light chain proteins (MYL family) involved in muscle contraction and cytoskeletal regulation; and (3) the nearly complete SLC25A mitochondrial carrier family responsible for metabolite transport across the inner mitochondrial membrane. Additional members include histone H1 linker histones (H1-0 through H1-6) and HMGN chromatin-associated proteins. The co-clustering of these groups likely reflects shared EF-hand domain architecture and/or co-expression patterns rather than a single unified biological pathway.",
+      "key_genes_or_proteins": [
+        "CALM1",
+        "CALM2",
+        "CALM3",
+        "S100A8",
+        "S100A9",
+        "PVALB",
+        "CALB1",
+        "CALB2",
+        "MYL2",
+        "MYL9",
+        "SLC25A4",
+        "SLC25A5",
+        "SLC25A13",
+        "UCP1",
+        "UCP2",
+        "KCNIP1",
+        "RCVRN",
+        "GUCA1A",
+        "PPP3R1",
+        "H1-0"
+      ],
+      "cell_type_relevance": [
+        "Muscle cells (skeletal, cardiac, smooth): MYL1/2/3/4/6/7/9, TNNC1/2, TAGLN, CNN1 strongly suggest muscle lineage",
+        "Neurons and photoreceptors: PVALB, CALB1, CALB2, RCVRN, GUCA1A/B/C, HPCA, NCALD, VSNL1, KCNIP1-4 mark GABAergic interneurons, retinal photoreceptors, and neuronal subtypes",
+        "Myeloid/macrophage cells: AIF1 (Iba1), S100A8, S100A9, S100A12, LCP1 are canonical myeloid/macrophage markers",
+        "Epithelial and keratinocyte states: S100A2, S100A3, S100A4, S100A6, S100A7, S100A14, S100A16 are expressed in epithelial and skin cells",
+        "Brown/beige adipocytes: UCP1 is the defining marker of thermogenic brown adipose tissue",
+        "Cycling/chromatin-remodeling states: H1 linker histones and HMGN proteins suggest proliferating or chromatin-active cells"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Skeletal and cardiac muscle: MYL family, TNNC1/2, TAGLN, CNN1, CAPN3 strongly indicate muscle tissue origin",
+        "Retina/photoreceptors: RCVRN, GUCA1A/B/C, HPCA, HPCAL1, HPCAL4, CABP1/2/5 are highly retina-enriched",
+        "Brain/nervous system: PVALB, CALB1, CALB2, NCALD, VSNL1, KCNIP1-4, NCS1 mark neuronal tissues",
+        "Skin/epithelium: S100A7, S100A7A, S100A8, S100A9, S100A12 are enriched in skin and mucosal epithelia",
+        "Brown adipose tissue: UCP1, UCP3 indicate thermogenic adipose",
+        "Mitochondria-rich tissues (liver, heart, kidney): SLC25A family members are broadly expressed in metabolically active tissues"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "S100A8/A9 (calprotectin) are upregulated in myeloid-derived suppressor cells (MDSCs) and inflammatory tumor microenvironment",
+        "S100A4 is a well-known EMT and metastasis-associated marker in multiple carcinomas",
+        "S100A2, S100A6, S100A14, S100A16 are upregulated in various epithelial cancers (lung, breast, pancreatic)",
+        "PVALB and CALB1/2 can mark neuroendocrine tumor subtypes",
+        "MYL9 and TAGLN are associated with cancer-associated fibroblast (CAF) and smooth muscle-like cancer states",
+        "AIF1 marks tumor-associated macrophages (TAMs) in the tumor microenvironment",
+        "CAPN3 and calpain family members are implicated in tumor invasion"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "AIF1, S100A8, S100A9, LCP1 are predominantly expressed in non-malignant immune/myeloid cells in the tumor microenvironment, suggesting non-malignant identity when highly expressed",
+        "S100A4, S100A2, S100A6 can be expressed in both malignant epithelial cells and stromal fibroblasts, making malignancy discrimination ambiguous",
+        "MYL and TAGLN expression may indicate non-malignant smooth muscle or CAF populations rather than epithelial cancer cells",
+        "CALB1/CALB2/PVALB expression in neuroendocrine contexts could mark malignant neuroendocrine cells",
+        "SLC25A family members are broadly expressed and not informative for malignancy status alone"
+      ],
+      "drug_sensitivity_relevance": [
+        "Calmodulin (CALM1/2/3) inhibition: calmodulin antagonists (e.g., trifluoperazine) may be relevant; CALM1 mutations affect drug response in some leukemias",
+        "S100A8/A9 inhibition: tasquinimod and other S100A9 inhibitors are in clinical development for myeloid malignancies and immunosuppression",
+        "UCP2 upregulation is associated with resistance to chemotherapy and apoptosis evasion in cancer cells",
+        "SLC25A family members (ANT1/2/3/4 = SLC25A4/5/6/31) are involved in mitochondrial apoptosis and may modulate sensitivity to BH3 mimetics and mitochondria-targeting drugs",
+        "CAPN3/calpain inhibitors may affect tumor invasion",
+        "PPP3R1/calcineurin regulatory subunit: calcineurin-NFAT pathway inhibitors (cyclosporine, tacrolimus) relevant in immune and some cancer contexts",
+        "KCNIP/KChIP proteins modulate potassium channel activity relevant to cardiac drug toxicity assessment"
+      ],
+      "perturbation_modeling_relevance": [
+        "CALM1/2/3 are highly connected hub genes in calcium signaling; perturbation of any calmodulin isoform would have broad downstream effects on CaM-dependent kinases (CaMKII, CaMKIV), calcineurin, and other targets",
+        "S100A8/S100A9 knockout models are relevant for studying MDSC biology and tumor immunosuppression",
+        "SLC25A family knockouts are useful for studying mitochondrial metabolite transport and metabolic reprogramming",
+        "UCP1 perturbation is a classic model for thermogenesis and energy expenditure",
+        "MYL9 perturbation affects actomyosin contractility relevant to mechanobiology and CAF modeling",
+        "AIF1 (Iba1) perturbation affects microglial/macrophage identity",
+        "H1 linker histone perturbations affect global chromatin compaction and gene regulation; redundancy among H1-0 through H1-6 complicates single-gene perturbation interpretation",
+        "KCNIP1-4 perturbations affect neuronal excitability and Kv4 channel gating"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Mixed functional cluster: EF-hand calcium-binding proteins, SLC25A mitochondrial carriers, MYL myosin light chains, and H1 linker histones are co-clustered, suggesting the clustering algorithm may be grouping by shared domain architecture (EF-hand) or co-expression artifacts rather than a single coherent biological pathway",
+        "SLC25A family (>40 members) dominates numerically and represents a functionally distinct group (mitochondrial transport) from the calcium-binding proteins",
+        "H1 linker histones (H1-0 through H1-6) and HMGN proteins are chromatin/nuclear proteins with no obvious functional connection to calcium signaling or mitochondrial transport — possible housekeeping or co-expression contamination",
+        "AIF1 (microglial/macrophage marker) co-clustering with retinal photoreceptor markers (RCVRN, GUCA1A) and muscle markers (MYL2) suggests mixed cell-type signatures",
+        "The cluster may reflect a gene co-expression module driven by shared EF-hand domain presence rather than a biologically coherent pathway",
+        "UCP1/2/3 (uncoupling proteins) are SLC25A subfamily members, explaining their inclusion, but their thermogenic function is distinct from other SLC25A carriers",
+        "PDCD6-AHRR appears to be a fusion/readthrough gene entry — potential annotation artifact"
+      ],
+      "rationale": "The cluster of 190 genes is anchored by three large gene families: (1) EF-hand calcium-binding proteins of diverse subfamilies (calmodulins, S100s, calbindins, parvalbumins, neuronal calcium sensors, CABP, KCNIP, GUCA/recoverin families) — these share the EF-hand structural motif and calcium-sensing function; (2) the SLC25A mitochondrial carrier superfamily (>40 members including ANTs, UCPs, and diverse metabolite carriers) — these share a tricarboxylate carrier domain and inner mitochondrial membrane localization; (3) MYL myosin light chain proteins involved in actomyosin contractility. The co-clustering of these groups is biologically suspicious and likely reflects either shared domain-based sequence similarity used in embedding/clustering, or co-expression in specific tissues (e.g., heart/muscle expresses both MYL and SLC25A members highly). The H1 histone and HMGN inclusions further suggest some contamination from broadly expressed or housekeeping-adjacent genes. The representative gene SLC25A13 (citrin, a mitochondrial aspartate-glutamate carrier) is consistent with the SLC25A family dominance. Overall confidence is moderate due to the mixed nature of the cluster.",
+      "confidence": 0.42,
+      "recommended_followups": [
+        "Perform sub-clustering to separate EF-hand calcium-binding proteins, SLC25A mitochondrial carriers, MYL myosin light chains, and H1 histones into distinct functional modules",
+        "Examine whether the clustering was driven by sequence/domain similarity (EF-hand motif) or transcriptomic co-expression, as these would have different biological interpretations",
+        "Check if H1 histone and HMGN genes are co-expressed with the calcium-binding genes in the training data or represent a batch/technical artifact",
+        "Validate tissue specificity: retinal photoreceptor markers (RCVRN, GUCA1A/B/C) should not co-cluster with myeloid markers (AIF1, S100A8/A9) in a tissue-coherent dataset",
+        "Investigate whether SLC25A family members were clustered due to shared mitochondrial localization signals or sequence homology rather than functional co-regulation",
+        "Assess PDCD6-AHRR as a potential annotation artifact or readthrough transcript that should be flagged for removal"
+      ]
+    },
+    {
+      "cluster_id": "2",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1885,
+      "title": "Broad Metabolic, Chromatin Remodeling, DNA Repair, and Cytoskeletal Regulation Supercluster",
+      "overall_function": "This large cluster encompasses a highly diverse set of biological processes including intermediary metabolism (fatty acid oxidation, amino acid catabolism, TCA cycle, glycolysis, nucleotide biosynthesis), chromatin remodeling and epigenetic regulation (KDM/KAT/BRD/CHD/SMARCA families), DNA replication and repair (MCM complex, RAD51, PCNA, topoisomerases, mismatch repair), RNA processing (DDX/DHX helicases, splicing factors, ribosome biogenesis), cytoskeletal organization (MYH/KIF/dynein/septin families), ubiquitin-proteasome system, vesicular trafficking, and immune/kinase signaling (SRC-family kinases, JAK/TYK2, ZAP70). The extreme breadth suggests either a catch-all cluster from an under-resolved embedding or a genuine pan-cellular housekeeping supermodule.",
+      "key_genes_or_proteins": [
+        "KDM5B",
+        "EZH2",
+        "SMARCA4",
+        "PCNA",
+        "MCM4",
+        "TOP2A",
+        "KIF11",
+        "POLR2A",
+        "HDAC1",
+        "BRD4",
+        "RAD51",
+        "DNMT1",
+        "ATP5F1A",
+        "LDHA",
+        "MYH9"
+      ],
+      "cell_type_relevance": [
+        "Proliferating cells (MCM complex, PCNA, TOP2A, KIF11, CCNA2, CCNE1, TK1, TYMS suggest S/G2/M phase activity)",
+        "Immune cells: SRC-family kinases (LCK, FYN, ZAP70, SYK, BTK, ITK, TEC, TXK) strongly implicate T and B lymphocytes and NK cells",
+        "Metabolically active cells (hepatocytes, muscle): extensive fatty acid oxidation, TCA, glycogen metabolism genes",
+        "Muscle cells: MYH1-15, ACTN3, SPTA1, SPTB, dystrophin-related spectrin genes",
+        "Myeloid cells: NCF2, DOCK2, ARHGDIB, RASGRP2/3 suggest neutrophil/macrophage programs"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Liver: ADH1A/B/C, ALDH1A1, FBP1/2, PCK1, HAL, TAT, CPS1, OTC, MAT1A, GCK, GCKR, HMGCS2 are highly liver-enriched",
+        "Muscle (skeletal/cardiac): MYH1-15, PYGM, PHKA1/2, ACADL/M, ETFA/B, multiple sarcomeric genes",
+        "Hematopoietic/lymphoid: LCK, ZAP70, BTK, SYK, RAG1, DNTT, SH2D1A/B, RASGRP2/3",
+        "Testis/germline: TDRD1/3/6/9, MAEL, SPO11, DMC1, MSH4/5, DNAH genes (axonemal dyneins)",
+        "Kidney: SLC4A4/5/7/8/10, ATP6V0A4, ATP6V1B1, TCIRG1 suggest renal tubular/collecting duct relevance"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Proliferating tumor cells: TOP2A, KIF11, KIF20A, TYMS, RRM1, PCNA, MCM3-8, EZH2, DNMT1, BRD4 are canonical cancer proliferation markers",
+        "Epigenetic reprogramming in cancer: KDM5B (representative gene), EZH2, HDAC1, BRD2/3/4, KAT6A/B, UHRF1, SMARCA4 are frequently altered in multiple cancers",
+        "Drug-resistant cancer phenotypes: ABCB1, ABCC1/4/10/11, ABCG1/4/5/8 (ABC transporters) are major multidrug resistance mediators",
+        "Metabolic reprogramming: LDHA, PKM, PFKM, ACLY, HMGCR, IDH1/2 are Warburg/lipogenic cancer markers",
+        "Immune evasion: PSMB8/9/10 (immunoproteasome), ISG15, IFIT1-3, MX1 suggest interferon-stimulated gene activity in tumor microenvironment"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Malignant cell markers: high expression of TOP2A, KIF11, TYMS, RRM1, PCNA, MCM complex, EZH2, BRD4, UHRF1 strongly associates with malignant proliferating cells",
+        "Non-malignant tissue markers: liver-specific metabolic genes (CPS1, OTC, PCK1, MAT1A), muscle structural genes (MYH isoforms), and germline genes (TDRD, MAEL) are typically non-malignant",
+        "Mixed signal: the cluster contains both proliferation-associated and tissue-differentiation genes, limiting clean malignancy discrimination without expression-level data",
+        "ABC transporter upregulation (ABCB1, ABCC1) may help distinguish drug-resistant malignant cells from normal counterparts"
+      ],
+      "drug_sensitivity_relevance": [
+        "ABC transporter family (ABCB1/MDR1, ABCC1/MRP1, ABCC4, ABCG2-related) directly mediates multidrug resistance to anthracyclines, taxanes, vinca alkaloids, and targeted agents",
+        "TOP2A: target of anthracyclines (doxorubicin, etoposide); amplification/expression predicts sensitivity",
+        "EZH2: target of tazemetostat and other EZH2 inhibitors; relevant in lymphoma and solid tumors",
+        "BRD4: target of BET inhibitors (JQ1, OTX015); relevant in hematologic malignancies and NUT carcinoma",
+        "HDAC1/SMARCA4: HDAC inhibitor and SWI/SNF-related drug sensitivity",
+        "TYMS/RRM1: 5-fluorouracil and gemcitabine sensitivity markers",
+        "JAK1/JAK3/TYK2: targets of ruxolitinib, tofacitinib, deucravacitinib in inflammatory and hematologic contexts",
+        "HMGCR: statin sensitivity; IDH1/2: ivosidenib/enasidenib targets in IDH-mutant cancers",
+        "KIF11: target of ispinesib and other kinesin spindle protein inhibitors"
+      ],
+      "perturbation_modeling_relevance": [
+        "High perturbation modeling value: cluster contains many well-characterized genetic interaction hubs (PCNA, RAD51, TOP2A, EZH2, BRD4, SMARCA4) suitable as CRISPR perturbation targets",
+        "Epistasis modeling: SRC-family kinase network (LCK, FYN, ZAP70, SYK, BTK) forms a signaling cascade amenable to genetic interaction (GI) mapping",
+        "Metabolic network perturbations: TCA cycle (CS, IDH1/2, OGDH, SDHA, FH), fatty acid oxidation (ACADL/M/S, HADH, HADHB), and one-carbon metabolism (SHMT1/2, MTHFD1/2, ALDH1L1/2) genes form coherent perturbable modules",
+        "Chromatin regulator perturbations: KDM/KAT/BRD/CHD/SMARCA families are prime targets for epigenetic perturbation screens",
+        "Caution: cluster size (1885 genes) is very large for focused perturbation modeling; sub-clustering by pathway would improve GEARS/AIVC applicability",
+        "DNA damage response perturbations: RAD51, BRIP1, XRCC3, MUS81, FEN1, SPRTN, ERCC2/3 form a coherent DDR module"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "EXTREMELY LARGE CLUSTER (1885 genes): strongly suggests under-clustering or insufficient resolution in the embedding/clustering algorithm; a cluster of this size is unlikely to represent a single coherent biological module",
+        "MIXED LINEAGE CONTAMINATION: simultaneous presence of liver-specific metabolic genes, germline/testis genes (TDRD, MAEL, SPO11), lymphocyte signaling genes (LCK, ZAP70, RAG1, DNTT), and muscle structural genes (MYH1-15) indicates multiple cell-type programs co-clustered",
+        "HOUSEKEEPING GENE CONTAMINATION: ribosomal proteins (RPL12, RPL18A, RPS3, RPS9, RPS28, RPSA), translation factors (EIF2S1/2, EIF4A1/2, EIF5A), chaperones (HSP90AB1, HSPA9, TCP1, CCT subunits), and proteasome subunits (PSMA/PSMB/PSMC/PSMD) are classic housekeeping genes that often co-cluster artifactually",
+        "READTHROUGH/FUSION GENE ENTRIES: ABCF2-H2BE1, ATP6V1G2-DDX39B, DUS4L-BCAP29, HNRNPUL2-BSCL2, ISY1-RAB43, NEDD8-MDP1, PTGES3L-AARSD1, RNF103-CHMP3, RPS10-NUDT3, ST20-MTHFS, HSPE1-MOB4, MSH5-SAPCD1 are readthrough transcripts mixed with canonical genes, suggesting annotation-level noise",
+        "PSEUDOGENE CONTAMINATION: HMGB1P1, RPSAP58, SRGAP2B, SRGAP2C, MCTS2P, RPS27AP5, LDHAL6A/B are pseudogenes or low-confidence loci",
+        "INTERFERON SIGNATURE MIXED IN: ISG15, IFIT1/2/3/5, IFI44L, MX1, SAMD9L, SAMHD1 suggest an interferon-stimulated gene module that may reflect batch effects or viral stimulation artifacts",
+        "TMSB4X/TMSB10/TMSB15A/B: thymosin beta actin-sequestering peptides are ubiquitous and often appear in stress/artifact clusters"
+      ],
+      "rationale": "The cluster is anchored by KDM5B (a histone H3K4 demethylase) but contains 1885 genes spanning virtually every major cellular process. Coherent sub-modules are identifiable: (1) a chromatin/epigenetic module (KDM1A/B, KDM2A/B, KDM4B-F, KDM5A-D, EZH2, HDAC1, BRD2-4, BRDT, KAT5/6A/6B/7/8, SMARCA1/2/4/5, CHD1-6, PHF10/14/20); (2) a DNA replication/repair module (MCM3-8, PCNA, POLA1, POLD1, RAD51, BRIP1, XRCC3, TOP1/2A/2B, FEN1, MUS81); (3) a metabolic supermodule spanning fatty acid oxidation (ACADL/M/S/SB, HADH, HADHB, EHHADH), TCA cycle (CS, IDH1/2, OGDH, SDHA/B, FH, MDH1/2), glycolysis (ALDOA/B/C, GAPDH, LDHA/B, PKM, PFKM/P), amino acid catabolism (HAL, TAT, PAH, CPS1, OTC, ASS1, ASL), and nucleotide biosynthesis (IMPDH1/2, GMPS, PPAT, CAD, DHODH, TYMS); (4) a cytoskeletal module (MYH1-15, KIF1A-21B, DNAH1-17, SEPTIN1-14, SPTA1/B, SPTBN1-5, FLNA/B/C); (5) an immune kinase module (LCK, FYN, ZAP70, SYK, BTK, ITK, TEC, TXK, JAK1/3, TYK2, SRC, YES1, BLK, HCK, FGR, FER, FES, FRK, MATK, SRMS). The co-clustering of these disparate modules is biologically implausible as a single functional unit and most likely reflects insufficient resolution in the dimensionality reduction or graph-based clustering step. Pseudogenes, readthrough transcripts, and housekeeping genes further reduce confidence. Sub-clustering at higher resolution is strongly recommended.",
+      "confidence": 0.28,
+      "recommended_followups": [
+        "Re-cluster at higher resolution (e.g., increase Leiden/Louvain resolution parameter) to split this 1885-gene supercluster into biologically coherent sub-clusters",
+        "Perform pathway enrichment analysis (GO, KEGG, Reactome) on the full cluster and on candidate sub-clusters to identify dominant biological themes",
+        "Remove or flag pseudogenes (HMGB1P1, RPSAP58, SRGAP2B/C, LDHAL6A/B, MCTS2P) and readthrough transcripts before re-clustering",
+        "Assess whether the interferon-stimulated gene subset (ISG15, IFIT1-3, MX1, IFI44L) represents a batch effect or biological signal by checking sample metadata",
+        "Validate chromatin/epigenetic sub-module (KDM5B, EZH2, BRD4, HDAC1, SMARCA4) as a candidate cancer proliferation/epigenetic reprogramming signature",
+        "Validate immune kinase sub-module (LCK, ZAP70, SYK, BTK, ITK) as a T/B/NK cell identity signature",
+        "Assess ABC transporter co-expression (ABCB1, ABCC1, ABCC4) as a drug resistance module in cancer datasets",
+        "Use UMAP or t-SNE visualization colored by sub-pathway membership to identify visual sub-structure within this cluster",
+        "Consider whether housekeeping gene removal (ribosomal proteins, chaperones, proteasome subunits) improves cluster coherence"
+      ]
+    },
+    {
+      "cluster_id": "23",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 117,
+      "title": "Secreted Signaling Proteins: TGF-β/BMP Superfamily, Growth Factors, and GPI-Anchored Proteins",
+      "overall_function": "This cluster is dominated by secreted extracellular signaling molecules, primarily from the TGF-β/BMP superfamily (BMPs, GDFs, inhibins, activins, nodal, lefty, MSTN, NOG, GREM1/2, SOST), neurotrophins (BDNF, NGF, NTF3, NTF4, NRTN), VEGFs, PDGFs, and gonadotropin subunits (CGB, LHB, FSHB, TSHB, CGA). A secondary theme is GPI-anchored and Ly6/uPAR-domain proteins (LY6 family, LYPD family, SLURP1/2, LYNX1, PLAUR, PSCA, GML, GPIHBP1, CD59). RNase family members and PATE proteins are also present. The unifying feature is secreted or GPI-anchored extracellular proteins involved in cell signaling, morphogenesis, and immune modulation.",
+      "key_genes_or_proteins": [
+        "BMP7",
+        "BMP2",
+        "BMP4",
+        "GDF15",
+        "TGFB1",
+        "NODAL",
+        "VEGFA",
+        "INHBA",
+        "GREM1",
+        "NOG",
+        "BDNF",
+        "NGF",
+        "LHB",
+        "CGB5",
+        "SLURP1"
+      ],
+      "cell_type_relevance": [
+        "Trophoblast/placental cells: CGB1-8, CGA, LHB, FSHB, TSHB, AMH, NODAL, LEFTY1/2, GDF15 are highly expressed in trophoblast and placental tissue",
+        "Granulosa/gonadal cells: BMP15, GDF9, INHA, INHBA/BB, AMH, FSHB are markers of ovarian follicle and gonadal cell types",
+        "Neurons and neural progenitors: BDNF, NGF, NTF3, NTF4, NRTN mark neurotrophin-producing or neuronal cells",
+        "Epithelial cells: LY6 family, LYPD family, SLURP1/2, PSCA, PLAUR are enriched in epithelial compartments",
+        "Immune/myeloid cells: IL17A/B/C/F, IL25, CD177, RNASE2/3 suggest neutrophil or Th17-related immune cell contributions"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Placenta/trophoblast: strong signal from CGB subunits, CGA, GDF15, NODAL, LEFTY1/2, AMH",
+        "Gonads (ovary/testis): BMP15, GDF9, INHA, INHBA/BB, AMH, FSHB, TEX101, SPACA4",
+        "Bone/cartilage: BMP2/4/5/6/7, GDF5/6/7, SOST, SOSTDC1, NOG, GREM1/2",
+        "Nervous system: BDNF, NGF, NTF3, NTF4, NRTN, NDP",
+        "Kidney/epithelium: RNASE family, LY6 family, LYPD family, PSCA",
+        "Vascular endothelium: VEGFA/B/C/D, PGF, PDGFA/B, GPIHBP1"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Trophoblastic/gestational tumors: CGB subunits are canonical markers of choriocarcinoma and gestational trophoblastic disease",
+        "Prostate cancer: PSCA, SOST, BMP7, PDGFA are associated with prostate cancer progression and bone metastasis",
+        "Ovarian cancer: INHBA, GDF15, BMP2/4, GREM1 are implicated in ovarian cancer signaling",
+        "Colorectal/GI cancers: GDF15, GREM1, TGFB1, VEGFA are frequently dysregulated",
+        "Glioblastoma/neural tumors: BDNF, NGF, VEGFA, BMP4/7 are relevant to glioma stem cell biology",
+        "Lung/epithelial cancers: VEGFA, TGFB1, BMP2, LY6K, LYPD3 are upregulated in lung and squamous cell carcinomas"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "GDF15 and VEGFA are broadly upregulated in malignant cells and associated with poor prognosis across cancer types",
+        "TGFB1 and INHBA are associated with immunosuppressive tumor microenvironments and EMT in malignant cells",
+        "CGB subunits, when expressed outside placenta, strongly suggest malignant trophoblastic or germ cell tumors",
+        "GREM1 and SOST are expressed in cancer-associated fibroblasts and stromal cells, potentially marking non-malignant tumor stroma",
+        "LY6K and LYPD3 overexpression has been reported in malignant epithelial cells",
+        "NOG and BMP antagonists may mark cancer stem cell niches"
+      ],
+      "drug_sensitivity_relevance": [
+        "VEGFA/VEGFB/VEGFC/VEGFD: direct targets of anti-angiogenic therapies (bevacizumab, sunitinib, sorafenib); high expression predicts sensitivity",
+        "TGFB1/TGFB3: TGF-β pathway inhibitors (galunisertib, vactosertib) are in clinical trials; expression may predict response",
+        "PDGFA/PDGFB: PDGFR inhibitors (imatinib, pazopanib) relevant; PDGF ligand expression may indicate pathway activation",
+        "BMP2/4/7: BMP pathway inhibitors (LDN-193189, DMH1) under investigation in cancer; BMP expression may modulate sensitivity",
+        "INHBA/activin: activin receptor inhibitors (luspatercept) relevant in hematologic and solid tumors",
+        "PLAUR (uPAR): uPA/uPAR system targeted by several experimental agents; PLAUR expression may predict invasiveness and drug resistance",
+        "IL17A/F: IL-17 pathway inhibitors (secukinumab, ixekizumab) relevant in inflammatory contexts",
+        "NGF/BDNF: TrkA/TrkB inhibitors (larotrectinib, entrectinib) relevant when neurotrophins drive tumor growth"
+      ],
+      "perturbation_modeling_relevance": [
+        "BMP/GDF/TGF-β nodes are highly interconnected; perturbation of single ligands (e.g., BMP4, NODAL) can have broad downstream effects on SMAD signaling, making them important nodes for GI/epistasis modeling",
+        "GREM1, NOG, SOSTDC1 are BMP antagonists; their perturbation would be expected to phenocopy BMP gain-of-function, useful for GEARS-like counterfactual prediction",
+        "VEGFA perturbation is a canonical positive control for angiogenesis programs",
+        "Gonadotropin subunit knockouts (LHB, FSHB, CGA) have well-characterized reproductive phenotypes useful as benchmarks",
+        "Neurotrophin perturbations (BDNF, NGF) have well-studied effects on neuronal survival and differentiation",
+        "LY6/LYPD family members modulate nicotinic acetylcholine receptor activity (LYNX1, SLURP1/2); perturbation relevant to cholinergic signaling models"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "The cluster mixes multiple distinct secreted protein families (TGF-β superfamily, neurotrophins, VEGFs, gonadotropins, RNases, LY6/LYPD, IL-17 family, PATE proteins) that do not share a single tight functional pathway, suggesting clustering may be driven by a shared structural/biochemical feature (secreted/GPI-anchored) rather than a specific biological process",
+        "The LY6/LYPD/SLURP/LYNX1 subgroup and the RNASE family are functionally quite distinct from the TGF-β superfamily core, raising concern about over-broad clustering",
+        "Gonadotropin subunits (CGB1-8, LHB, FSHB, TSHB, CGA) form a tight hormonal subgroup that may warrant separation",
+        "IL17 family members are cytokines with distinct immune functions and may be co-clustered due to secreted protein annotation rather than functional similarity",
+        "C9orf57 and EDDM3A/B are poorly characterized and their inclusion should be verified",
+        "Cluster size of 117 is large; sub-clustering may reveal more functionally coherent groups"
+      ],
+      "rationale": "The cluster is anchored by the TGF-β/BMP superfamily (BMPs 2-10, GDFs 1-15, NODAL, LEFTY1/2, MSTN, INHA/INHBA/BB/BC/BE, NOG, GREM1/2, SOST, SOSTDC1, NBL1) which are all secreted ligands or antagonists signaling through SMAD pathways. Co-clustered are other secreted growth factors (VEGFA/B/C/D, PGF, PDGFA/B, BDNF, NGF, NTF3/4, NRTN, ANG) and hormones (CGA, CGB1-8, LHB, FSHB, TSHB, AMH). A secondary group of GPI-anchored Ly6/uPAR-domain proteins (LY6D/E/G5B/G5C/G6C/G6D/G6E/H/K/L, LYPD2-6/8, SLURP1/2, LYNX1, GML, GPIHBP1, CD59, PLAUR, PSCA) and RNase family members (RNASE1-13) are also present. The unifying theme appears to be 'secreted or GPI-anchored extracellular protein,' which is a broad biochemical category rather than a tight functional pathway. The clustering is plausible as a secretome/extracellular proteome cluster but is functionally heterogeneous. The TGF-β/BMP core is highly coherent; the peripheral members (RNases, LY6, IL-17, gonadotropins) reduce overall coherence.",
+      "confidence": 0.62,
+      "recommended_followups": [
+        "Sub-cluster the 117 members to separate TGF-β/BMP superfamily, gonadotropins, neurotrophins, VEGFs, LY6/LYPD, RNases, and IL-17 family into more functionally homogeneous groups",
+        "Verify whether clustering was performed on expression data or sequence/structural features, as the latter would explain the broad 'secreted protein' grouping",
+        "Examine co-expression patterns in single-cell RNA-seq data to determine which cell types co-express subsets of these genes",
+        "Investigate whether EDDM3A/B and C9orf57 have known secretion signals or GPI anchors that justify their inclusion",
+        "For cancer applications, assess differential expression of the BMP/GDF subgroup vs. the LY6/LYPD subgroup separately, as they likely have distinct cancer-type associations",
+        "Consider pathway enrichment analysis (GO:secreted, GO:extracellular space) to confirm the structural basis of clustering"
+      ]
+    },
+    {
+      "cluster_id": "3",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1860,
+      "title": "Large Heterogeneous Cluster: Cell Cycle, Transcription, RNA Processing, Metabolism, and Spermatogenesis",
+      "overall_function": "This very large cluster (1860 genes) encompasses a broad and heterogeneous set of biological functions including cell cycle regulation, transcription and RNA processing, ubiquitin-proteasome system, mitochondrial function, lipid metabolism, sialylation/glycosylation, DNA repair, autophagy, immune signaling, and spermatogenesis-related programs. The sheer size and functional diversity suggest this may be a catch-all or residual cluster from a co-expression or co-regulation analysis, possibly reflecting broadly co-regulated housekeeping and stress-response genes mixed with tissue-specific programs.",
+      "key_genes_or_proteins": [
+        "GBF1",
+        "MCM2",
+        "MKI67",
+        "POLE",
+        "ATR",
+        "RB1",
+        "MDM2",
+        "SMAD1",
+        "SMAD2",
+        "SMAD3",
+        "SMAD4",
+        "HDAC2",
+        "HDAC3",
+        "SF3B1",
+        "HSP90AA1",
+        "JAK2",
+        "RUNX1",
+        "FASN",
+        "CPT1A",
+        "ST3GAL1"
+      ],
+      "cell_type_relevance": [
+        "Proliferating cells: MKI67, MCM2, POLE, BUB1B, MAD2L1, CENPA, NDC80, TTK suggest active cell cycle/mitosis",
+        "Immune cells: RUNX1, JAK2, IRAK4, PTPN22, IL1B, IL5, IL7, CTLA4, MPO, GIMAP2 suggest myeloid and lymphoid components",
+        "Spermatogenic cells: extensive SPATA, TEX, CFAP, DYNLT, TTLL, ODF, CFAP gene families suggest germ cell/testis programs",
+        "Oligodendrocytes/neural: MBP, MOBP, GFAP, OLIG1, NEFH, NEFM, MPZ suggest glial/neural cell types",
+        "Erythroid: AHSP, ALAD, ERMAP, GYPB, GYPE, HBG1, EPB41 suggest erythroid lineage markers"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Testis: large number of spermatogenesis genes (SPATA family, TEX family, CFAP family, TNP1/2, PRM2, CYLC1, DKKL1) strongly implicate testis tissue",
+        "Brain/CNS: MBP, MOBP, GFAP, OLIG1, NEFH, NEFM, MPZ, MAPT, LINGO1, GPM6A suggest neural/glial tissue",
+        "Hematopoietic: MPO, AHSP, ERMAP, HBG1, ALAD, RUNX1, LYL1 suggest bone marrow/blood",
+        "Liver/metabolic: FASN, CPT1A, CPT1B, ACACA, PPARA, INSIG1, INSIG2, LPIN1 suggest hepatic or adipose metabolic tissue",
+        "Epithelial/secretory: SCGB1A1, CEACAM6, CEACAM7, CEACAM8, FOXA1 suggest lung or gastrointestinal epithelium"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Proliferating tumor cells: MKI67, MCM2, POLE, ATR, RB1, MDM2, TOPBP1, CHAF1A, CDCA2, CDCA7 are hallmarks of actively cycling cancer cells",
+        "Myeloid malignancies: MPO, RUNX1, JAK2, LYL1, MLF1 are relevant to AML/MDS",
+        "Breast/prostate cancer: FOXA1, CCND1, NRIP1, NCOA2, PELP1 suggest hormone-driven cancers",
+        "Glioma: GFAP, OLIG1, MBP suggest glioma or oligodendroglioma programs",
+        "Testicular germ cell tumors: extensive germ cell gene expression (SPATA, TEX, DPPA3, DPPA4, L1TD1) may mark GCT or embryonal carcinoma"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Proliferation markers (MKI67, MCM2, BUB1B, TTK, ESPL1, MASTL) favor malignant or highly proliferative states",
+        "DNA damage response genes (ATR, BARD1, PALB2, RAD52, WRN, XPC, MUTYH) may mark genomically stressed malignant cells",
+        "Tumor suppressor genes (RB1, SMAD2, SMAD4, ABRAXAS1) could mark non-malignant or early-stage cells",
+        "Immune genes (CTLA4, PTPN22, IRAK4) may reflect tumor-infiltrating immune cells rather than malignant cells",
+        "The mixture of proliferative, immune, and tissue-specific programs makes malignancy status prediction ambiguous without additional context"
+      ],
+      "drug_sensitivity_relevance": [
+        "Cell cycle kinase inhibitors (CDK inhibitors, PLK1, Aurora kinase): BUB1B, TTK, MASTL, CDKL3 suggest sensitivity",
+        "HDAC inhibitors: HDAC2, HDAC3, HDAC6 expression relevant to HDAC inhibitor response",
+        "JAK inhibitors: JAK2 expression relevant to ruxolitinib and related JAK inhibitors",
+        "SMAD/TGF-beta pathway inhibitors: SMAD1-5/9 expression relevant to TGF-beta pathway targeting",
+        "Fatty acid synthesis inhibitors: FASN, ACACA, CPT1A/B suggest sensitivity to lipid metabolism targeting agents (e.g., orlistat, etomoxir)",
+        "DNA repair inhibitors (PARP, ATR): ATR, BARD1, PALB2, RAD52, WRN suggest relevance to DNA damage response-targeting drugs"
+      ],
+      "perturbation_modeling_relevance": [
+        "The cluster contains many transcription factors (YY1, CBFB, TFAP4, TFDP1, TFDP2, ZNF genes) making it relevant for TF perturbation modeling",
+        "Chromatin regulators (HDAC2/3/6, SETD2, KMT2B, EZH1, BRD9, SMARCC1/2) are high-value perturbation targets",
+        "Cell cycle gene perturbations (MCM2, POLE, BUB1B, TTK) would be expected to show strong growth phenotypes",
+        "SMAD pathway perturbations (SMAD1-5/9) relevant to TGF-beta signaling GI screens",
+        "The large size and heterogeneity of this cluster may reduce interpretability of perturbation effects without sub-clustering",
+        "RNA processing factors (SF3B1, RBM39, AGO2, YTHDC1) are relevant to splicing and m6A perturbation studies"
+      ],
+      "clustering_plausibility": "suspicious",
+      "qc_warnings": [
+        "Cluster is extremely large (1860 genes), suggesting possible over-merging or failure to resolve distinct biological programs",
+        "Highly heterogeneous: contains testis-specific, neural, erythroid, immune, and broadly expressed housekeeping genes in the same cluster",
+        "Presence of many SMIM (small integral membrane) genes, NPIP family, FAM genes, and uncharacterized ORFs suggests possible technical or low-information gene grouping",
+        "Multiple ribosomal protein genes (RPL/RPS family) mixed with tissue-specific genes is a classic housekeeping contamination pattern",
+        "Large number of spermatogenesis genes (SPATA, TEX, CFAP) co-clustering with immune and neural genes is biologically implausible without strong justification",
+        "MTRNR2L pseudogenes (12 members) present, which are known technical artifacts in single-cell RNA-seq data",
+        "Presence of immunoglobulin D-region genes (IGHD family) alongside broadly expressed genes is suspicious",
+        "Cluster likely requires sub-clustering or re-analysis to resolve biologically meaningful sub-programs"
+      ],
+      "rationale": "The representative gene GBF1 (Golgi-specific brefeldin A resistance factor 1) is a Golgi trafficking regulator, but the cluster as a whole does not cohere around any single pathway. The 1860-gene cluster spans cell cycle (MKI67, MCM2, BUB1B, TTK), DNA repair (ATR, BARD1, WRN), transcription (YY1, CBFB, SMAD family), RNA processing (SF3B1, AGO2, YTHDC1), mitochondrial function (MRPL/MRPS genes, NDUF genes), lipid metabolism (FASN, CPT1A/B, ACACA), sialylation (entire ST3GAL, ST6GAL, ST8SIA families), spermatogenesis (SPATA, TEX, CFAP, TNP, PRM families), neural/glial markers (MBP, GFAP, NEFH), erythroid markers (AHSP, ERMAP, HBG1), and immune genes (JAK2, RUNX1, MPO, CTLA4). This breadth is inconsistent with a coherent co-expression module and more likely reflects a computational artifact of over-clustering, batch effects, or a residual catch-all cluster. The presence of MTRNR2L pseudogenes is a known single-cell RNA-seq quality control concern. Sub-clustering is strongly recommended.",
+      "confidence": 0.3,
+      "recommended_followups": [
+        "Sub-cluster this large cluster using higher resolution or alternative algorithms to resolve biologically coherent sub-modules",
+        "Check for batch effects or technical covariates driving co-clustering of otherwise unrelated genes",
+        "Remove or flag MTRNR2L pseudogenes and other known technical artifacts before re-clustering",
+        "Perform pathway enrichment analysis on sub-clusters to identify coherent biological programs",
+        "Assess whether spermatogenesis, neural, erythroid, and immune gene sets form distinct sub-clusters",
+        "Validate clustering using independent datasets or orthogonal methods (e.g., WGCNA, topic modeling)",
+        "Examine if ribosomal protein genes are driving spurious co-clustering across lineages"
+      ]
+    },
+    {
+      "cluster_id": "37",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 58,
+      "title": "Antigen Presentation & Immune Recognition: MHC-I/II, Immunoglobulins, TCR Constant Regions, and NKG2D Ligands",
+      "overall_function": "This cluster encompasses the core machinery of adaptive and innate immune recognition: classical and non-classical MHC class I molecules (HLA-A/B/C/E/F/G), MHC class II molecules (HLA-DR/DQ/DP/DM/DO), CD1 lipid antigen-presenting molecules, immunoglobulin constant region genes (IgG/A/M/D/E, kappa/lambda light chains), T-cell receptor constant regions (alpha/beta/gamma/delta), NKG2D stress ligands (MICA/MICB, ULBP1-3, RAET1E/G/L), and accessory molecules (B2M, FCGRT, HFE, MR1, PROCR, AZGP1). Together these genes define antigen presentation, adaptive immune effector identity, and innate immune surveillance.",
+      "key_genes_or_proteins": [
+        "HLA-A",
+        "HLA-B",
+        "HLA-C",
+        "HLA-DRA",
+        "HLA-DRB1",
+        "B2M",
+        "CD1A",
+        "IGHG1",
+        "IGKC",
+        "TRBC1",
+        "MICA",
+        "ULBP1",
+        "MR1",
+        "FCGRT",
+        "HLA-E"
+      ],
+      "cell_type_relevance": [
+        "Professional antigen-presenting cells (dendritic cells, macrophages, B cells) — high MHC-II expression",
+        "Cytotoxic T lymphocytes and NK cells — NKG2D ligand upregulation marks stressed/transformed targets",
+        "B cells and plasma cells — immunoglobulin constant region expression (IGHG1-4, IGHA1/2, IGHM, IGKC, IGLC1-3/7)",
+        "T cells — TCR constant region genes (TRBC1/2, TRDC, TRGC1/2) mark αβ and γδ T cell populations",
+        "NKT and MAIT cells — CD1 family and MR1 expression",
+        "Trophoblasts and immune-privileged cells — non-classical HLA-E/F/G expression",
+        "Stressed or transformed cells upregulating NKG2D ligands (MICA/MICB, ULBPs)"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Lymphoid tissues (lymph node, spleen, thymus) — rich in all adaptive immune cell types expressing these genes",
+        "Bone marrow — B cell and plasma cell immunoglobulin expression",
+        "Peripheral blood — mixed immune cell populations",
+        "Gut-associated lymphoid tissue — IgA-expressing plasma cells (IGHA1/2), γδ T cells",
+        "Liver — FCGRT (neonatal Fc receptor), HFE (hemochromatosis protein), AZGP1 expression",
+        "Placenta/trophoblast — HLA-G, HLA-E non-classical expression"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "B cell lymphomas and multiple myeloma — immunoglobulin constant region overexpression",
+        "T cell lymphomas — TCR constant region expression",
+        "Antigen presentation loss in tumor cells — downregulation of HLA-A/B/C and B2M is a hallmark of immune evasion",
+        "Stress-induced NKG2D ligand upregulation (MICA/MICB, ULBPs) marks transformed or genomically unstable cancer cells",
+        "Hepatocellular carcinoma — AZGP1, HFE, FCGRT context",
+        "Cervical/endometrial cancers — HLA-G upregulation as immune evasion marker"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Loss of classical MHC-I (HLA-A/B/C, B2M) expression is a strong indicator of malignant immune evasion",
+        "Upregulation of NKG2D ligands (MICA/MICB, ULBP1-3, RAET1E/G/L) suggests cellular stress or malignant transformation",
+        "Non-classical HLA-G/E upregulation in non-trophoblast contexts suggests malignant immune privilege",
+        "High immunoglobulin expression distinguishes B cell malignancies from non-malignant B cells by clonality patterns",
+        "TCR constant region expression helps distinguish T cell malignancies from reactive T cell infiltrates"
+      ],
+      "drug_sensitivity_relevance": [
+        "Anti-PD-1/PD-L1 checkpoint immunotherapy response correlates with MHC-I expression levels (HLA-A/B/C, B2M integrity)",
+        "FCGRT expression influences IgG half-life and pharmacokinetics of therapeutic antibodies",
+        "HFE mutations affect iron metabolism and may modulate sensitivity to iron-dependent therapies",
+        "NKG2D ligand upregulation predicts sensitivity to NK cell-based therapies and NKG2D-targeting bispecifics",
+        "CD1-restricted lipid antigen presentation relevant to NKT cell-activating immunotherapies",
+        "MICA/MICB shedding is a resistance mechanism to NK cell therapies; anti-MICA antibodies are in development",
+        "MHC-II expression on tumor cells correlates with response to immune checkpoint blockade"
+      ],
+      "perturbation_modeling_relevance": [
+        "B2M knockout is a canonical model for MHC-I loss and immune evasion — highly relevant for CRISPR perturbation screens",
+        "HLA locus perturbations are complex due to high polymorphism but relevant for antigen presentation modeling",
+        "MICA/MICB knockdown models NK cell evasion mechanisms",
+        "CD1 family perturbations model lipid antigen presentation pathways",
+        "Immunoglobulin constant region genes are relevant for modeling B cell differentiation and plasma cell identity",
+        "TCR constant region perturbations model T cell identity and signaling",
+        "FCGRT perturbation models antibody recycling and therapeutic antibody pharmacokinetics",
+        "NKG2D ligand panel (ULBP1-3, RAET1E/G/L) perturbations model innate immune stress response"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Cluster mixes functionally distinct immune gene families: MHC-I, MHC-II, CD1, immunoglobulins, TCR constant regions, and NKG2D ligands — these are co-expressed in different cell types and may reflect a broad 'immune gene' co-expression module rather than a single pathway",
+        "Immunoglobulin constant region genes (IGHG1-4, IGHA1/2, IGHM, IGKC, IGLC1-3/7) are primarily expressed in B cells/plasma cells, while TCR constant regions (TRBC1/2, TRDC, TRGC1/2) are T cell-specific — their co-clustering may indicate immune cell contamination in a non-immune dataset or a pan-immune signature",
+        "AZGP1 and PROCR are somewhat unexpected in this cluster; AZGP1 is a zinc-binding glycoprotein expressed in secretory epithelia, and PROCR (endothelial protein C receptor) is primarily endothelial — these may represent noise or indirect co-regulation",
+        "HLA-DOB is a non-classical MHC-II molecule with restricted expression; its clustering with broadly expressed MHC-II genes warrants attention",
+        "Cluster may be driven by genomic co-localization (MHC locus on chr6p21) for HLA genes, but immunoglobulin and TCR genes are on different chromosomes — co-expression rather than genomic proximity likely drives clustering",
+        "In single-cell data, this cluster could reflect doublets or mixed immune cell populations"
+      ],
+      "rationale": "The cluster is anchored by HLA-B and contains a comprehensive set of immune recognition molecules. The MHC-I (HLA-A/B/C/E/F/G) and MHC-II (HLA-DR/DQ/DP/DM/DO) genes form a coherent antigen presentation core. CD1 family members extend this to lipid antigen presentation. NKG2D ligands (MICA/MICB, ULBP1-3, RAET1E/G/L) represent innate immune stress sensing. B2M, FCGRT, HFE, and MR1 are accessory molecules functionally linked to antigen presentation. The immunoglobulin constant regions and TCR constant regions are less expected co-members but could reflect co-regulation in immune-rich tissues or datasets. AZGP1 and PROCR are outliers. Overall the cluster captures a broad immune recognition gene program, likely derived from a dataset with significant immune cell content or from analysis of immune-related gene expression programs.",
+      "confidence": 0.72,
+      "recommended_followups": [
+        "Assess whether immunoglobulin and TCR constant region genes form a separable sub-cluster from MHC/antigen-presentation genes using higher-resolution clustering",
+        "Check for doublet contamination in single-cell data — co-expression of B cell (Ig) and T cell (TCR) markers in the same cells is suspicious",
+        "Investigate AZGP1 and PROCR expression patterns to determine if they are genuine co-regulated members or noise",
+        "Perform cell-type deconvolution to determine which cell types drive this cluster's expression",
+        "Examine MHC-I expression loss (HLA-A/B/C, B2M) as a malignancy/immune evasion biomarker in the dataset",
+        "Test NKG2D ligand expression as a stress/transformation marker across cell states in the dataset",
+        "Validate HLA-G/E expression patterns for immune privilege signatures in non-trophoblast cells"
+      ]
+    },
+    {
+      "cluster_id": "4",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1769,
+      "title": "Extracellular Matrix, Cell Surface Receptor & Secreted Protein Landscape",
+      "overall_function": "This cluster encompasses the broad extracellular and cell-surface proteome: ECM structural proteins (collagens, laminins, fibronectin, proteoglycans), secreted enzymes and their inhibitors (MMPs, ADAMs, ADAMTS, cathepsins, serine proteases, TIMPs), cell adhesion molecules (integrins, cadherins, IgSF members, selectins, nectins), growth factor receptors and ligands (EGF family, FGF, TGF-β, Wnt/FZD, Notch, Eph/ephrin, PDGF, IGF), complement and coagulation cascade components, glycosylation and glycan-remodeling enzymes (GALNTs, CHSTs, B3/B4 transferases, sulfatases), immune checkpoint and co-stimulatory molecules (CD274/PD-L1, TIGIT, BTLA, ICOS, CD28, TLRs, SIGLECs, SLAMFs), and a wide array of secreted signaling modulators. Together these genes define the extracellular communication layer of the cell.",
+      "key_genes_or_proteins": [
+        "ITGB4",
+        "FN1",
+        "EGFR",
+        "MMP2",
+        "ADAM9",
+        "NOTCH1",
+        "TNC",
+        "TGFBR1",
+        "CD274",
+        "PDGFRA",
+        "LAMA3",
+        "VCAN",
+        "ADAMTS5",
+        "TIMP1",
+        "SELE"
+      ],
+      "cell_type_relevance": [
+        "Epithelial cells: high expression of integrins (ITGB4, ITGA3, ITGA6), laminins, EPCAM, TACSTD2, MUC family, TMPRSS2",
+        "Endothelial cells: PECAM1, CDH5, EMCN, TEK, FLT1, FLT4, LYVE1, ECSCR, SELE, SELP",
+        "Fibroblasts/stromal cells: FN1, COL6A1-3, POSTN, LOXL2-4, SPARC, DCN, LUM, FSTL1, AEBP1",
+        "Macrophages/myeloid cells: CD68, CD163, MRC1, MSR1, TREM2, SIGLEC family, CSF1R, TYROBP, FCGBP",
+        "T cells: CD4, CD8B, CD247, CD3D/E, TRAC, IL7R, ICOS, TIGIT, CD274, BTLA",
+        "NK cells: PRF1, NCR2, NCR3, HCST, TYROBP, SLAMF7",
+        "B cells: CD79A, CD79B, CD22, CR2, FCMR",
+        "Neurons/glia: NRXN1-3, NLGN2-4, CNTN1-5, CNTNAP1-5, LSAMP, NCAM1, MOG, OPALIN",
+        "Hepatocytes: ALB, AFP, A2M, FGA/FGB/FGG, F2, F5, F7-F10, C3, CFB, HP, TTR",
+        "Smooth muscle: MYLK, MYOM1-3, MYBPC1-3"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Liver: coagulation factors (F2, F5, F7-F10, F12, F13B), complement (C3, C4A/B, C5-C9, CFB, CFH, CFI), acute-phase proteins (ALB, AFP, A2M, HP, CRP, TTR, FGA/FGB/FGG)",
+        "Intestine/gut epithelium: MUC2, MUC5AC, MUC5B, MUC6, SI, LCT, TREH, MGAM, GUCY2C, GPA33, CEACAM family",
+        "Kidney: UMOD, CUBN, ENPEP, ANPEP, DPEP1, LNPEP, ACE2, TMPRSS2",
+        "Brain/nervous system: NRXN1-3, NLGN2-4, CNTN1-5, CNTNAP1-5, GRIA1-4, GRIK1-5, GRIN2A, GRM1-8, LSAMP, NCAM1-2",
+        "Lung: SFTPB-related (BPIFA3), TMPRSS2, TMPRSS4, SCNN1A/B/G, CLCA1/2/4",
+        "Bone marrow/immune: CD34, FLT3, CSF1R, IL3RA, IL5RA, SIGLEC family, SLAMF family",
+        "Reproductive/testis: ADAM2, ADAM7, ADAM18, ADAM20, ADAM21, ADAM29, ADAM30, ADAM32, CRISP1-3, ZP2-4, ZPBP2, IZUMO1R",
+        "Pancreas: PNLIP, PNLIPRP1-3, CPA1-2, CPB1, CLPS, SYCN, PCSK1-2, PCSK5-6"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Carcinoma programs: EPCAM, TACSTD2, MUC1, MUC4, EGFR, ERBB3, ITGB4, ITGA3, LAMA3, LAMB3, LAMC2 (basal-like/squamous)",
+        "Mesenchymal/EMT state: FN1, VIM-associated partners, POSTN, TNC, LOXL2, MMP2, MMP9, MMP14, TGFB2, TGFBR1, SPARC",
+        "Glioma/brain tumor: EGFR, PDGFRA, PDGFRB, NRXN1, CNTNAP2, PTPRZ1, TENM1/2/4, VCAN",
+        "Immune checkpoint-high tumors: CD274 (PD-L1), PDCD1LG2 (PD-L2), TIGIT, VTCN1, BTLA, HHLA2, ICOSLG, CD276",
+        "Angiogenic tumors: FLT1, KDR, FLT4, ANGPT1/2, TEK, PECAM1, VEGF-pathway receptors",
+        "Hepatocellular carcinoma: AFP, ALB, GPC3, GPC1, HEPACAM, ASGR-related",
+        "Colorectal cancer: GUCY2C, GPA33, CEACAM family, MUC2, EPCAM",
+        "Breast cancer: ERBB3, EGFR, ITGB4, ITGA6, LAMA3, MUC1, AREG, HBEGF, EPGN"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Pro-malignancy markers: high MMP expression (MMP1/2/3/7/9/10/11/13/14), ADAM9, ADAMTS family, LOXL2/3/4 (ECM remodeling and invasion)",
+        "Immune evasion markers suggesting malignant cells: CD274, PDCD1LG2, VTCN1, HHLA2, CD276, TIGIT ligands",
+        "Tumor stroma vs. malignant cell distinction: fibroblast markers (POSTN, FAP, LRRC15, AEBP1) vs. epithelial markers (EPCAM, TACSTD2, MUC1)",
+        "Complement evasion: CD46, CD55, CD59-pathway genes suggesting malignant immune escape",
+        "Coagulation/fibrinolysis activation: PLAT, PLAU, F3 (TF), TFPI2 upregulation in malignant cells",
+        "Non-malignant immune infiltrate: CD3D/E, CD4, CD8B, CD79A/B, CD68, TREM2, TYROBP, PRF1 mark immune cells not tumor cells"
+      ],
+      "drug_sensitivity_relevance": [
+        "EGFR/ERBB3 inhibitors (erlotinib, gefitinib, osimertinib, lapatinib): EGFR, ERBB3, AREG, HBEGF, EPGN as ligands",
+        "Anti-angiogenic agents (bevacizumab, ramucirumab, sorafenib): FLT1, KDR, PDGFRA, PDGFRB, ANGPT1/2, TEK",
+        "Integrin-targeting therapies (cilengitide, anti-ITGA4): ITGAV, ITGB3, ITGA4, ITGB1",
+        "Immune checkpoint blockade (anti-PD-1/PD-L1, anti-CTLA4): CD274, PDCD1LG2, TIGIT, BTLA, ICOS, ICOSLG, VTCN1",
+        "MMP/ADAM inhibitors: broad MMP family, ADAM9, ADAM12, ADAMTS4/5",
+        "TGF-β pathway inhibitors (galunisertib): TGFBR1, TGFB2, LTBP1-4, BAMBI",
+        "Notch inhibitors (gamma-secretase inhibitors): NOTCH1-4, JAG1/2, DLL1/3/4",
+        "Wnt pathway inhibitors (porcupine inhibitors): FZD1/2/5-9, LRP5/6, SFRP1/2/4, DKK1-4",
+        "PDGFR inhibitors (imatinib, sunitinib): PDGFRA, PDGFRB, KIT, FLT3",
+        "Complement-targeting therapies (eculizumab): C5, C3, CFB, CFH pathway genes"
+      ],
+      "perturbation_modeling_relevance": [
+        "Rich target space for single-gene KO screens: receptor tyrosine kinases (EGFR, MET, AXL, RET, NTRK2/3, ROS1, KIT, FLT1/3/4, KDR, PDGFRA/B), integrins, MMPs",
+        "Genetic interaction (GI) mapping: ECM remodeling network (MMP-TIMP pairs, ADAM-ADAMTS), integrin-laminin pairs (ITGA3/ITGB4 + LAMA3/LAMB3/LAMC2)",
+        "Ligand-receptor perturbation pairs: EGF-EGFR, HGF-MET, GAS6-AXL, GDNF-RET, NTN1-UNC5A-D, SLIT1-3/ROBO1-2, ephrin-EPH pairs",
+        "Pathway-level perturbations: Wnt (FZD+LRP+SFRP+DKK), Notch (NOTCH+JAG+DLL+LFNG/RFNG), TGF-β (TGFBR1+BMPR+ACVR+LTBP), complement cascade",
+        "GEARS/combinatorial perturbation: complement evasion (CD46+CD55), immune checkpoint combinations (CD274+TIGIT+VTCN1), ECM stiffness (LOXL2+POSTN+TNC)",
+        "Secretome perturbation modeling: large secreted protein set enables modeling of paracrine signaling effects in co-culture or organoid systems"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Extremely large cluster (1769 genes) suggesting over-aggregation or a very broad functional category rather than a tight biological module",
+        "Mixed lineage contamination: cluster contains markers of many distinct cell types (hepatocytes, neurons, immune cells, epithelial, endothelial, fibroblasts) simultaneously",
+        "Likely driven by shared feature of secreted/transmembrane topology rather than a single coherent pathway or cell type",
+        "Testis/sperm-specific genes (ADAM2/7/18/20/21/29/30/32, CRISP1-3, ZP2-4, ZPBP2, IZUMO1R) mixed with broadly expressed ECM genes - possible annotation-level clustering artifact",
+        "Neuronal synaptic genes (NRXN1-3, NLGN2-4, GRIA1-4, GRIK1-5, GRM1-8) co-clustered with immune and ECM genes - biologically distinct programs",
+        "Housekeeping secretory pathway genes (CALR, CANX, LMAN1, TMED family, OS9, PRKCSH) included alongside tissue-specific secreted proteins",
+        "Complement and coagulation factors (liver-specific) mixed with immune cell surface markers - may reflect shared signal peptide/secretion rather than co-expression",
+        "Cluster may represent a 'secretome/surfaceome' annotation cluster rather than a co-expression or co-regulation cluster"
+      ],
+      "rationale": "The 1769 genes in this cluster share the common property of encoding secreted, extracellular, or single-pass/multi-pass transmembrane proteins that function at the cell surface or in the extracellular space. The representative gene ITGB4 is a cell adhesion integrin, consistent with this theme. The cluster encompasses: (1) ECM structural and remodeling proteins (collagens, laminins, fibronectin, proteoglycans, MMPs, ADAMs, ADAMTS, TIMPs, LOXLs); (2) cell surface receptors across many families (RTKs, cytokine receptors, GPCRs, integrins, IgSF, TNFR, TLRs); (3) secreted signaling molecules (growth factors, complement, coagulation factors, acute-phase proteins); (4) glycosylation enzymes (GALNTs, CHSTs, B3/B4GTs, sulfatases, mannosidases); (5) immune surface molecules (CD antigens, checkpoint molecules, SIGLECs, SLAMFs). The biological coherence is at the level of subcellular localization (extracellular/membrane) rather than a single pathway or cell type. This is a common outcome when clustering is performed on features that capture secretory signal or transmembrane topology. The cluster is useful as a 'surfaceome/secretome' reference but should be sub-clustered for more specific biological inference.",
+      "confidence": 0.62,
+      "recommended_followups": [
+        "Sub-cluster this large cluster using stricter co-expression or pathway-based criteria to identify tighter functional modules (e.g., ECM remodeling, complement, synaptic, immune checkpoint sub-clusters)",
+        "Assess whether clustering was driven by GO annotation similarity (secreted/membrane) rather than actual co-expression - compare with expression correlation matrices",
+        "Perform enrichment analysis per sub-group: hepatocyte secretome, neuronal synaptic, immune surface, ECM structural, glycosylation enzyme sub-clusters",
+        "Use cell-type deconvolution to determine which genes in this cluster are co-expressed in the same cell type vs. expressed in distinct cell types",
+        "Validate ITGB4 as representative: check if ITGB4 expression correlates with other cluster members or if it is an outlier representative",
+        "Apply UMAP or hierarchical clustering within this cluster to identify biologically meaningful sub-modules for downstream perturbation or drug target analysis",
+        "Cross-reference with Human Protein Atlas secretome/membrane proteome annotations to confirm the shared topology hypothesis"
+      ]
+    },
+    {
+      "cluster_id": "5",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1310,
+      "title": "Membrane Transport, Lipid Metabolism, and Immune Signaling Superfamily",
+      "overall_function": "This large cluster is dominated by membrane-associated genes spanning solute carrier (SLC) transporters, ABC transporters, aquaporins, chloride channels, NADPH oxidases, lipid metabolic enzymes (ELOVL, CERS, FADS, ALOX, DGAT, SOAT), TNF/TNFR superfamily immune signaling components, and a broad array of transmembrane proteins (TMEM family). Secondary themes include glycosylation, lysosomal function, redox biology, and immune receptor signaling. The cluster likely reflects a broad 'membrane proteome and metabolic enzyme' co-expression or co-annotation module rather than a single tight biological pathway.",
+      "key_genes_or_proteins": [
+        "DUOX1",
+        "DUOX2",
+        "NOX1",
+        "NOX4",
+        "SLC2A1",
+        "SLC7A11",
+        "ABCA1",
+        "CFTR",
+        "TNF",
+        "TNFRSF1A",
+        "TNFSF10",
+        "ALOX5",
+        "ELOVL4",
+        "CERS2",
+        "AQP1",
+        "CLCN3",
+        "TAP1",
+        "TAP2",
+        "PCSK9",
+        "NPC1"
+      ],
+      "cell_type_relevance": [
+        "Immune cells (T cells, B cells, macrophages): presence of CD19, CD27, CD40, CD5, CD8A, LAG3, PDCD1, MYD88, TIRAP, SOCS1, NLRC5, TNF/TNFR/TNFSF superfamily members, LAPTM5, THEMIS2, GIMAP1 suggests strong immune cell representation",
+        "Epithelial/secretory cells: CFTR, AQP family, SLC5A family, SFTPB, SFTPC, UPK2/3 suggest airway, renal tubular, and urothelial epithelial states",
+        "Erythroid/hematopoietic: RHAG, RHCE, RHD, RHCG, KEL, EPB42, EPOR, MPL, XK, FLVCR1 indicate erythroid lineage markers",
+        "Myeloid/macrophage: CYBB, DUOX1/2, NOX1-5, SIGLEC1, STAB1, HPSE, LAPTM5 suggest myeloid/macrophage activation",
+        "Cycling or stressed cells: TERT, PKMYT1, KIF22 suggest proliferative states"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Lung/airway: SFTPB, SFTPC, SFTA2, CFTR, AQP5, DUOX1/2, GPRC5A suggest pulmonary epithelium",
+        "Kidney/renal tubule: SLC12A1, SLC12A3, SLC22A family, AQP1/2/3, SLC5A2, CLCNKA/KB, SLC34A2/3 strongly indicate renal tubular epithelium",
+        "Liver: SLC10A1, SLCO1B1/1B3, SLC22A1, PCSK9, BAAT, G6PC1, CYP11B1/2, SOAT2 suggest hepatocyte origin",
+        "Intestine: SLC5A1, SLC15A1, SLC26A6, AQP8, SLC2A2, SLC22A4/5 suggest enterocyte contribution",
+        "Blood/bone marrow: erythroid and hematopoietic markers (RHAG, EPOR, MPL, KEL) indicate hematopoietic tissue"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Renal cell carcinoma: CA9, SLC2A1 (GLUT1), EPOR, AQP1, SLC22A family upregulation is characteristic of clear cell RCC",
+        "Lung adenocarcinoma: SFTPB, SFTPC, DUOX1, GPRC5A, ERBB2 are relevant markers",
+        "Hepatocellular carcinoma: PCSK9, SLC10A1, SLCO1B1, G6PC1, SOAT2 are HCC-associated",
+        "Colorectal/GI cancer: SLC2A1, SLC7A11, ALOX5, PTGES, TNFRSF10A/10B (TRAIL receptors) are relevant",
+        "Hematologic malignancies: CD19, CD27, CD40, LAG3, PDCD1, TNFRSF13B (TACI), MPL suggest lymphoma/leukemia relevance"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Malignant cells may be marked by upregulation of SLC7A11 (xCT, ferroptosis resistance), SLC2A1 (Warburg), TERT, ERBB2, PCSK9, CA9 (hypoxia), and TNFRSF10A/B (TRAIL resistance)",
+        "Non-malignant immune infiltrate may be marked by CD19, CD27, CD40, LAG3, PDCD1, TNF, TNFRSF1A, MYD88, SOCS1",
+        "Erythroid/stromal non-malignant cells marked by RHAG, KEL, EPB42, ENG, EMILIN1/2",
+        "The mixture of malignant and non-malignant markers reduces specificity; this cluster alone is insufficient to distinguish malignancy status without additional context"
+      ],
+      "drug_sensitivity_relevance": [
+        "SLC7A11 (xCT): erastin/sulfasalazine sensitivity (ferroptosis induction)",
+        "ABCA1, ABCB9, ABCC2/6/8/9: ABC transporter-mediated multidrug resistance; relevant for chemotherapy efflux",
+        "PCSK9: PCSK9 inhibitor sensitivity (evolocumab, alirocumab); also emerging cancer immunotherapy target",
+        "ERBB2: HER2-targeted therapy (trastuzumab, pertuzumab, lapatinib)",
+        "ALOX5: 5-lipoxygenase inhibitor sensitivity (zileuton)",
+        "PTGES/PTGIS: COX/prostaglandin pathway inhibitor relevance (NSAIDs, celecoxib)",
+        "CFTR: CFTR modulator sensitivity (ivacaftor, lumacaftor) in relevant epithelial contexts",
+        "TNF/TNFRSF1A: anti-TNF therapy relevance (infliximab, etanercept)",
+        "PDCD1/LAG3: immune checkpoint inhibitor relevance",
+        "NOX1/NOX4/DUOX1/2: NOX inhibitor sensitivity (GKT137831)"
+      ],
+      "perturbation_modeling_relevance": [
+        "The SLC transporter family breadth makes this cluster highly relevant for nutrient deprivation and metabolic perturbation modeling (amino acid, glucose, lipid transport knockouts)",
+        "DUOX1/2, NOX1-5, NOXA1, NOXO1 form a coherent NADPH oxidase perturbation module; KO of these would model ROS signaling",
+        "TNF/TNFRSF/TNFSF superfamily members are ideal for cytokine perturbation experiments (TNF stimulation, TRAIL pathway activation)",
+        "CERS1-6 and ELOVL1-7 form lipid synthesis perturbation modules for ceramide and fatty acid elongation studies",
+        "TAP1/TAP2/TAPBP form an antigen presentation perturbation module relevant to MHC-I pathway modeling",
+        "ABCA/ABCC transporter knockouts relevant for drug efflux and lipid transport perturbation modeling",
+        "CLCN family and AQP family knockouts relevant for ion/water transport perturbation studies"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Cluster is very large (1310 genes), suggesting it may represent a broad co-annotation artifact (e.g., 'membrane protein' GO term enrichment) rather than a tight co-expressed module",
+        "Mixed lineage signals: erythroid (RHAG, KEL), immune (CD19, TNF), epithelial (SFTPB, AQP), and hepatic (SLCO1B1, BAAT) markers co-cluster, which is biologically implausible for a single cell type",
+        "Massive SLC transporter representation (>200 SLC genes) may reflect database/annotation bias rather than true co-expression",
+        "Presence of readthrough/fusion transcripts (ABHD14A-ACY1, INMT-MINDY4, LY6G6F-LY6G6D, JMJD7-PLA2G4B) may indicate annotation artifacts",
+        "MT-CO1 (mitochondrial gene) inclusion may indicate mitochondrial contamination or stress signature",
+        "Some genes (TERT, PKMYT1, KIF22) are cell-cycle related and may represent a contaminating proliferation signal",
+        "The cluster likely results from guilt-by-association on membrane localization or transport function rather than a specific biological program"
+      ],
+      "rationale": "Cluster 5 is an exceptionally large (1310-gene) cluster with DUOX1 as representative. The dominant theme is membrane transport: over 200 SLC family members spanning virtually all SLC subfamilies, all ABC-A subfamily members, all aquaporins, all chloride channels (CLCN), and multiple other transporter families. Secondary themes include lipid metabolism (ELOVL, CERS, FADS, ALOX, SOAT, DGAT), NADPH oxidase biology (DUOX1/2, NOX1-5, NOXA1, NOXO1), TNF superfamily immune signaling (>20 TNFRSF and TNFSF members), and a large TMEM protein family. The breadth and size strongly suggest this cluster was formed by co-annotation (e.g., membrane localization, transport activity GO terms) or by a graph-based clustering algorithm that merged multiple functionally related but distinct modules. Individual sub-modules (SLC transporters, NOX oxidases, TNF signaling, ceramide synthesis) are internally coherent, but their co-clustering is suspicious. The cluster has utility for identifying membrane transport capacity, immune signaling state, and lipid metabolic programs, but should be decomposed into sub-clusters for precise biological interpretation.",
+      "confidence": 0.42,
+      "recommended_followups": [
+        "Sub-cluster this large cluster using stricter resolution parameters to identify coherent sub-modules (e.g., SLC transporters, NOX oxidases, TNF signaling, ceramide synthesis)",
+        "Perform GO enrichment analysis to confirm whether 'membrane' and 'transport' terms dominate and whether sub-pathway enrichments are statistically separable",
+        "Check co-expression correlation matrix within the cluster to identify tightly correlated gene pairs vs. loosely associated members",
+        "Validate erythroid vs. immune vs. epithelial sub-signatures using cell-type deconvolution on bulk RNA-seq datasets",
+        "Assess whether SLC gene co-clustering reflects true co-expression or database annotation bias by examining single-cell RNA-seq data across diverse cell types",
+        "Investigate MT-CO1 inclusion as a potential quality control issue (mitochondrial gene contamination)",
+        "Test whether TERT, PKMYT1, KIF22 form a separable proliferation sub-cluster",
+        "Examine whether the TNFRSF/TNFSF sub-module correlates with immune checkpoint expression (PDCD1, LAG3) for immunotherapy response prediction"
+      ]
+    },
+    {
+      "cluster_id": "6",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1296,
+      "title": "Mitochondrial Metabolism, Oxidative Phosphorylation, and Broad Metabolic Enzyme Cluster",
+      "overall_function": "This large cluster is dominated by mitochondrial biology (OXPHOS complexes I-V, mitoribosome subunits, TIM/TOM import machinery, mtDNA maintenance, CoQ biosynthesis, TCA cycle components) alongside extensive cytoplasmic and ER-resident metabolic enzymes spanning fatty acid oxidation, amino acid catabolism, nucleotide metabolism, redox homeostasis (glutathione/thioredoxin/peroxiredoxin systems), UDP-glucuronosyltransferases, short-chain dehydrogenases/reductases, and lipid metabolism. Secondary themes include ribosome biogenesis, ubiquitin-proteasome components, vesicle trafficking, and scattered signaling/receptor genes that may represent noise or co-regulated metabolic support functions.",
+      "key_genes_or_proteins": [
+        "ETFDH",
+        "NDUFS1",
+        "UQCRC2",
+        "COX4I1",
+        "ATP5PD",
+        "MRPL1",
+        "MRPS2",
+        "TIMM23",
+        "VDAC1",
+        "PDHA1",
+        "SUCLG1",
+        "SDHC",
+        "COQ4",
+        "TFAM",
+        "GPX1",
+        "GSTK1",
+        "UGT1A1",
+        "ACSL1",
+        "ACADVL",
+        "G6PD"
+      ],
+      "cell_type_relevance": [
+        "Highly metabolically active cells: hepatocytes, cardiomyocytes, skeletal muscle cells, neurons — all of which rely heavily on OXPHOS and mitochondrial fatty acid oxidation",
+        "Liver parenchymal cells suggested by UGT1A/2 family, AADAC, FMO1-5, CYP27A1, BHMT, GNMT, and other hepatic-enriched metabolic genes",
+        "Muscle cells (cardiac and skeletal) suggested by CKM, CKMT2, COX7A1, COX6A1, ACADVL",
+        "Neurons suggested by GABR subunits, GRIN1, GRM7, CRMP1, NRN1, though these may be outliers",
+        "Proliferating cells suggested by BIRC5, CCNB1/B2, RRM2, TRIP13, RFC2-4 — possible cycling subpopulation contamination or co-regulation"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Liver: strongest signal from hepatic drug-metabolism genes (UGT1A/2B families, FMO1-5, AADAC, PON1, BHMT, GNMT, CYP27A1, GGT1/2, LIPA)",
+        "Skeletal/cardiac muscle: CKM, CKMT1A/B, CKMT2, COX7A1/A2, COX6A1/A2, ACADVL",
+        "Brain/neural tissue: GABR subunit families, GRIN1, GRM7, CRMP1, BCAT1, KYNU — though mixed with liver signal",
+        "Kidney: ACSM1/2A/2B, ACSM4/5, PHEX, NAALAD2 suggest proximal tubule contribution",
+        "Broad metabolic tissues: the OXPHOS and mitoribosome core is ubiquitous but enriched in high-energy-demand tissues"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Hepatocellular carcinoma (HCC): UGT, FMO, AADAC, BHMT, GNMT, GGT expression patterns are characteristic of hepatocyte-derived malignancies",
+        "Metabolically reprogrammed cancers: ETFDH, ACADVL, PDHA1, SUCLG1 activity relates to oxidative vs. glycolytic balance in cancer cells",
+        "Neuroblastoma or glioma: GABR subunits, GRIN1, GRM7, CRMP1, LMO1/3/4 are expressed in neural cancers",
+        "Prostate cancer: HSD17B3, HSD3B1/2, AKR1C1-4, AMACR are steroid metabolism enzymes highly relevant to androgen-driven prostate cancer",
+        "Colorectal/GI cancers: UGT1A family, AADAC, LIPA, LIPF suggest GI epithelial cancer relevance"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "The OXPHOS/mitoribosome core (NDUFA/B/C/S, UQCR, COX, ATP5 subunits, MRPL/MRPS) is expressed in both normal and malignant cells but can distinguish metabolic states",
+        "Upregulation of BIRC5 (survivin), CCNB1/B2, RRM2, TRIP13 suggests malignant or proliferating cells",
+        "Downregulation of ETFDH, ACADVL, PDHA1 relative to glycolytic genes may indicate Warburg-shifted malignant cells",
+        "UGT/FMO/CYP expression is typically higher in normal hepatocytes than in dedifferentiated HCC, potentially marking non-malignant or well-differentiated cells",
+        "The mixed proliferation + differentiated metabolism signature makes binary malignant/non-malignant classification ambiguous for this cluster"
+      ],
+      "drug_sensitivity_relevance": [
+        "OXPHOS inhibitors (metformin, IACS-010759, rotenone analogs): NDUFS1/3/4/6/8, NDUFB subunits, UQCRC2 expression predicts sensitivity to Complex I/III inhibitors",
+        "UGT1A/2B family: major drug-glucuronidation enzymes; expression levels directly affect pharmacokinetics of irinotecan (UGT1A1), tamoxifen, morphine (UGT2B7), and many other drugs",
+        "FMO1-5: flavin-containing monooxygenases metabolize numerous drugs; expression affects drug clearance and toxicity",
+        "AKR1C1-4: involved in steroid and drug metabolism; AKR1C3 is a target in castration-resistant prostate cancer (indomethacin, ASP9521)",
+        "AMACR: target in prostate cancer; ABCG2 (multidrug resistance transporter) affects chemotherapy efflux",
+        "ETFDH mutations cause riboflavin-responsive multiple acyl-CoA dehydrogenase deficiency; ETFDH expression may predict response to riboflavin supplementation",
+        "NQO1/NQO2: activate bioreductive prodrugs (mitomycin C, EO9); expression predicts sensitivity",
+        "DPYD: rate-limiting enzyme in 5-fluorouracil catabolism; low DPYD predicts 5-FU toxicity"
+      ],
+      "perturbation_modeling_relevance": [
+        "OXPHOS subunit knockouts (NDUFS1, UQCRC2, COX4I1, ATP5PD) are classic mitochondrial perturbation targets with well-characterized fitness effects in cancer cell lines (DepMap)",
+        "PDHA1 and DLST knockouts model metabolic reprogramming between OXPHOS and glycolysis",
+        "TFAM, POLG-pathway genes (MGME1, PNPT1, SUPV3L1) model mtDNA maintenance perturbations",
+        "UBA1, UBE2S, RBX1, PSMD1 represent ubiquitin-proteasome perturbation nodes",
+        "DNMT3A perturbation relevant to epigenetic reprogramming models",
+        "BIRC5 (survivin) knockdown is a well-studied anti-cancer perturbation",
+        "CoQ biosynthesis genes (COQ2-9, PDSS1/2) model coenzyme Q deficiency syndromes",
+        "TIMM17A/B, TIMM23, TOMM6 model mitochondrial protein import perturbations",
+        "Gene interaction (GI) mapping: the dense OXPHOS subunit representation enables systematic buffering/synthetic lethality mapping within respiratory chain complexes"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Cluster is very large (1296 genes) suggesting possible over-merging of functionally distinct modules",
+        "Presence of GABR subunit family (GABRA1-6, GABRB1-3, GABRG1-3), GRIN1, GRM7 (neuronal receptors) alongside hepatic metabolic genes suggests lineage mixing or co-expression artifact",
+        "BIRC5, CCNB1/B2, RRM2, TRIP13, RFC2-4 are cell-cycle/proliferation genes that may represent a distinct co-regulated module",
+        "WNT3, WNT3A, SHH, ERBB4, FZD4 are signaling pathway genes that are functionally distant from the OXPHOS core",
+        "CRHR1, QRFPR, TRPC3/6/7, TRPM2/7/8 (GPCRs and TRP channels) are unlikely to be mechanistically co-clustered with mitochondrial metabolism",
+        "SAA1/SAA2/SAA4 (acute phase proteins) may indicate inflammatory or stress contamination",
+        "GABR and GRIN1 co-clustering with hepatic enzymes may reflect a neural tissue sample contamination or batch effect",
+        "The presence of many TMEM genes of unknown function inflates cluster size without clear functional coherence"
+      ],
+      "rationale": "The cluster's representative gene ETFDH (electron transfer flavoprotein dehydrogenase) and the dominant gene sets — NDUFA/B/C/S subunits, UQCR subunits, COX subunits, ATP5 subunits, MRPL/MRPS ribosomal proteins, TIMM/TOMM import components, COQ biosynthesis genes, TCA cycle enzymes (PDHA1, DLST, SUCLG1, SDHC/D), and fatty acid oxidation enzymes (ACADVL, ACSL1, CPT2, ECHS1, ECI1) — strongly indicate a mitochondrial metabolism and OXPHOS core. Layered on top are extensive hepatic drug-metabolism enzymes (UGT1A/2B, FMO1-5, AKR1C1-4, AADAC, CYP27A1), redox systems (GPX1-8, GSTK1, GSTO1/2, PRDX5/6, TXN2, NQO1/2), and nucleotide metabolism (NME1-7, DGUOK, DTYMK, UCK1/2). The cluster is partially coherent around a 'metabolic enzyme' theme but is too large and contains functionally distant genes (neuronal receptors, WNT/SHH signaling, acute phase proteins) to be considered a tight functional module. This likely reflects a co-expression-based clustering that captures broadly expressed metabolic and mitochondrial genes across multiple tissue types.",
+      "confidence": 0.62,
+      "recommended_followups": [
+        "Sub-cluster the 1296 genes using stricter resolution to separate: (1) OXPHOS/mitoribosome core, (2) hepatic drug metabolism, (3) fatty acid oxidation, (4) neuronal receptor outliers",
+        "Perform gene ontology enrichment to quantify the fraction of genes in each functional category and identify outlier genes driving lineage mixing",
+        "Check if GABR/GRIN1/GRM7 genes come from a specific batch or tissue sample type in the source dataset",
+        "Validate hepatocyte vs. neuron vs. muscle tissue-of-origin using cell-type deconvolution on the expression matrix",
+        "Assess whether BIRC5/CCNB1/RRM2 co-cluster reflects a proliferating subpopulation or technical co-expression artifact",
+        "Use DepMap CRISPR essentiality data to test whether OXPHOS subunit knockouts show correlated fitness effects consistent with complex membership",
+        "Investigate whether UGT1A1 polymorphism status (e.g., UGT1A1*28) in patient samples correlates with cluster activity score for irinotecan pharmacogenomics applications"
+      ]
+    },
+    {
+      "cluster_id": "7",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1101,
+      "title": "Transcription Factor & Chromatin Regulatory Supercluster",
+      "overall_function": "This cluster is dominated by transcription factors (TFs) spanning virtually all major TF families—HOX, FOX, SOX, PAX, KLF/SP, GATA, NR (nuclear receptors), ETS, bHLH, bZIP, ZNF/ZBTB, T-box, POU, RUNX, NKX, DLX, IRX, CREB, MEF2, TEAD, SMAD-related, and many others—alongside chromatin remodelers (ARID1A/B, CHD7/8, CREBBP, EP300, KMT2A/C/D, SETD1A/B, SIN3A, HDAC4/5/7/9, SRCAP, EP400), coactivators/corepressors (NCOR1, NCOA5/6, TLE1-5, MAML1-3, BCOR), RNA-binding proteins with regulatory roles (CPEB1-4, RBFOX1-3, RBM family, YTHDF1/3), and nuclear pore components (NUP98, NUP214, NUP153). The cluster represents the broad transcriptional regulatory machinery governing cell identity, differentiation, and gene expression programs.",
+      "key_genes_or_proteins": [
+        "CTCF",
+        "TP53",
+        "MYC",
+        "CREBBP",
+        "EP300",
+        "KMT2A",
+        "SIN3A",
+        "NCOR1",
+        "GATA1",
+        "GATA2",
+        "SOX2",
+        "PAX6",
+        "FOXA2",
+        "HNF4A",
+        "RUNX2"
+      ],
+      "cell_type_relevance": [
+        "Pluripotent/stem cells: NANOG, POU5F1 (OCT4), SOX2, ESRRB, PRDM14 suggest embryonic stem cell or iPSC programs",
+        "Neural progenitors/neurons: SOX1/2/3, PAX6, DLX1-6, NKX2-1, FOXG1, NEUROG-related TFs, MYT1L, RBFOX1/3 indicate neural lineage",
+        "Hematopoietic cells: GATA1/2, IKZF1 (Ikaros), EBF1, BCL11A/B, RUNX1T1, NFE2, GFI1/1B, BATF, IRF2BP2 suggest hematopoietic/lymphoid identity",
+        "Epithelial/endodermal: FOXA2/3, HNF1A/B, HNF4A, CDX1/2, PDX1, GATA4/6, SOX17 indicate endodermal/epithelial states",
+        "Mesenchymal/developmental: TWIST-related, SNAI1/2, ZEB1/2, PRRX1/2, MSX1/2, TBX family suggest mesenchymal or EMT programs",
+        "Circadian/metabolic: CLOCK, PER1/2/3, NR1D1/2, ARNTL2, NPAS2 indicate circadian rhythm-associated cell states"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Brain/CNS: extensive neural TF repertoire (PAX6, DLX, NKX2-1, SOX1-3, FOXG1, LHX, OTX1/2, EN1/2, PHOX2A/B) strongly implicates neural tissue",
+        "Liver/endoderm: HNF1A/B, HNF4A/G, FOXA2/3, NR1H4, CEBPA/B suggest hepatic or endodermal origin",
+        "Pancreas: PDX1, NKX6-1, PAX4, NEUROD-related, MAFA, ISL1 point to pancreatic lineage",
+        "Hematopoietic/lymphoid: GATA1/2, IKZF1-5, EBF1, BCL11A/B, GFI1 suggest bone marrow or lymphoid tissue",
+        "Heart: NKX2-5, TBX5, MEF2A/C, GATA4, HAND-related TFs indicate cardiac tissue",
+        "Reproductive/gonadal: AR, ESR1/2, NR5A1, DMRT1-3, SRY, RHOXF1/2 suggest gonadal tissue"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Leukemia/lymphoma: MYC, BCL6, RUNX1T1, ETV6, FLI1, ERG, NUP98 fusions, KMT2A rearrangements are hallmark oncogenes in hematologic malignancies",
+        "Prostate cancer: AR, NKX3-1, FOXA1 (absent but FOXA2 present), HOXB13 are key prostate cancer drivers",
+        "Breast cancer: ESR1, GATA3, FOXA2, RUNX2, YAP1, WWTR1 are relevant to breast cancer subtypes",
+        "Pediatric/developmental cancers: PAX3/7-FOXO1 fusions (rhabdomyosarcoma), EWS-FLI1 (EWSR1+FLI1 both present), NUP214 fusions suggest pediatric cancer relevance",
+        "Glioma/brain tumors: SOX2, OLIG2, IDH-related epigenetic TFs, FOXM1 are glioma markers",
+        "Pancreatic cancer: PDX1, GATA6, KLF5, MYC, KRAS-downstream TFs relevant to PDAC"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Malignant programs: MYC, TP53, CTCF, CREBBP/EP300 mutations are among the most common cancer alterations; their expression patterns can distinguish malignant from normal",
+        "EMT markers: SNAI1/2, ZEB1/2, TWIST-related, FOXC1/2 are canonical EMT TFs marking invasive/malignant states",
+        "Stemness: NANOG, POU5F1, SOX2, PRDM14 mark cancer stem cell programs associated with malignancy",
+        "Epigenetic dysregulation: KMT2A/C/D, ARID1A/B, BCOR, ASXL2/3 are frequently mutated tumor suppressors; loss-of-function marks malignant cells",
+        "Cell cycle deregulation: E2F1-5/7/8, MYBL2, FOXM1, MYC, LATS1 are proliferation/malignancy markers"
+      ],
+      "drug_sensitivity_relevance": [
+        "AR antagonists (enzalutamide, abiraterone): AR expression central to prostate cancer drug response",
+        "ESR1 modulators (tamoxifen, fulvestrant): ESR1 status determines hormone receptor-positive breast cancer treatment",
+        "BET bromodomain inhibitors (JQ1, OTX015): MYC, BCL6, FOSL1 transcriptional programs are BET-dependent",
+        "HDAC inhibitors (vorinostat, romidepsin): HDAC4/5/7/9, SIN3A, NCOR1 co-repressor complexes are direct targets",
+        "KMT2A/MLL inhibitors (menin inhibitors): KMT2A, MEIS1, HOXA9 leukemia program is targetable by menin-MLL inhibitors",
+        "CDK12 inhibitors: CDK12 present; relevant to BRCA-like cancers and immunotherapy response",
+        "PARP inhibitors: TP53, BRCA-pathway TFs relevant to HR-deficient tumors",
+        "Retinoic acid/RAR agonists: RARA, RARB, RARG, RXRA/B/G, NR2F1/2 mediate retinoid sensitivity in AML and other cancers"
+      ],
+      "perturbation_modeling_relevance": [
+        "Master regulator perturbations: Many TFs here (GATA1, PAX5, CEBPA, NANOG, SOX2) are classical master regulators whose perturbation causes large transcriptional cascades—ideal GEARS/CPA targets",
+        "Epistasis/GI mapping: Extensive TF family paralogs (KLF, FOX, SOX, HOX, GATA) enable systematic genetic interaction screens for redundancy and compensation",
+        "Chromatin remodeler KOs: ARID1A, CHD7/8, KMT2A/C/D, CREBBP/EP300 perturbations model epigenetic reprogramming",
+        "Fusion oncogene modeling: NUP98, EWSR1, ETV6, RUNX1T1 fusion partners present—relevant to modeling chromosomal translocation effects",
+        "Cell fate reprogramming: POU5F1, SOX2, KLF4, MYC (Yamanaka factors all present) are canonical reprogramming perturbation targets",
+        "Circadian perturbations: CLOCK, PER1-3, NR1D1/2 enable modeling of circadian disruption effects on gene expression"
+      ],
+      "clustering_plausibility": "partially coherent",
+      "qc_warnings": [
+        "Extremely large cluster (1101 genes): likely over-broad grouping of all transcriptional regulators rather than a functionally specific module",
+        "Mixed lineage TFs: cluster contains TFs from virtually every developmental lineage (neural, hematopoietic, endodermal, mesodermal) suggesting co-expression-independent grouping possibly based on GO annotation or protein domain similarity",
+        "Non-TF contaminants: NUP proteins (NUP98, NUP214, NUP153, NUP54, NUP58, NUP62), SEC proteins (SEC16A/B, SEC24C/D), RBM/CPEB RNA-binding proteins, BAG3/4 (chaperones), LATS1 (kinase), MAP2K4 (kinase), WNK1/2 (kinases), LGALS3 (lectin), COL17A1 (collagen) are functionally distinct from TFs",
+        "Housekeeping TFs mixed with tissue-specific: SP1, YY1AP1, TBP, GTF2A1, GTF3A are general transcription factors mixed with highly tissue-restricted TFs",
+        "Possible annotation-based clustering: The breadth suggests this cluster may reflect a gene ontology 'transcription factor activity' or 'DNA-binding' annotation pull rather than co-expression or co-regulation",
+        "Paralogs inflating cluster: Many gene families (39 HOX genes, 40+ FOX genes, 30+ ZNF/ZBTB genes) may be co-clustered due to sequence/domain similarity rather than functional co-expression"
+      ],
+      "rationale": "Cluster 7 contains 1101 genes that are overwhelmingly transcription factors and chromatin regulators spanning all major TF families. The representative gene BAZ2A is a chromatin reader/remodeler consistent with this theme. The cluster includes complete or near-complete representation of HOX, FOX, SOX, PAX, KLF, GATA, NR, ETS, bHLH, bZIP, ZNF, T-box, POU, NKX, DLX, IRX, CREB, MEF2, and TEAD families. This breadth strongly suggests the cluster was formed based on shared functional annotation (transcription factor/DNA-binding activity) or protein domain similarity rather than tight co-expression in a specific cell type. While internally coherent at the level of 'transcriptional regulation,' the cluster is too heterogeneous to represent a single biological program or cell state. Non-TF members (NUPs, kinases, RNA-binding proteins, a collagen) represent likely contamination or guilt-by-association clustering. The cluster has high utility for identifying transcriptional regulatory programs broadly but limited specificity for any single cell type or disease context without sub-clustering.",
+      "confidence": 0.62,
+      "recommended_followups": [
+        "Sub-cluster this large group using co-expression networks or protein-protein interaction data to identify functionally coherent modules (e.g., neural TFs, hematopoietic TFs, pluripotency TFs)",
+        "Remove non-TF members (NUPs, kinases, collagens, chaperones) and re-evaluate cluster coherence",
+        "Perform enrichment analysis against curated TF target gene sets (ENCODE ChIP-seq, JASPAR) to identify dominant regulatory programs",
+        "Test whether cluster members show coordinated expression in specific cell types using single-cell RNA-seq reference atlases (HCA, Tabula Sapiens)",
+        "Investigate NUP98, EWSR1, and KMT2A as fusion oncogene hubs within this cluster for cancer perturbation modeling",
+        "Apply SCENIC or similar TF activity inference to determine which TFs in this cluster are active regulators vs. merely expressed"
+      ]
+    },
+    {
+      "cluster_id": "8",
+      "entity_id_type": "gene_symbol",
+      "cluster_size": 1089,
+      "title": "Broad Cellular Housekeeping and Stress-Response Supercluster",
+      "overall_function": "This large cluster encompasses a highly diverse set of genes spanning ubiquitin-proteasome system components, DNA damage response and repair, RNA processing, vesicular trafficking, mitochondrial function, lipid metabolism, protein quality control (ER stress/UPR), cell signaling (mTOR, TBK1, STK11/LKB1), autophagy, nucleocytoplasmic transport, and ciliogenesis. No single dominant pathway is evident; instead the cluster appears to aggregate broadly expressed housekeeping and stress-response genes.",
+      "key_genes_or_proteins": [
+        "TBK1",
+        "MTOR",
+        "PTEN",
+        "ATM",
+        "MLH1",
+        "FANCD2",
+        "FANCI",
+        "FANCC",
+        "BECN1",
+        "TSC2",
+        "STK11",
+        "PRMT5",
+        "TNFAIP3",
+        "RIPK1",
+        "XRCC5",
+        "PRKDC",
+        "USP7",
+        "HERC2",
+        "CNOT1",
+        "LRPPRC"
+      ],
+      "cell_type_relevance": [
+        "Non-specific: genes are broadly expressed across many cell types",
+        "Cycling/proliferating cells: DNA repair (ATM, FANCD2, MLH1, PRKDC), replication (POLA2, PRIM1, MCM9), and cell cycle (CCNE2, PRC1, STAG1) genes suggest relevance to proliferating states",
+        "Stressed/damaged cells: GADD45A/B, SESN1/2/3, HMOX1, CHAC1 indicate stress-response activation",
+        "Immune-relevant: TBK1, TNFAIP3, IRF1, IRAK3, MLKL, RIPK1 suggest innate immune signaling context",
+        "Autophagy-active cells: BECN1, ATG10, ATG13, EPG5, VMP1, WDFY3"
+      ],
+      "cell_tissue_of_origin_prediction_relevance": [
+        "Low specificity: the breadth of functions makes tissue-of-origin inference unreliable from this cluster alone",
+        "Possible enrichment in highly metabolically active tissues (liver, kidney, intestine) given lipid metabolism, peroxisomal, and mitochondrial genes",
+        "Ciliated epithelial tissues suggested by ciliogenesis genes (BBS4, BBS5, BBS10, BBS12, MKKS, CFAP46, CFAP54, ARL13B, CEP41)",
+        "Neuronal tissue hinted by NLGN1, NXPH1, NXPH4, GRIN2B, GPHN, MAP1B, but these may be noise in a large mixed cluster"
+      ],
+      "cancer_cell_type_prediction_relevance": [
+        "Tumor suppressor genes present (PTEN, TSC2, NF1, STK11, MLH1, ATM, BAP1, RB1CC1) suggest relevance to multiple cancer types with loss-of-function alterations",
+        "DNA damage response genes (FANCD2, FANCI, FANCC, PRKDC, XRCC5) relevant to genomically unstable cancers",
+        "mTOR pathway (MTOR, TSC2, RHEB, PTEN, STK11/STRADA) relevant to mTOR-driven cancers (renal, lung adenocarcinoma, endometrial)",
+        "Gasdermin family (GSDMA, GSDMB, GSDMC, GSDME) relevant to pyroptosis programs in cancer",
+        "Proliferation markers (CCNE2, PBK, FAM72A-D) relevant to high-grade malignancies"
+      ],
+      "cell_malignancy_status_prediction_relevance": [
+        "Mixed signal: presence of tumor suppressors (PTEN, TSC2, NF1, MLH1) and DNA repair genes could mark non-malignant cells with intact checkpoints, or malignant cells with compensatory upregulation",
+        "Stress-response genes (SESN1/2/3, GADD45A/B, HMOX1) may be upregulated in both stressed normal and malignant cells",
+        "Autophagy genes (BECN1, ATG10/13) are context-dependent for malignancy",
+        "Overall: cluster is not a reliable standalone malignancy discriminator due to functional heterogeneity"
+      ],
+      "drug_sensitivity_relevance": [
+        "mTOR pathway (MTOR, TSC2, RHEB, STK11): sensitivity to rapalogs (everolimus, temsirolimus) and mTOR kinase inhibitors",
+        "TBK1: sensitivity to TBK1 inhibitors (e.g., MRT67307, BX795) relevant in KRAS-mutant cancers",
+        "PRKDC (DNA-PKcs): sensitivity to DNA-PK inhibitors (e.g., M3814/peposertib) in combination with DNA-damaging agents",
+        "ATM/FANC pathway: sensitivity to PARP inhibitors and platinum agents in HR-deficient contexts",
+        "PRMT5: sensitivity to PRMT5 inhibitors (e.g., GSK3326595) in MTAP-deleted tumors",
+        "USP7: sensitivity to USP7 inhibitors affecting p53 stabilization",
+        "TNFAIP3/RIPK1: relevance to TNF pathway inhibitors and necroptosis modulators"
+      ],
+      "perturbation_modeling_relevance": [
+        "TBK1 is a well-characterized perturbation target in innate immune and KRAS-synthetic lethality screens",
+        "MTOR, TSC2, PTEN, STK11 are canonical nodes for pathway perturbation modeling (PI3K/mTOR axis)",
+        "DNA repair genes (ATM, FANCD2, MLH1, PRKDC) are relevant for modeling genomic instability perturbations",
+        "CNOT1 (CCR4-NOT complex) and RNA processing genes relevant for post-transcriptional regulation perturbation",
+        "Large cluster size and functional heterogeneity limit precision of genetic interaction (GI) modeling; individual sub-pathway modules would be more tractable",
+        "Autophagy regulators (BECN1, ATG10, ATG13) are standard perturbation targets for autophagy flux studies"
+      ],
+      "clustering_plausibility": "suspicious",
+      "qc_warnings": [
+        "Cluster is extremely large (1089 genes) with no coherent single biological function — strongly suggests over-aggregation or algorithmic artifact",
+        "Highly diverse functional categories co-clustered: ciliogenesis, DNA repair, lipid metabolism, innate immunity, mTOR signaling, RNA processing, vesicular trafficking — this breadth is atypical for a biologically meaningful co-expression or co-function cluster",
+        "Possible housekeeping gene contamination: many broadly expressed genes (ribosomal, translation factors, ubiquitin pathway) that co-cluster due to expression correlation rather than shared function",
+        "Presence of tissue-restricted genes (CASQ1/2 cardiac/muscle, GRIN2B neuronal, RYR3 muscle) alongside broadly expressed genes suggests mixed lineage contamination or batch effects",
+        "FAM72A/B/C/D paralogs and other gene family expansions may inflate cluster size artificially",
+        "Recommend sub-clustering or pathway enrichment analysis to identify coherent sub-modules"
+      ],
+      "rationale": "The cluster representative TBK1 is an innate immune kinase, but the 1089-member gene list spans an implausibly broad range of biological functions including ciliogenesis (BBS genes, CFAP genes), DNA repair (ATM, FANC genes, MLH1), mTOR signaling (MTOR, TSC2, PTEN, STK11), RNA processing (CNOT1, SF3A1, INTS genes), lipid metabolism (HADHA, MTTP, LCAT), ER quality control (PDIA2-6, TMX1-4, EDEM1), autophagy (BECN1, ATG10/13), and many transmembrane proteins of unknown function (TMEM genes). This diversity is inconsistent with a single coherent biological module. The cluster likely results from co-expression correlation across housekeeping and stress-response programs, possibly amplified by batch effects or overly permissive clustering parameters. Sub-pathway analysis is strongly recommended.",
+      "confidence": 0.32,
+      "recommended_followups": [
+        "Sub-cluster this group using stricter parameters (e.g., higher resolution Leiden/Louvain or hierarchical clustering) to identify coherent functional modules",
+        "Perform gene set enrichment analysis (GSEA/ORA) on sub-clusters to identify dominant pathways",
+        "Check for batch effect or technical covariation driving co-clustering of functionally unrelated genes",
+        "Examine expression correlation matrix within the cluster to identify hub genes vs. peripheral members",
+        "Assess whether tissue-restricted genes (CASQ1/2, GRIN2B, RYR3) are driving spurious co-clustering",
+        "Validate TBK1-centric innate immune sub-network by extracting TBK1, TNFAIP3, IRF1, IRAK3, MLKL, RIPK1 and their direct interactors as a separate module"
+      ]
+    }
+  ]
+}

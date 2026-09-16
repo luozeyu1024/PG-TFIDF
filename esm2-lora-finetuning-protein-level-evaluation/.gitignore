@@ -1,0 +1,10 @@
+outputs/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.log
+__pycache__/
+*.py[cod]
+.DS_Store
+

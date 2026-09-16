@@ -1,0 +1,266 @@
+{
+  "schema_version": "2.0",
+  "global_system_instructions": "You are a careful computational biologist. Be conservative, evidence-grounded, and explicit about uncertainty.\n\nHard constraints:\n- Do NOT fabricate citations, pathways, markers, drugs, tissues, or mechanisms.\n- Use only the provided candidates for the selected task.\n- Use only the provided inputs: protein_cluster_registry (raw UniProt IDs), tfidf_top_clusters, tf_top_clusters, top_hvg_genes_ranked, cell_emb_clusters, and cell_emb_cluster_registry.\n- If evidence is weak, mixed, or contradictory, choose the task's Unknown option and lower confidence.\n- Output only valid JSON conforming to the selected task schema. No markdown. No extra keys.\n- For per-drug tasks, per_drug_predictions items must use the field name 'prediction'.",
+  "runtime_defaults": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "temperature": 0.0,
+    "use_structured_outputs": true,
+    "use_response_healing_plugin": true
+  },
+  "tasks": [
+    {
+      "name": "cell_type_annotation",
+      "description": "Predict a coarse cell type/state from protein-cluster composition, top expressed HVG genes, and cell embedding cluster markers.",
+      "candidates": [
+        "CD8+ Cytotoxic T",
+        "CD8+/CD45RA+ Naive Cytotoxic",
+        "CD4+/CD45RO+ Memory",
+        "CD19+ B",
+        "CD4+/CD25 T Reg",
+        "CD56+ NK",
+        "CD4+ T Helper2",
+        "CD4+/CD45RA+/CD25- Naive T",
+        "CD34+",
+        "Dendritic",
+        "CD14+ Monocyte",
+        "Unknown"
+      ],
+      "decision_rules": "Rules:\n1) Only choose from candidates.\n2) Prioritize TF-IDF top protein clusters and cell embedding cluster markers.\n3) Use TF clusters and ranked HVG genes as secondary support.\n4) If immune-like but lineage is unclear (T vs B vs Myeloid), prefer Unknown.\n5) If proliferation / cell-cycle signals dominate, choose Cycling.\n6) If epithelial / keratin / adhesion programs dominate, choose Epithelial.\n7) If unrelated signals are mixed, choose Unknown.\n\nConfidence:\n- 0.85-1.00: multiple consistent signals\n- 0.55-0.84: partial but usable support\n- 0.20-0.54: weak or conflicting support\n- 0.00-0.19: essentially unknown",
+      "few_shot_examples": [
+        {
+          "input_hint": "Cell_ID=Cell_XXXX\nTF-IDF top clusters: [{cid1}, {cid2}, {cid3}]\nCluster {cid1} annotation: '{go_function_1}'\nCluster {cid2} annotation: '{go_function_2}'\nCluster {cid3} annotation: '{go_function_3}'\nHit_Entity_IDs include {marker_list}",
+          "expected_output_hint": "prediction='{cell_type}'\nconfidence~{0.75-0.95}\nEvidence: {reasoning}"
+        }
+      ],
+      "output_schema": {
+        "name": "CellTypeAnnotation",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cell_id": {
+              "type": "string"
+            },
+            "predicted_label": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            },
+            "qc_flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cell_id",
+            "predicted_label",
+            "confidence",
+            "qc_flags"
+          ]
+        },
+        "strict": true
+      }
+    },
+    {
+      "name": "malignancy_status_prediction",
+      "description": "Predict whether the cell is malignant or non-malignant using the provided cluster evidence and marker summaries.",
+      "candidates": [
+        "Malignant",
+        "Non-malignant",
+        "Unknown"
+      ],
+      "decision_rules": "Rules:\n1) Only choose from candidates.\n2) Prioritize TF-IDF top protein clusters and cell embedding cluster markers.\n3) Use TF clusters and ranked HVG genes as secondary support.\n4) Do NOT infer malignancy from generic stress or housekeeping signals alone.\n5) If evidence is mixed or ambiguous, choose Unknown.\n6) If immune-like signals are strong and no malignant-leaning program is supported, Non-malignant is allowed but confidence should remain conservative.\n\nConfidence:\n- >0.80 only with strong consistent support\n- otherwise <=0.70",
+      "few_shot_examples": [],
+      "output_schema": {
+        "name": "MalignancyStatusPrediction",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cell_id": {
+              "type": "string"
+            },
+            "predicted_label": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            },
+            "qc_flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cell_id",
+            "predicted_label",
+            "confidence",
+            "qc_flags"
+          ]
+        },
+        "strict": true
+      }
+    },
+    {
+      "name": "cancer_cell_type_prediction",
+      "description": "For malignant cells only, predict a coarse malignant program/type.",
+      "candidates": [
+        "Epithelial-like malignant",
+        "Mesenchymal-like malignant",
+        "Neuroendocrine-like malignant",
+        "Unknown"
+      ],
+      "decision_rules": "Rules:\n1) Only choose from candidates.\n2) Prioritize TF-IDF top protein clusters and cell embedding cluster markers.\n3) Use TF clusters and ranked HVG genes as secondary support.\n4) If malignancy is not clearly supported, choose Unknown.\n5) If no coherent malignant program is supported, choose Unknown.\n\nConfidence:\n- >0.75 requires multiple consistent program-supporting signals\n- otherwise <=0.60",
+      "few_shot_examples": [],
+      "output_schema": {
+        "name": "CancerCellTypePrediction",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cell_id": {
+              "type": "string"
+            },
+            "predicted_label": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            },
+            "qc_flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cell_id",
+            "predicted_label",
+            "confidence",
+            "qc_flags"
+          ]
+        },
+        "strict": true
+      }
+    },
+    {
+      "name": "tissue_of_origin_prediction",
+      "description": "Predict tissue or compartment of origin using only the provided evidence.",
+      "candidates": [
+        "Immune/Blood-derived",
+        "Epithelial tissue",
+        "Stromal/Connective",
+        "Unknown"
+      ],
+      "decision_rules": "Rules:\n1) Only choose from candidates.\n2) Prioritize TF-IDF top protein clusters and cell embedding cluster markers.\n3) Use TF clusters and ranked HVG genes as secondary support.\n4) Prefer Unknown unless multiple consistent signals support one compartment.\n5) Do NOT output organ names outside the candidate list.\n\nConfidence:\n- >0.75 only with strong consistent support\n- otherwise <=0.60",
+      "few_shot_examples": [],
+      "output_schema": {
+        "name": "TissueOfOriginPrediction",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cell_id": {
+              "type": "string"
+            },
+            "predicted_label": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            },
+            "qc_flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cell_id",
+            "predicted_label",
+            "confidence",
+            "qc_flags"
+          ]
+        },
+        "strict": true
+      }
+    },
+    {
+      "name": "drug_sensitivity_prediction",
+      "description": "For each candidate drug, predict coarse response tendency from the provided biological evidence.",
+      "candidates": [
+        "Sensitive",
+        "Resistant",
+        "Unknown"
+      ],
+      "candidate_drugs": [
+        "Cisplatin",
+        "Crizotinib",
+        "Docetaxel",
+        "Erlotinib",
+        "Gefitinib",
+        "Gemcitabine",
+        "Ibrutinib",
+        "Paclitaxel",
+        "Palbociclib",
+        "PLX.4720"
+      ],
+      "decision_rules": "Rules:\n1) Only choose from candidates.\n2) Prioritize TF-IDF top protein clusters and cell embedding cluster markers.\n3) Use TF clusters and ranked HVG genes as secondary support.\n4) If no drug-relevant evidence is present, output Unknown.\n5) If signals are mixed or generic only, output Unknown.\n\nConfidence:\n- high confidence only when the evidence is clearly drug-relevant and internally consistent\n- otherwise keep confidence <=0.60",
+      "few_shot_examples": [],
+      "output_schema": {
+        "name": "DrugSensitivityPredictionPerDrug",
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cell_id": {
+              "type": "string"
+            },
+            "per_drug_predictions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "drug_name": {
+                    "type": "string"
+                  },
+                  "prediction": {
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "drug_name",
+                  "prediction",
+                  "confidence"
+                ]
+              }
+            },
+            "qc_flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cell_id",
+            "per_drug_predictions",
+            "qc_flags"
+          ]
+        },
+        "strict": true
+      }
+    }
+  ]
+}

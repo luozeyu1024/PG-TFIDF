@@ -1,0 +1,22 @@
+{
+  "neutrophil": null,
+  "classical monocyte": "CD14+ Monocyte",
+  "monocyte": "CD14+ Monocyte",
+  "intermediate monocyte": "CD14+ Monocyte",
+  "CD8-positive, alpha-beta T cell": "CD8+ Cytotoxic T",
+  "B cell": "CD19+ B",
+  "erythrocyte": null,
+  "natural killer cell": "CD56+ NK",
+  "macrophage": "CD14+ Monocyte",
+  "CD4-positive, alpha-beta T cell": "CD4+/CD45RO+ Memory",
+  "plasma cell": "CD19+ B",
+  "platelet": null,
+  "naive thymus-derived CD4-positive, alpha-beta T cell": "CD4+/CD45RA+/CD25- Naive T",
+  "non-classical monocyte": "CD14+ Monocyte",
+  "regulatory T cell": "CD4+/CD25 T Reg",
+  "hematopoietic precursor cell": "CD34+",
+  "mature NK T cell": "CD56+ NK",
+  "plasmacytoid dendritic cell": "Dendritic",
+  "hematopoietic stem cell": "CD34+"
+}
+

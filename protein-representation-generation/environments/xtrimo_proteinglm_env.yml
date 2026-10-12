@@ -1,0 +1,27 @@
+name: xtrimo_proteinglm
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - biopython           
+  - openpyxl            
+  - pip:
+      - torch==2.2.2
+      - torchvision==0.17.2
+      - torchaudio==2.2.2
+      - transformers==4.40.2
+      - huggingface-hub>=0.23.0,<1.0
+      - sentencepiece
+      - safetensors
+      - accelerate
+      - tqdm
+      - deepspeed
+      - --extra-index-url https://download.pytorch.org/whl/cu121

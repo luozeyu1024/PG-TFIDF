@@ -1,11 +1,12 @@
 # Protein-informed single-cell analysis
 
-This repository contains five modules for constructing and evaluating cell representations, injecting protein-task knowledge through ESM2 LoRA adaptation, constructing protein/gene-cluster TF-IDF (PG-TFIDF) evidence, and integrating that evidence with RNA/ADT markers for cell annotation and agent-assisted interpretation of drug resistance and relapse.
+This repository contains six modules for generating protein representations, constructing and evaluating cell representations, injecting protein-task knowledge through ESM2 LoRA adaptation, constructing protein/gene-cluster TF-IDF (PG-TFIDF) evidence, and integrating that evidence with RNA/ADT markers for cell annotation and agent-assisted interpretation of drug resistance and relapse.
 
 ## Modules
 
 | Module | Input | Output |
 |---|---|---|
+| [Protein representation generation](protein-representation-generation/) | Protein FASTA files, UniProt GO annotations or STATE protein assets | Sequence-derived, GO-text-derived or STATE-supplied protein representations |
 | [Cell embedding construction](cell-embedding-construction-across-representation-models/) | RNA counts, paired RNA/ADT counts, or gene/protein embeddings and mapping files | Cell embeddings and aligned cell identifiers |
 | [Protein adaptation and evaluation](esm2-lora-finetuning-protein-level-evaluation/) | Protein sequences, structural-similarity labels or localization labels, and model assets | LoRA checkpoints, protein predictions and representation analyses |
 | [Cell benchmarking](cell-clustering-and-annotation-benchmark/) | Cell embeddings, ordered identifiers and reference labels | Clustering, supervised transfer, prediction agreement, marker similarity and prior-adjusted gain |
@@ -16,7 +17,7 @@ Keep these module directories together: several commands import scripts or read 
 
 ## Inputs and downloads
 
-See [input formats](docs/input-formats.md) for matrix orientation, identifiers, count layers and cross-file alignment. See [data and model resources](docs/data-and-model-resources.md) for source downloads, model configurations and checkpoint requirements.
+See [input formats](docs/input-formats.md) for matrix orientation, identifiers, count layers and cross-file alignment. See [data and model resources](docs/data-and-model-resources.md) for source downloads, model configurations and checkpoint requirements. Compact UniProt snapshots, the HGNC mapping, Gene2vec vectors and the cluster-function annotation are collected under [`data_util`](data_util/).
 
 Small examples are included in each module's `examples/data/` to demonstrate file structure and command usage. Dataset accessions, download links, preprocessing details, annotation levels and model configurations are documented in the manuscript Supplementary Methods and summarized in [data and model resources](docs/data-and-model-resources.md).
 

@@ -183,7 +183,7 @@ class Esm2LastHiddenFeatureExtractor:
         
     
     
-    ##计算cls, eos, 氨基酸平均表征, 每1/10段氨基酸平均表征
+    # Compute CLS, EOS, residue-mean and segment-mean representations.
     def get_last_hidden_features_combine(self, X_input, sequence_name='sequence', batch_size=32):
         X_input = X_input.reset_index(drop=True)
         
@@ -251,7 +251,7 @@ class Esm2LastHiddenFeatureExtractor:
 
                 del inputs, outputs
                 
-                # 仅在使用CUDA时清理和同步
+                # Clear and synchronize only when CUDA is active.
                 if self.device.type == 'cuda':
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
@@ -266,12 +266,13 @@ class Esm2LastHiddenFeatureExtractor:
         return combined_result
 
 
-    ##直接计算所有token的embedding并输出
+    # Compute and return all-token embeddings.
     def get_all_token_embeddings(self, X_input, sequence_name='sequence', id_column=None):
         """
-        对每个蛋白质序列计算所有 token 的 embedding，
-        输出一个字典，键为蛋白质的 ID（若未提供，则使用行索引），
-        值为对应的 numpy 数组（形状为 (token数, embedding维度)）。
+        Compute all-token embeddings for each protein sequence.
+
+        The returned dictionary maps a protein ID, or the row index when no ID
+        column is supplied, to an array with shape (n_tokens, embedding_dim).
         """
         X_input = X_input.reset_index(drop=True)
         sequence_list = X_input[sequence_name].tolist()
@@ -282,22 +283,22 @@ class Esm2LastHiddenFeatureExtractor:
         with torch.no_grad():
             for i in tqdm(range(len(sequence_list)), desc='Protein embeddings extraction'):
                 seq = sequence_list[i]
-                # 获取当前 protein 的 ID
+                # Resolve the protein ID.
                 protein_id = X_input.loc[i, id_column] if id_column is not None else i
 
                 inputs = self.tokenizer(seq, return_tensors="pt", padding=True).to(self.device)
 
                 outputs = self.model(**inputs)
 
-                # 获取最后一层 hidden_states
+                # Select the final hidden layer.
                 last_hidden = outputs.hidden_states[-1]
 
                 embeddings_np = last_hidden[0].cpu().numpy()
 
-                # 存储
+                # Store the token matrix.
                 embeddings_dict[protein_id] = embeddings_np
 
-                # 清理显存
+                # Release intermediate tensors.
                 del inputs, outputs
                 if self.device.type == 'cuda':
                     torch.cuda.empty_cache()
@@ -305,7 +306,7 @@ class Esm2LastHiddenFeatureExtractor:
 
         return embeddings_dict
 
-    ##计算磷酸化表征
+    # Extract phosphorylation-site representations.
     def get_last_hidden_phosphorylation_position_feature(self, X_input, sequence_name='sequence', 
                                                          phosphorylation_positions='phosphorylation_positions', batch_size=32):
         
@@ -349,7 +350,7 @@ class Esm2LastHiddenFeatureExtractor:
                         X_outcome.loc[idx] = features
 
                 del inputs, outputs
-                # 仅在使用CUDA时清理和同步
+                # Clear and synchronize only when CUDA is active.
                 if self.device.type == 'cuda':
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
@@ -362,7 +363,7 @@ class Esm2LastHiddenFeatureExtractor:
         combined_result = pd.concat([X_input, X_outcome], axis=1)
         return combined_result
 
-    ##计算磷酸化表征(fast)
+    # Extract phosphorylation-site representations in fast mode.
     def get_last_hidden_phosphorylation_position_feature_fast(self, X_input, sequence_name='sequence',
                                                               phosphorylation_positions='phosphorylation_positions',
                                                               batch_size=32):
@@ -397,28 +398,27 @@ class Esm2LastHiddenFeatureExtractor:
                     last_hidden_state = self.get_last_hidden_states(outputs)[j:j + 1]
 
                     sequence_positions = np.array(sequence_positions).astype(int)
-                    # 预先分配空间以存储特征向量
+                    # Allocate a list for the extracted vectors.
                     features = []
 
-                    # 使用高级索引一次性从last_hidden_state中提取所有特征
-                    # 这里假设last_hidden_state的shape为(1, sequence_length, hidden_size)
+                    # Extract all requested positions with advanced indexing.
+                    # Expected shape: (1, sequence_length, hidden_size).
                     position_features = last_hidden_state[:, sequence_positions, :]
 
-                    # 如果last_hidden_state的第一个维度为1，移除它以简化操作
+                    # Remove the singleton batch dimension.
                     if last_hidden_state.shape[0] == 1:
                         position_features = position_features.squeeze(0)
 
-                    # 将每个特征向量转换为列表并存储
+                    # Convert each vector to a list.
                     for feature in position_features:
                         features.append(feature.tolist())
 
-                    # 将features_batch中的特征向量对应到DataFrame中正确的索引
-                    # 将Int64Index转换为常规Python列表
+                    # Map the vectors back to their DataFrame indices.
                     for idx, feature in zip(sequence_indices.tolist(), features):
                         X_outcome.loc[idx] = feature
 
                 del inputs, outputs
-                # 仅在使用CUDA时清理和同步
+                # Clear and synchronize only when CUDA is active.
                 if self.device.type == 'cuda':
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
@@ -541,7 +541,7 @@ class Esm2LayerHiddenFeatureExtractor:
         return segment_means
     
     
-    ##计算cls, eos, 氨基酸平均表征, 每1/10段氨基酸平均表征
+    # Compute layer-specific CLS, EOS, residue-mean and segment-mean features.
     def get_layer_hidden_features_combine(self, X_input, sequence_name='sequence', batch_size=32):
         X_input = X_input.reset_index(drop=True)
         # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -606,7 +606,7 @@ class Esm2LayerHiddenFeatureExtractor:
                     all_results.append(result)
 
                 del inputs, outputs
-                # 仅在使用CUDA时清理和同步
+                # Clear and synchronize only when CUDA is active.
                 if self.device.type == 'cuda':
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
@@ -623,7 +623,7 @@ class Esm2LayerHiddenFeatureExtractor:
 
 
     
-    ##计算磷酸化表征
+    # Extract layer-specific phosphorylation-site representations.
     def get_layer_hidden_phosphorylation_position_feature(self, X_input, sequence_name='sequence', phosphorylation_positions='phosphorylation_positions', batch_size=32):
         X_input = X_input.reset_index(drop=True)
         # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -663,7 +663,7 @@ class Esm2LayerHiddenFeatureExtractor:
                         X_outcome.loc[idx] = features
 
                 del inputs, outputs
-                # 仅在使用CUDA时清理和同步
+                # Clear and synchronize only when CUDA is active.
                 if self.device.type == 'cuda':
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
@@ -792,28 +792,28 @@ def phospho_feature_sim_cosine_weighted_average(dim, df_cls, df_phospho):
     df = pd.merge(df_cls, df_phospho, how='inner', left_index=True, right_index=True)
 
     # Calculate cosine similarity for each row in the merged dataframe
-    # 前dim列
+    # First dim columns.
     array_cls = df.iloc[:, :dim].values
 
-    # 接下来的dim列
+    # Next dim columns.
     array_phospho = df.iloc[:, dim:2*dim].values
 
-    # 对于全为0的行，添加一个小的正数以避免除零错误
+    # Add epsilon to all-zero rows to avoid division by zero.
     epsilon = 1e-10
     array_cls[np.where(~array_cls.any(axis=1))[0]] += epsilon
     array_phospho[np.where(~array_phospho.any(axis=1))[0]] += epsilon
 
-    # 计算余弦相似度
+    # Compute cosine similarity.
     similarity = np.sum(array_cls * array_phospho, axis=1) / (np.linalg.norm(array_cls, axis=1) * np.linalg.norm(array_phospho, axis=1))
 
-    # 添加到DataFrame
+    # Add the similarity column.
     df['similarity'] = similarity
     #Multiply similarity with phospho_feature for each row
     
-    # 使用NumPy进行运算
+    # Apply the similarity weights with NumPy.
     array_weighted_features= df['similarity'].values[:, None] * array_phospho
 
-    # 将结果转换为 DataFrame 并合并
+    # Convert the weighted vectors to a DataFrame and merge them.
     weighted_features_df = pd.DataFrame(array_weighted_features, columns=[f'weighted{i}' for i in range(dim)], index=df.index)
     df = pd.concat([df, weighted_features_df], axis=1)
 
@@ -996,7 +996,7 @@ class Esm2LogitsExtractor:
 
 
 
-###后面都是legacy，可用于检验模型是否正确或无用的代码即不在完整工作流中运行，但不允许删除。考虑在0.020版本中删除
+### The remaining legacy code is kept for model checks and is not run by the main workflow.
 
 
 # class Esm2LastHiddenFeatureExtractor_legacy:
@@ -1052,7 +1052,7 @@ class Esm2LogitsExtractor:
         
     
     
-#     ##计算cls, eos, 氨基酸平均表征, 每1/10段氨基酸平均表征
+#     # Compute CLS, EOS, residue-mean and segment-mean representations.
 #     def get_last_hidden_features_combine(self, X_input, sequence_name='sequence', batch_size=32):
 #         X_input = X_input.reset_index(drop=True)
         
@@ -1119,7 +1119,7 @@ class Esm2LogitsExtractor:
 
 #                 del inputs, outputs
                 
-#                 # 仅在使用CUDA时清理和同步
+#                 # Clear and synchronize only when CUDA is active.
 #                 if self.device.type == 'cuda':
 #                     torch.cuda.empty_cache()
 #                     torch.cuda.synchronize()
@@ -1136,7 +1136,7 @@ class Esm2LogitsExtractor:
 
 
     
-#     ##计算磷酸化表征
+#     # Extract phosphorylation-site representations.
 #     def get_last_hidden_phosphorylation_position_feature(self, X_input, sequence_name='sequence', 
 #                                                          phosphorylation_positions='phosphorylation_positions', batch_size=32):
         
@@ -1180,7 +1180,7 @@ class Esm2LogitsExtractor:
 #                         X_outcome.loc[idx] = features
 
 #                 del inputs, outputs
-#                 # 仅在使用CUDA时清理和同步
+#                 # Clear and synchronize only when CUDA is active.
 #                 if self.device.type == 'cuda':
 #                     torch.cuda.empty_cache()
 #                     torch.cuda.synchronize()
@@ -1293,7 +1293,7 @@ class Esm2LogitsExtractor:
 #         return segment_means
     
     
-#     ##计算cls, eos, 氨基酸平均表征, 每1/10段氨基酸平均表征
+#     # Compute layer-specific CLS, EOS, residue-mean and segment-mean features.
 #     def get_layer_hidden_features_combine(self, X_input, sequence_name='sequence', batch_size=32):
 #         X_input = X_input.reset_index(drop=True)
 #         # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -1358,7 +1358,7 @@ class Esm2LogitsExtractor:
 #                     all_results.append(result)
 
 #                 del inputs, outputs
-#                 # 仅在使用CUDA时清理和同步
+#                 # Clear and synchronize only when CUDA is active.
 #                 if self.device.type == 'cuda':
 #                     torch.cuda.empty_cache()
 #                     torch.cuda.synchronize()
@@ -1375,7 +1375,7 @@ class Esm2LogitsExtractor:
 
 
     
-#     ##计算磷酸化表征
+#     # Extract layer-specific phosphorylation-site representations.
 #     def get_layer_hidden_phosphorylation_position_feature(self, X_input, sequence_name='sequence', phosphorylation_positions='phosphorylation_positions', batch_size=32):
 #         X_input = X_input.reset_index(drop=True)
 #         # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -1415,7 +1415,7 @@ class Esm2LogitsExtractor:
 #                         X_outcome.loc[idx] = features
 
 #                 del inputs, outputs
-#                 # 仅在使用CUDA时清理和同步
+#                 # Clear and synchronize only when CUDA is active.
 #                 if self.device.type == 'cuda':
 #                     torch.cuda.empty_cache()
 #                     torch.cuda.synchronize()

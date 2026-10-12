@@ -26,13 +26,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--open_path",
         type=str,
-        default=r"D:\desktop\Scis_code\scATD2\source_data\protein_loc\fasta",
+        required=True,
         help="Directory containing FASTA files with protein sequences",
     )
     parser.add_argument(
         "--save_path",
         type=str,
-        default=r"D:\desktop\Scis_code\scATD2\xTrimoPGLM\feature_extraction\output\embeddings_fasta",
+        required=True,
         help="Directory to save extracted embeddings and filtered data",
     )
     parser.add_argument(
@@ -88,8 +88,8 @@ def prepare_device(device_str: str) -> torch.device:
 
 def load_fasta_directory(fasta_dir: str) -> Dict[str, pd.DataFrame]:
     """
-    读取目录下所有 .fasta / .fa 文件，返回 {file_key: DataFrame}.
-    DataFrame 列：["ID", "information", "Sequence"]
+    Read all .fasta and .fa files and return ``{file_key: DataFrame}``.
+    Each DataFrame contains ID, information and Sequence columns.
     """
     protein_sequence_dict: Dict[str, pd.DataFrame] = {}
 
@@ -130,10 +130,8 @@ def mean_pool_without_eos_and_pad(
     hidden_states: [S, B, H]
     input_ids:     [B, S]
 
-    对每个样本 b:
-    1) 去掉结尾 pad；
-    2) 在非 pad 部分如果有 eos，则截断到 eos 之前；
-    3) 对剩余 token 做 mean pooling。
+    For each sample, remove trailing padding, truncate before EOS when present,
+    and mean-pool the remaining tokens.
     """
     _, batch_size, hidden_dim = hidden_states.shape
     input_ids = input_ids.to(hidden_states.device)
@@ -143,7 +141,7 @@ def mean_pool_without_eos_and_pad(
     for b in range(batch_size):
         ids_b = input_ids[b]  # [S]
 
-        # 1) 去掉结尾 pad
+        # Remove trailing padding.
         if pad_id is not None:
             non_pad_mask = ids_b != pad_id
             if non_pad_mask.any():
@@ -154,7 +152,7 @@ def mean_pool_without_eos_and_pad(
         else:
             valid_end = ids_b.size(0)
 
-        # 2) 截断到 eos（不含 eos 本身）
+        # Truncate before EOS.
         if eos_id is not None and valid_end > 0:
             eos_mask = ids_b[:valid_end] == eos_id
             if eos_mask.any():
@@ -180,7 +178,7 @@ def mean_pool_without_eos_and_pad(
 
 def get_timestamp_suffix() -> str:
     """
-    生成精简但唯一的时间戳后缀：YYYYMMDDHHmmss
+    Return a compact timestamp suffix in YYYYMMDDHHmmss format.
     """
     from datetime import datetime
     return datetime.now().strftime("%Y%m%d%H%M%S")
@@ -193,14 +191,10 @@ def save_protein_ids_and_embeddings(
     hidden_dim: int,
 ) -> tuple[str, str]:
     """
-    新逻辑：
-    1. 将蛋白ID保存到 {file_key}_ids.xlsx（追加模式）
-    2. 将对应特征保存到 {file_key}_embeddings_{timestamp}.npz
-       NPZ内包含：
-       - 'ids': 蛋白ID数组
-       - 'embeddings': 特征数组（N x hidden_dim）
+    Append protein IDs to ``{file_key}_ids.xlsx`` and save the corresponding
+    ID and embedding arrays to ``{file_key}_embeddings_{timestamp}.npz``.
 
-    返回：(npz_path, ids_excel_path)
+    Returns the NPZ and ID-table paths.
     """
     if new_df.empty:
         return "", ""
@@ -212,17 +206,17 @@ def save_protein_ids_and_embeddings(
     timestamp = get_timestamp_suffix()
     npz_path = os.path.join(tmp_dir, f"{file_key}_embeddings_{timestamp}.npz")
 
-    # 1) 提取蛋白ID
+    # Extract protein IDs.
     protein_ids = new_df["ID"].astype(str).tolist()
 
-    # 2) 提取特征
+    # Extract feature vectors.
     feature_columns = [f"ProteinGLM_mean_{k}" for k in range(hidden_dim)]
     embeddings = new_df[feature_columns].to_numpy(dtype=np.float32)
 
-    # 3) 保存蛋白ID到Excel（追加模式）
+    # Append new protein IDs to the Excel table.
     if os.path.isfile(ids_excel_path):
         existing_ids_df = pd.read_excel(ids_excel_path)
-        # 去重：只保留新的ID
+        # Retain only previously unseen IDs.
         new_id_strs = set(protein_ids)
         existing_id_strs = set(existing_ids_df["ID"].astype(str).tolist())
         truly_new_ids = list(new_id_strs - existing_id_strs)
@@ -239,7 +233,7 @@ def save_protein_ids_and_embeddings(
         ids_df.to_excel(ids_excel_path, index=False)
         print(f"[{file_key}] Created new IDs Excel: {ids_excel_path} (rows={len(ids_df)})")
 
-    # 4) 保存特征到NPZ（NPZ内部包含ID和特征的对应关系）
+    # Store IDs and embeddings together in NPZ format.
     np.savez(
         npz_path,
         ids=protein_ids,
@@ -252,7 +246,7 @@ def save_protein_ids_and_embeddings(
 
 def get_hidden_dim_from_npz(tmp_dir: str, file_key: str) -> Optional[int]:
     """
-    只加载第一个NPZ文件来推断 hidden_dim，无需加载所有特征。
+    Infer hidden_dim from the first NPZ file.
     """
     import glob
 
@@ -274,22 +268,11 @@ def merge_npz_to_final_npy(
     hidden_dim: int,
 ) -> None:
     """
-    直接合并所有NPZ文件到最终NPY，按NPZ合并的顺序保存final_ids。
+    Merge timestamped NPZ files into the final NPY matrix in sorted file order.
 
-    流程：
-    1. 扫描所有 {file_key}_embeddings_*.npz 文件（按时间戳排序）
-    2. 按加载顺序拼接特征 → {file_key}.npy
-    3. 按加载顺序保存蛋白ID → {file_key}_final_ids.xlsx
-       - Row_Index: NPY文件中的行号 (0-indexed)
-       - ID: 对应的蛋白ID
-    4. 校验：合并后的所有ID是否与{file_key}_ids.xlsx一致（集合相等）
-    5. 若一致，删除临时ID文件 {file_key}_ids.xlsx
-    6. NPZ文件保留在tmp/目录
-
-    优势：
-    - ✅ 完全独立，不依赖FASTA文件
-    - ✅ 完全按NPZ实际合并顺序输出
-    - ✅ final_ids.xlsx与.npy行号完全对应
+    Save protein IDs in the same order to ``{file_key}_final_ids.xlsx`` and
+    verify their set against the temporary ID table. The NPZ files remain in
+    the tmp directory.
     """
     import glob
 
@@ -297,7 +280,7 @@ def merge_npz_to_final_npy(
     npy_path = os.path.join(save_path, f"{file_key}.npy")
     final_ids_excel_path = os.path.join(save_path, f"{file_key}_final_ids.xlsx")
 
-    # 1. 扫描所有NPZ文件
+    # Find timestamped NPZ files.
     npz_pattern = os.path.join(tmp_dir, f"{file_key}_embeddings_*.npz")
     npz_files = sorted(glob.glob(npz_pattern))
 
@@ -309,7 +292,7 @@ def merge_npz_to_final_npy(
     for npz_file in npz_files:
         print(f"  - {os.path.basename(npz_file)}")
 
-    # 2. 按NPZ顺序加载并拼接特征和ID
+    # Load embeddings and IDs in NPZ order.
     all_embeddings = []
     all_ids = []
 
@@ -322,12 +305,12 @@ def merge_npz_to_final_npy(
             all_ids.append(str(protein_id))
             all_embeddings.append(embedding)
 
-    # 3. 保存最终NPY
+    # Save the final embedding matrix.
     final_array = np.array(all_embeddings, dtype=np.float32)
     np.save(npy_path, final_array)
     print(f"[{file_key}] ✓ Final NPY saved: {npy_path}, shape={final_array.shape}")
 
-    # 4. 保存final_ids.xlsx（与NPY行号完全对应）
+    # Save IDs in row order matching the NPY matrix.
     final_ids_df = pd.DataFrame({
         "Row_Index": range(len(all_ids)),
         "ID": all_ids
@@ -335,35 +318,35 @@ def merge_npz_to_final_npy(
     final_ids_df.to_excel(final_ids_excel_path, index=False)
     print(f"[{file_key}] ✓ Final IDs saved: {final_ids_excel_path}, rows={len(final_ids_df)}")
 
-    # 5. 校验：合并的ID是否与临时ID文件一致
+    # Validate IDs against the temporary ID table.
     if os.path.isfile(ids_excel_path):
         ids_df = pd.read_excel(ids_excel_path)
         temp_ids = set(ids_df["ID"].astype(str).tolist())
         merged_ids = set(all_ids)
 
         if temp_ids == merged_ids:
-            print(f"[{file_key}] ✓ ID校验通过：已合并的ID集合与临时ID文件一致")
-            print(f"    - 临时ID数量: {len(temp_ids)}")
-            print(f"    - 合并后ID数量: {len(merged_ids)}")
+            print(f"[{file_key}] ID validation passed")
+            print(f"    - Temporary IDs: {len(temp_ids)}")
+            print(f"    - Merged IDs: {len(merged_ids)}")
 
-            # 删除临时ID文件
+            # Remove the temporary ID table after successful validation.
             os.remove(ids_excel_path)
             print(f"[{file_key}] ✓ Removed temporary IDs file: {ids_excel_path}")
         else:
-            print(f"[{file_key}] ⚠️ 警告：ID不一致！")
-            print(f"    - 临时ID数量: {len(temp_ids)}")
-            print(f"    - 合并后ID数量: {len(merged_ids)}")
+            print(f"[{file_key}] Warning: ID sets do not match")
+            print(f"    - Temporary IDs: {len(temp_ids)}")
+            print(f"    - Merged IDs: {len(merged_ids)}")
             missing_in_merged = temp_ids - merged_ids
             extra_in_merged = merged_ids - temp_ids
             if missing_in_merged:
-                print(f"    - 临时文件中有但合并中没有的ID({len(missing_in_merged)}个): {list(missing_in_merged)[:5]}")
+                print(f"    - Missing from merged output ({len(missing_in_merged)}): {list(missing_in_merged)[:5]}")
             if extra_in_merged:
-                print(f"    - 合并中有但临时文件中没有的ID({len(extra_in_merged)}个): {list(extra_in_merged)[:5]}")
+                print(f"    - Absent from temporary table ({len(extra_in_merged)}): {list(extra_in_merged)[:5]}")
     else:
-        print(f"[{file_key}] 注意：临时ID文件不存在 ({ids_excel_path})，跳过ID校验")
+        print(f"[{file_key}] Temporary ID table not found; skipping validation: {ids_excel_path}")
 
     print(f"[{file_key}] ✓ Processing of {file_key} COMPLETED!")
-    print(f"[{file_key}] 最终输出文件：")
+    print(f"[{file_key}] Final output files:")
     print(f"  - NPY: {npy_path}")
     print(f"  - Final IDs: {final_ids_excel_path}")
 
@@ -374,7 +357,7 @@ def main() -> None:
     tmp_dir = os.path.join(args.save_path, "tmp")
     os.makedirs(tmp_dir, exist_ok=True)
 
-    # 1. 准备模型与 tokenizer
+    # Prepare the model and tokenizer.
     tokenizer = AutoTokenizer.from_pretrained(
         args.model_path,
         trust_remote_code=True,
@@ -394,7 +377,7 @@ def main() -> None:
     model.to(device)
     model.eval()
 
-    # 2. 读取 FASTA 目录
+    # Read the FASTA directory.
     fasta_dir = args.open_path
     protein_sequence_dict = load_fasta_directory(fasta_dir)
 
@@ -406,14 +389,14 @@ def main() -> None:
             print(f"[{file_key}] No sequences found, skip.")
             continue
 
-        # 原始 meta 信息
+        # Preserve source metadata and row order.
         df = df.copy()
         df["Calculated_Length"] = df["Sequence"].apply(len)
         df = df.reset_index(drop=True)
         df["orig_idx"] = df.index
         df["ID_str"] = df["ID"].astype(str)
 
-        # 3. 读取已经完成的结果，用于断点续跑（从 {file_key}_ids.xlsx 读取）
+        # Read completed IDs for resumable extraction.
         done_ids: set = set()
         hidden_dim: Optional[int] = None
 
@@ -424,7 +407,7 @@ def main() -> None:
             done_ids = set(ids_df["ID"].astype(str).tolist())
             print(f"[{file_key}] Found existing IDs file with {len(done_ids)} completed sequences.")
 
-            # 只推断一次 hidden_dim（从第一个NPZ读取）
+            # Infer hidden_dim once from the first NPZ file.
             hidden_dim = get_hidden_dim_from_npz(tmp_dir, file_key)
             if hidden_dim:
                 print(f"[{file_key}] Detected hidden_dim = {hidden_dim} from NPZ files.")
@@ -433,13 +416,13 @@ def main() -> None:
         else:
             print(f"[{file_key}] No existing IDs file, start from scratch.")
 
-        # 4. 确定本轮需要推理的蛋白（按 ID 去重）
+        # Select unprocessed proteins by ID.
         todo_mask = ~df["ID_str"].isin(done_ids)
         todo_df = df[todo_mask].copy()
 
         if todo_df.empty:
             print(f"[{file_key}] All sequences already processed, skip inference.")
-            # 尝试合并NPZ到最终NPY（如果hidden_dim已知）
+            # Merge NPZ files when hidden_dim is available.
             if hidden_dim:
                 merge_npz_to_final_npy(
                     save_path=args.save_path,
@@ -464,7 +447,7 @@ def main() -> None:
         length_for_batch = todo_df["Calculated_Length"].tolist()
         orig_idx_for_batch = todo_df["orig_idx"].tolist()
 
-        # 用于累积本轮尚未 flush 的新结果
+        # Accumulate records until the next flush.
         pending_records: List[Dict] = []
         newly_processed_count = 0
 
@@ -502,12 +485,12 @@ def main() -> None:
                     pad_id=pad_token_id,
                 )
 
-                # 推断 hidden_dim
+                # Infer hidden_dim from the first processed batch.
                 if hidden_dim is None:
                     hidden_dim = len(batch_mean_features[0])
                     print(f"[{file_key}] Detected hidden_dim = {hidden_dim}")
 
-                # 构建当前 batch 的记录（避免用 index()，直接 zip）
+                # Build batch records directly with zip.
                 for bid, binfo, blen, bidx, feat, bseq in zip(
                     batch_ids,
                     batch_infos,
@@ -534,7 +517,7 @@ def main() -> None:
                     torch.cuda.empty_cache()
                     torch.cuda.synchronize()
 
-                # 每累计到 save_every_n 个新蛋白，就 flush 一次到NPZ和ID Excel
+                # Flush every save_every_n newly processed proteins.
                 if newly_processed_count >= args.save_every_n:
                     new_df = pd.DataFrame(pending_records)
                     npz_path, ids_excel_path = save_protein_ids_and_embeddings(
@@ -543,11 +526,11 @@ def main() -> None:
                         new_df=new_df,
                         hidden_dim=hidden_dim,
                     )
-                    # 清空 pending，计数归零
+                    # Reset the pending buffer and counter.
                     pending_records = []
                     newly_processed_count = 0
 
-            # 循环结束后，可能还有不足 save_every_n 的尾巴
+            # Flush the final partial buffer.
             if pending_records:
                 new_df = pd.DataFrame(pending_records)
                 npz_path, ids_excel_path = save_protein_ids_and_embeddings(
@@ -559,7 +542,7 @@ def main() -> None:
                 pending_records = []
                 newly_processed_count = 0
 
-        # 每个 file_key 完成一次推理后，检查是否全部完成，如果是则合并NPZ到最终NPY
+        # Merge all NPZ files after processing this FASTA table.
         if hidden_dim:
             merge_npz_to_final_npy(
                 save_path=args.save_path,

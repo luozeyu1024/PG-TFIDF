@@ -14,4 +14,4 @@ The GPT and Qwen scripts support JSON, Excel and NPZ outputs. NPZ is preferred f
 
 `STATE_tok_5120_Emb.h5ad` has genes as observations and 5,120 embedding dimensions as variables. The AnnData metadata records STATE as the source and ESM2-15B as the protein representation model.
 
-Generated matrices can be large. Store them outside the Git repository and record their SHA-256 checksums in the analysis manifest.
+Protein representation matrices are written to the output directory specified by the command.

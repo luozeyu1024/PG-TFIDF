@@ -27,11 +27,11 @@ Archaea, Bacteria and Eukaryota are taxonomic domains rather than individual spe
 
 ### Functional-cluster annotation
 
-`functional_annotations/state_gene_knn_leiden_clusters.xlsx` contains the cluster assignments supplied to the annotation workflow. `state_gene_knn_leiden_clusters_cluster_function_annotations.json` contains the corresponding Claude Sonnet cluster-function annotations. These files describe cluster-level functional context; they are not protein language-model embeddings.
+`functional_annotations/state_gene_knn_leiden_clusters.xlsx` contains the cluster assignments used for functional annotation. `state_gene_knn_leiden_clusters_cluster_function_annotations.json` contains the corresponding cluster-function annotations produced with Claude Sonnet 4.6.
 
-## Representations not included
+## Representation sources
 
-Full ESM2, ESMC, PAIR, xTrimoPGLM, GenePT and STATE representation matrices are omitted because of their size. Use [`protein-representation-generation`](../protein-representation-generation/) to reproduce the sequence- and GO-derived protein representations.
+ESM2, ESMC, PAIR and xTrimoPGLM representations can be calculated with [`protein-representation-generation`](../protein-representation-generation/). GenePT and STATE resources are available from their model repositories.
 
 For GenePT, use the released NCBI gene summaries and pretrained embeddings from the [GenePT repository](https://github.com/yiqunchen/GenePT). The repository notebooks `request_ncbi_text_for_genes.ipynb` and `gene_embeddings_examples.ipynb` document regeneration from NCBI summaries. Preserve the gene identifier order when converting the downloaded dictionaries to NPZ.
 

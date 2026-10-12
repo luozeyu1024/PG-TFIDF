@@ -44,4 +44,4 @@ python protein-representation-generation/scripts/sequence/xTrimoPGLM_feature_ext
   --save_every_n 10
 ```
 
-Full-proteome extraction is a long GPU job. Run it in a persistent terminal and record the model revision, script checksum, pooling field and FASTA checksum with the resulting vectors.
+For full-proteome extraction, use a persistent terminal. Save the model revision, pooling field and FASTA version with the output.

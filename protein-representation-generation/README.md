@@ -7,7 +7,7 @@ This module documents the two protein-representation routes used by the study.
 
 These routes produce different representations and should not be treated as interchangeable. The module also provides the conversion used to export the 5,120-dimensional protein table supplied with STATE.
 
-The scripts are retained from the selected local analysis code. Always supply explicit input, output and model paths; workstation defaults in the source files are not portable.
+Supply the input directory, output directory and model location explicitly in each command.
 
 ## Sequence representations
 
@@ -43,11 +43,11 @@ The ESMC scripts require a local ESMC weight file and tokenizer path. The xTrimo
 
 GO text embedding is a separate workflow. `step1_protein_GO_JSON_preprocessed.py` converts the `Entry` and `Gene Ontology (GO)` columns from the bundled UniProt Excel files into JSON. The GPT and Qwen batch scripts then encode strings consisting of a UniProt identifier and its GO annotation.
 
-Do not place credentials in commands, notebooks or Markdown files. Pass the API key from an environment variable. See [`docs/go-text-embedding-workflow.md`](docs/go-text-embedding-workflow.md).
+Pass API credentials through environment variables as shown in [`docs/go-text-embedding-workflow.md`](docs/go-text-embedding-workflow.md).
 
 ## STATE 5,120-dimensional protein table
 
-`scripts/state/STATE_tok_5120_Emb_extract.py` reads `protein_embeddings.pt` from the official STATE SE-600M release and writes `STATE_tok_5120_Emb.h5ad`. The rows are genes and the columns are 5,120 ESM2-15B protein features. This derived file is intentionally not included in the repository.
+`scripts/state/STATE_tok_5120_Emb_extract.py` reads `protein_embeddings.pt` from the STATE SE-600M release and writes `STATE_tok_5120_Emb.h5ad`, `gene_list.txt` and `gene_embedding_metadata.md`. The matrix rows are genes and the columns are 5,120 ESM2-15B protein features.
 
 ## Data
 

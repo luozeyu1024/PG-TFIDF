@@ -1,22 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-excel_to_json.py  v5  2025-06-26
-
-功能
-------
-1. 扫描指定目录 (open_path) 下所有 .xls / .xlsx 文件。
-2. 抽取两列 (默认: protein_ID, GO_annotation；可用 CLI 覆盖)：
-      --protein_ID      作为字典键列，缺省值 "protein_ID"
-      --GO_annotation   作为字典值列，缺省值 "GO_annotation"
-3. 值列缺失 / 为空白时填充字符串 "Unknow"。
-4. 以“原文件名(去扩展名).json”保存到 save_path。
-
-示例
-------
-python excel_to_json.py --open_path ./open_path --save_path ./save_path
-python excel_to_json.py -i ./open_path -o ./save_path --protein_ID Accession --GO_annotation GO
-"""
+"""Convert selected columns from Excel workbooks to JSON mappings."""
 
 from __future__ import annotations
 
@@ -30,7 +14,7 @@ import pandas as pd
 
 
 class ExcelToJsonConverter:
-    """Excel ➜ JSON 转换器."""
+    """Convert Excel tables to JSON mappings."""
 
     def __init__(self,
                  open_path: Path,
@@ -47,7 +31,7 @@ class ExcelToJsonConverter:
 
     # ------------------------- public API ------------------------- #
     def run(self) -> None:
-        """遍历 Excel 文件并导出 JSON。"""
+        """Convert every Excel workbook in the input directory."""
         for excel in self._find_excels():
             df = self._read_excel(excel)
             mapping = self._build_mapping(df, excel)
@@ -63,11 +47,11 @@ class ExcelToJsonConverter:
 
     def _find_excels(self) -> List[Path]:
         excels = sorted(self.open_path.glob("*.xls*"))
-        logging.info("在 %s 找到 %d 个 Excel 文件", self.open_path, len(excels))
+        logging.info("Found %d Excel files in %s", len(excels), self.open_path)
         return excels
 
     def _read_excel(self, file: Path) -> pd.DataFrame:
-        logging.info("读取 %s", file.name)
+        logging.info("Reading %s", file.name)
         try:
             df = pd.read_excel(file, dtype=str, engine="openpyxl")
         except ValueError:
@@ -75,12 +59,12 @@ class ExcelToJsonConverter:
 
         missing = {c for c in [self.key_col, self.val_col] if c not in df.columns}
         if missing:
-            raise KeyError(f"{file}: 缺少列 {missing}")
+            raise KeyError(f"{file}: missing columns {missing}")
 
         return df[[self.key_col, self.val_col]]
 
     def _build_mapping(self, df: pd.DataFrame, file: Path) -> Dict[str, str]:
-        # 填充缺失/空白值
+        # Replace missing or blank annotation values.
         df[self.val_col] = (
             df[self.val_col]
             .fillna("Unknow")
@@ -89,14 +73,16 @@ class ExcelToJsonConverter:
 
         dup_cnt = df[self.key_col].duplicated().sum()
         if dup_cnt:
-            logging.warning("%s 出现 %d 个重复 %s，将以最后一个值为准",
-                            file.name, dup_cnt, self.key_col)
+            logging.warning(
+                "%s contains %d duplicate %s values; the last value is retained",
+                file.name, dup_cnt, self.key_col,
+            )
 
         return dict(df.values.tolist())
 
     def _write_json(self, mapping: Dict[str, str], stem: str) -> None:
         outfile = self.save_path / f"{stem}.json"
-        logging.info("写入 %s (共 %d 对)", outfile.name, len(mapping))
+        logging.info("Writing %s with %d entries", outfile.name, len(mapping))
         with outfile.open("w", encoding="utf-8") as fp:
             json.dump(mapping, fp, ensure_ascii=False, indent=2)
 
@@ -104,17 +90,15 @@ class ExcelToJsonConverter:
 # --------------------------- CLI glue --------------------------- #
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="批量将 Excel 中两列导出为 JSON (缺失值填 'Unknow').")
-    # open_path / save_path —— 与用户习惯保持一致
+        description="Export two Excel columns as JSON and fill missing values with 'Unknow'.")
     parser.add_argument("-i", "--open_path", required=True, dest="open_path",
-                        help="包含 Excel 文件的目录 (open_path)")
+                        help="Directory containing Excel workbooks")
     parser.add_argument("-o", "--save_path", required=True, dest="save_path",
-                        help="存放 JSON 的目录 (save_path)")
-    # 列名直接用目标列名作参数名
+                        help="Directory for JSON output")
     parser.add_argument("--protein_ID", default="protein_ID",
-                        help="键列名 (默认 protein_ID)")
+                        help="Key column name (default: protein_ID)")
     parser.add_argument("--GO_annotation", default="GO_annotation",
-                        help="值列名 (默认 GO_annotation)")
+                        help="Value column name (default: GO_annotation)")
     return parser.parse_args()
 
 

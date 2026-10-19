@@ -21,6 +21,8 @@ See [input formats](docs/input-formats.md) for matrix orientation, identifiers, 
 
 Small examples are included in each module's `examples/data/` to demonstrate file structure and command usage. Dataset accessions, download links, preprocessing details, annotation levels and model configurations are documented in the manuscript Supplementary Methods and summarized in [data and model resources](docs/data-and-model-resources.md).
 
+The [`tutorials`](tutorials/) directory covers human protein representations, the cell-embedding models summarized in Fig. 1, and manual or skill-based PG-TFIDF computation.
+
 ## Installation
 
 For PG-TFIDF construction, marker analysis, prompt preparation and analysis of existing embeddings, create the shared CPU environment from the repository root:

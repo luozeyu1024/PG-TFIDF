@@ -11,6 +11,7 @@ outputs are intentionally excluded from the public module.
 ```text
 skills/cell-cluster-marker-tfidf-analysis/  Complete PG-TFIDF/marker skill
 skills/RNAseq-data-preprocessed/            Complete RNA/ADT preprocessing skill
+skills/protein-gene-cell-emb-constructing/  Protein, gene and cell representation skill
 docs/workflow-and-reproducibility.md        Data-to-report workflow
 docs/experiment-parameters.md               Manuscript parameters and run design
 docs/expert-scoring.md                      Rubric and pooling definition
@@ -23,6 +24,11 @@ The skill scripts retain their original filenames. Two required imports,
 `top_gene_cell_embedding.py` and `gene_to_protein_embedding_mapper.py`, are
 placed at the root of the PG-TFIDF skill because its preset builders import
 them from that location.
+
+The representation skill reuses the canonical scripts in the protein- and
+cell-representation modules. Its `references/repository-script-map.md` records
+the repository path for each shared implementation so that differing copies
+of the same script are not distributed.
 
 ## Workflow
 

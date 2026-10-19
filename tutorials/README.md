@@ -5,3 +5,5 @@
 - [`pg-tfidf-computation-workflow.ipynb`](pg-tfidf-computation-workflow.ipynb): reconstruct PG-TFIDF manually, run the released scripts, and use the `cell-cluster-marker-tfidf-analysis` workflow.
 
 Dataset81 and SKCM_GSE115978_aPD1 workflow prompts are provided in [`pg-tfidf-agent-skill-prompts.md`](pg-tfidf-agent-skill-prompts.md).
+
+The three workflow skills used by these tutorials are available under [`agent-based-pg-tfidf-analysis-framework/skills`](../agent-based-pg-tfidf-analysis-framework/skills/).

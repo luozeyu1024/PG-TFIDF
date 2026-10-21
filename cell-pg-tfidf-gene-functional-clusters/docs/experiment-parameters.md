@@ -30,7 +30,7 @@
 
 ## Cluster-level prompt experiment
 
-These are experiment-time CLI overrides, not the historical script defaults.
+The three prompt modes use the publication settings below.
 
 | Parameter | Full prompt | No-TFIDF | TFIDF-only |
 |---|---:|---:|---:|

@@ -78,6 +78,7 @@ python scripts/prompt_annotation_full.py `
   --cell_emb_analysis_results_xlsx "<marker_results.xlsx>" `
   --cell_emb_down_markers_xlsx "<down_markers.xlsx>" `
   --cell_tfidf_stats_dir "<tfidf_analysis_output>" `
+  --cell_id_col Cell_ID `
   --task_spec_json "<task_spec.json>" --prediction_task "cell_type_annotation" `
   --save_path "<prompt_output>" `
   --batch_size 100 --up_marker_top_n 30 --down_marker_top_n 8 `
@@ -87,11 +88,39 @@ python scripts/prompt_annotation_full.py `
   --temperature 0.0 --verbosity low
 ```
 
-Use `prompt_annotation_no_tfidf.py` and `prompt_annotation_tfidf_only.py` for the matched
-ablations; omit inputs that their respective `--help` output does not require and set
-`--verbosity low`.
+## 7. Marker/overlap-only ablation
 
-## 7. Map cluster predictions to cells
+```powershell
+python scripts/prompt_annotation_no_tfidf.py `
+  --cell_emb_cluster_labels_xlsx "<cell_clusters.xlsx>" `
+  --cell_emb_analysis_results_xlsx "<marker_results.xlsx>" `
+  --cell_emb_down_markers_xlsx "<down_markers.xlsx>" `
+  --cell_id_col Cell_ID `
+  --task_spec_json "<task_spec.json>" --prediction_task "cell_type_annotation" `
+  --save_path "<no_tfidf_output>" `
+  --batch_size 100 --up_marker_top_n 30 --down_marker_top_n 8 `
+  --max_overlap_items 3 --max_prompt_chars 990000 `
+  --model "anthropic/claude-sonnet-4.6" --max_output_tokens 120000 `
+  --temperature 0.0 --verbosity low
+```
+
+## 8. TF-IDF-only ablation
+
+```powershell
+python scripts/prompt_annotation_tfidf_only.py `
+  --protein_cluster_annotation_json "<functional_annotations.json>" `
+  --cell_emb_cluster_labels_xlsx "<cell_clusters.xlsx>" `
+  --cell_tfidf_stats_dir "<tfidf_analysis_output>" `
+  --cell_id_col Cell_ID `
+  --task_spec_json "<task_spec.json>" --prediction_task "cell_type_annotation" `
+  --save_path "<tfidf_only_output>" `
+  --batch_size 100 --tfidf_top_n_per_metric 30 `
+  --max_prompt_protein_clusters 100 --max_prompt_chars 990000 `
+  --model "anthropic/claude-sonnet-4.6" --max_output_tokens 120000 `
+  --temperature 0.0 --verbosity low
+```
+
+## 9. Map cluster predictions to cells
 
 ```powershell
 python scripts/cluster_prediction_to_cell.py `
@@ -102,7 +131,7 @@ python scripts/cluster_prediction_to_cell.py `
   --cluster_cols "Louvain_Cluster,Kmeans_Cluster"
 ```
 
-## 8. Evaluate cell annotation
+## 10. Evaluate cell annotation
 
 Run once per prediction column, for example Louvain and K-means:
 

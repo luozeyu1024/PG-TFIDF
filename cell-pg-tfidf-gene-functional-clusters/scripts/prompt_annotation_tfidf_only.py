@@ -248,7 +248,7 @@ class OpenRouterConfig:
     api_key: str
     model: str
     base_url: str = "https://openrouter.ai/api/v1"
-    max_output_tokens: int = 1600
+    max_output_tokens: int = 120000
     temperature: float = 0.0
     verbosity: Optional[str] = None
     disable_schema: bool = False
@@ -1687,21 +1687,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prediction_task", type=str, default=None)
     parser.add_argument("--save_path", type=str, required=True)
 
-    parser.add_argument("--tfidf_top_n_per_metric", type=int, default=12)
-    parser.add_argument("--max_prompt_protein_clusters", type=int, default=30)
+    parser.add_argument("--tfidf_top_n_per_metric", type=int, default=30)
+    parser.add_argument("--max_prompt_protein_clusters", type=int, default=100)
     parser.add_argument(
         "--batch_size",
         type=int,
-        default=None,
+        default=100,
         help=(
-            "Number of clusters per LLM request. If omitted, <=0, or > total clusters, "
-            "all clusters are sent together first; oversized batches are auto-split."
+            "Number of clusters per LLM request. Values <=0 or above the total cluster count "
+            "use all clusters; oversized batches are auto-split."
         ),
     )
     parser.add_argument(
         "--max_prompt_chars",
         type=int,
-        default=250000,
+        default=990000,
         help="If the batch user prompt exceeds this character limit, the batch is automatically split.",
     )
 
@@ -1717,9 +1717,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--api_key", type=str, default=None)
     parser.add_argument("--api_key_env", type=str, default="OPENROUTER_API_KEY")
     parser.add_argument("--model", type=str, default="anthropic/claude-sonnet-4.6")
-    parser.add_argument("--max_output_tokens", type=int, default=1600)
+    parser.add_argument("--max_output_tokens", type=int, default=120000)
     parser.add_argument("--temperature", type=float, default=0.0)
-    parser.add_argument("--verbosity", type=str, default="medium", choices=["low", "medium", "high", "max"])
+    parser.add_argument("--verbosity", type=str, default="low", choices=["low", "medium", "high", "max"])
     parser.add_argument("--disable_schema", action="store_true")
     parser.add_argument("--disable_response_healing", action="store_true")
     parser.add_argument("--timeout_connect_sec", type=int, default=10)

@@ -23,7 +23,7 @@ docs/reproducibility-notes.md    Reproduction logic and validation expectations
 docs/cell-annotation-evaluation.md Cluster-to-cell mapping and evaluation metrics
 examples/commands.md             Credential-safe example commands
 examples/data/                   Small, internally aligned data subsets for smoke runs
-environment.yml                  Conda environment specification (runtime validation pending)
+environment.yml                  Conda environment specification
 requirements.txt                 Equivalent pip requirements
 ```
 

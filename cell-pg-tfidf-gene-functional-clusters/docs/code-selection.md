@@ -3,7 +3,7 @@
 | Method component | Included file | Selection rationale |
 |---|---|---|
 | Gene clustering | `scripts/gene_clustering.py` | Current non-backup Leiden implementation with input validation and centroid representative selection. |
-| Functional annotation | `scripts/cluster_function_annotation.py` | Exact original OpenRouter annotator; the selected command explicitly overrides the model to Claude Sonnet 4.6. |
+| Functional annotation | `scripts/cluster_function_annotation.py` | OpenRouter annotator using Claude Sonnet 4.6 by default. |
 | PG-TFIDF construction | `scripts/build_cell_pg_tfidf.py` | Exact script referenced by the selected `exp.md`; it expects a prepared HVG h5ad. |
 | PG-TFIDF dependency | `scripts/top_gene_cell_embedding.py` | Exact original dependency used for h5ad loading and top-gene selection. |
 | PG-TFIDF dependency | `scripts/gene_to_protein_embedding_mapper.py` | Exact original HGNC/gene-to-protein mapping dependency. |

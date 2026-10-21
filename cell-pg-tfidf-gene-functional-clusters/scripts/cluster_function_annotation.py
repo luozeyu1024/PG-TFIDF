@@ -262,6 +262,9 @@ def _normalize_final_cluster_obj(obj: Dict[str, Any], cluster_id: str, cluster_s
     for k in [
         "key_genes_or_proteins",
         "cell_type_relevance",
+        "cell_tissue_of_origin_prediction_relevance",
+        "cancer_cell_type_prediction_relevance",
+        "cell_malignancy_status_prediction_relevance",
         "drug_sensitivity_relevance",
         "perturbation_modeling_relevance",
         "qc_warnings",
@@ -708,7 +711,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--cluster_entity_id_col", type=str, default="protein_id", help="Entity ID column name (gene_id/protein_id)")
     p.add_argument("--cluster_rep_id_col", type=str, default=None, help="Representative column name (optional)")
 
-    p.add_argument("--model", type=str, default="deepseek/deepseek-v3.2", help="OpenRouter model")
+    p.add_argument("--model", type=str, default="anthropic/claude-sonnet-4.6", help="OpenRouter model")
     p.add_argument("--fallback_model", type=str, default="anthropic/claude-sonnet-4.6", help="Fallback model")
     p.add_argument("--enable_fallback", action="store_true", help="Enable fallback")
 

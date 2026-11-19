@@ -50,6 +50,8 @@ The core builder expects an existing HVG subset; its top-100 selection ranks exp
 
 ## Reproduction and interpretation
 
+See [the prompt map](docs/prompts.md) for each annotation level, the exact Python functions and ablation differences. [Fine-tuning data preparation](esm2-lora-finetuning-protein-level-evaluation/docs/finetuning-data-preparation.md) connects upstream processing to the [full available Human localization inputs](esm2-lora-finetuning-protein-level-evaluation/data/training-inputs/README.md).
+
 Always preserve the cell order attached to an embedding matrix. After QC, use the processed cell identifiers exported by that model, not the original unfiltered matrix. Keep the original label ontology and mapping files for external transfer; report closed-set and open-set evaluations separately.
 
 Generating cluster annotations requires an OpenRouter credential and the model identifier specified in Supplementary Methods. Agent interpretation additionally uses the agent runtime, source literature and dataset context described in the corresponding module.

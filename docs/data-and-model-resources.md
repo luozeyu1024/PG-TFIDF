@@ -1,5 +1,7 @@
 # Data and model resources
 
+For protein adaptation, [fine-tuning data preparation](../esm2-lora-finetuning-protein-level-evaluation/docs/finetuning-data-preparation.md) describes the structural-label conversion, localization matching and fold requirements. [Complete available Human localization input tables](../esm2-lora-finetuning-protein-level-evaluation/data/training-inputs/README.md) contain 18,352 proteins before training filters; they are distinct from the raw 18,432-entry human UniProt snapshot below.
+
 Complete dataset dimensions, annotation levels, validation splits, model settings and preprocessing details are provided in the manuscript Supplementary Methods. This page summarizes the source resources and the corresponding repository inputs.
 
 ## Cell datasets

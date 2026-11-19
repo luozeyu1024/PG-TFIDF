@@ -14,7 +14,7 @@ This module links the protein-level workflows used for TM-score regression, subc
 - Energy-distance plotting is included. The original energy-distance calculator is not released here because its tiled within-sample sums omit cross-block pairs when a group exceeds one block.
 - The frozen-feature dehomologized evaluator is not released because its validation-list positions can be applied directly to a differently ordered feature matrix. Training and LoRA evaluation remain included.
 
-The package does not include model weights, complete embedding matrices, full experimental datasets, or generated results.
+Complete available Human Swiss-Prot sequence and localization-label input tables are provided under [data/training-inputs](data/training-inputs/README.md). See [data preparation](docs/finetuning-data-preparation.md) for upstream processing and full-table training commands. Model weights, full embedding matrices, complete structural training matrices, original full Human fold definitions and generated results are separate assets.
 
 ## Installation
 

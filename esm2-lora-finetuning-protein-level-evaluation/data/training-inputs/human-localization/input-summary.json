@@ -1,0 +1,38 @@
+{
+  "sequence_rows": 18352,
+  "label_rows": 18352,
+  "matching_ids": 18352,
+  "sequence_ids_unique": true,
+  "label_ids_unique": true,
+  "missing_sequences": 0,
+  "missing_localization_text": 2375,
+  "label_names": [
+    "Cell junction",
+    "Cell membrane",
+    "Cell projection",
+    "Cytoplasm",
+    "Endoplasmic reticulum",
+    "Golgi apparatus",
+    "Lysosome",
+    "Mitochondrion",
+    "Nucleus",
+    "Secreted",
+    "cytoskeleton"
+  ],
+  "label_columns_binary": true,
+  "zero_label_rows": 3455,
+  "positive_counts": {
+    "Cell junction": 382,
+    "Cell membrane": 3408,
+    "Cell projection": 1030,
+    "Cytoplasm": 6310,
+    "Endoplasmic reticulum": 1408,
+    "Golgi apparatus": 976,
+    "Lysosome": 440,
+    "Mitochondrion": 1328,
+    "Nucleus": 5558,
+    "Secreted": 1985,
+    "cytoskeleton": 1390
+  },
+  "original_full_training_folds_available": false
+}

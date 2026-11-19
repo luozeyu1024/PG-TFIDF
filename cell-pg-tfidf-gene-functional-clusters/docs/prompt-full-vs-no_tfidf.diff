@@ -1,0 +1,145 @@
+--- prompt_annotation_full.py:build_system_prompt
++++ prompt_annotation_no_tfidf.py:build_system_prompt
+@@ -1,5 +1,4 @@
+-def build_system_prompt(task_spec: SingleTaskSpec, canonical_marker_obj: Dict[str, Any]) -> str:
+-    canonical_marker_context = build_canonical_marker_context(canonical_marker_obj, task_spec)
++def build_system_prompt(task_spec: SingleTaskSpec) -> str:
+     candidate_str = json.dumps(task_spec.candidates, ensure_ascii=False)
+ 
+     few_shot_text = ""
+@@ -24,20 +23,6 @@
+             "- For each input cluster, return exactly one predicted_label.\n"
+         )
+ 
+-    if canonical_marker_context:
+-        canonical_marker_text = (
+-            "External canonical marker reference for this task "
+-            "(shared across all input clusters in the current request):\n"
+-            f"{json.dumps(canonical_marker_context, ensure_ascii=False)}\n"
+-            "- Treat this as auxiliary prior knowledge only.\n"
+-            "- Do not let it override direct same-view marker evidence from the current clusters.\n"
+-        )
+-    else:
+-        canonical_marker_text = (
+-            "No external canonical marker reference is provided for this task.\n"
+-            "- Reason conservatively from the provided cluster evidence and general biology only.\n"
+-        )
+-
+     prompt = f"""
+ You are a careful computational biology assistant for cluster-level single-cell interpretation.
+ 
+@@ -50,10 +35,7 @@
+ 2. cluster-level RNA downregulated markers
+ 3. cluster-level ADT upregulated markers
+ 4. cluster-level ADT downregulated markers
+-5. cluster-level protein-cluster TF-IDF statistics
+-6. cross-view overlap support from other clustering columns
+-7. batch-level shared protein-cluster annotation registry
+-8. external canonical marker reference, if provided externally
++5. cross-view overlap support from other clustering columns
+ 
+ How to interpret marker statistics:
+ - RNA up markers mainly use: logfoldchanges, pvals_adj, pct.1, pct.2
+@@ -63,84 +45,8 @@
+ - Large positive delta_pct strengthens "up in target cluster" interpretation.
+ - For down markers, a clearly negative effect size together with low pct.1 and higher pct.2 can support anti-marker reasoning.
+ 
+-TF-IDF protein-cluster origin and interpretation
+-
+-Background of the protein clusters:
+-
+-Human proteins were first represented using protein foundation-model embeddings, combining:
+-
+-- ESM-style sequence embeddings derived from protein amino-acid sequences
+-- GO-text–derived semantic embeddings capturing functional descriptions and biological context
+-
+-These embeddings were integrated to obtain high-dimensional representations of protein functional similarity.
+-
+-Using these representations:
+-
+-- A cosine-similarity k-nearest-neighbor graph was constructed across proteins.
+-- Leiden community detection was applied to this graph.
+-- The resulting communities form protein functional clusters, each representing a putative biological module such as:
+-  * signaling pathways
+-  * transcriptional programs
+-  * metabolic systems
+-  * cellular structures or complexes
+-  * lineage-associated gene modules
+-
+-In the current pipeline, protein-cluster annotations are provided once per batch in:
+-- shared_protein_cluster_registry
+-
+-Each cluster-specific payload then provides:
+-- cluster_tfidf_protein_evidence.protein_cluster_programs
+-
+-Each protein_cluster_programs entry references a protein_cluster_id from the shared registry
+-and carries only the cluster-specific quantitative statistics for that protein cluster.
+-
+-The shared annotations summarize the biological interpretation of the protein module and may include:
+-- cluster functional title
+-- overall biological role
+-- representative genes or proteins
+-- cell-type relevance
+-- cancer or tissue relevance
+-- drug sensitivity implications
+-- perturbation modeling relevance
+-- quality control warnings
+-- confidence estimates
+-
+-These annotations represent prior biological interpretation of the protein module and should be treated as contextual knowledge for interpreting TF-IDF statistics.
+-
+-How TF-IDF cluster statistics are generated
+-
+-For each single cell, gene or protein features are mapped to their corresponding protein functional clusters.
+-
+-A cell × protein-cluster matrix is constructed using TF-IDF weighting, where:
+-
+-- TF (term frequency) represents how strongly a cluster is represented in a given cell
+-- IDF (inverse document frequency) down-weights clusters that are globally common across many cells
+-
+-Thus:
+-- TF-IDF highlights clusters that are distinctive for a specific cell relative to the global population.
+-
+-When cells are grouped into a cell cluster, several statistics are computed:
+-
+-profile_value
+-Average TF-IDF weight of the protein cluster across cells in the target cell cluster
+-→ indicates how strongly the biological program is represented
+-
+-presence_value
+-Fraction of cells in the target cluster where the protein cluster is detected
+-→ indicates how broadly the program is used across the cluster
+-
+-specificity_value
+-Enrichment of the protein cluster relative to the global background
+-→ indicates whether the program is specific to this cluster
+-
+-global_frequency / global_mean_tfidf / global_variance
+-Background statistics across all cells
+-
+-These statistics together represent the functional program composition of the cell cluster.
+-
+ Decision hierarchy:
+ - Same-view RNA/ADT markers are the primary evidence.
+-- Same-view TF-IDF protein-cluster evidence is major secondary biological support.
+ - Cross-view overlap support is supra-cluster / supercluster support only; it should not override direct marker evidence.
+ - Do NOT use any real labels or hidden ground truth.
+ 
+@@ -150,9 +56,6 @@
+ - Do not add extra records.
+ - Do not omit records.
+ 
+-Canonical marker rule:
+-- This runtime does not perform live web search during prediction.
+-- The external canonical marker reference, if provided, is embedded once in this system prompt.
+ Important downregulated-marker caution:
+ - Need to be explicit: first, downregulated markers are more vulnerable to technical noise, especially with scRNA-seq dropout.
+ - Therefore, downregulated evidence should not rely on a single gene alone.
+@@ -172,7 +75,6 @@
+ Additional global instructions:
+ {task_spec.global_system_instructions}
+ {few_shot_text}
+-{canonical_marker_text}
+ """.strip()
+ 
+     return prompt

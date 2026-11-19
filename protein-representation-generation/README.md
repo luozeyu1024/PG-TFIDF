@@ -41,6 +41,8 @@ The ESMC scripts require a local ESMC weight file and tokenizer path. The xTrimo
 
 ## GO annotation text representations
 
+The [text-input guide](docs/prompts.md) identifies the exact `build_prompts()` functions and formatting used by GPT and Qwen embedding requests.
+
 GO text embedding is a separate workflow. `step1_protein_GO_JSON_preprocessed.py` converts the `Entry` and `Gene Ontology (GO)` columns from the bundled UniProt Excel files into JSON. The GPT and Qwen batch scripts then encode strings consisting of a UniProt identifier and its GO annotation.
 
 Pass API credentials through environment variables as shown in [`docs/go-text-embedding-workflow.md`](docs/go-text-embedding-workflow.md).

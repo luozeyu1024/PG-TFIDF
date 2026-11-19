@@ -32,6 +32,8 @@ of the same script are not distributed.
 
 ## Workflow
 
+See [the prompt guide](docs/prompts.md) for dataset instructions, skill rules and their relationship to the Python evidence scripts.
+
 1. Convert or validate RNA/ADT inputs and aligned labels.
 2. Audit whether the RNA h5ad is already an HVG subset.
 3. Build cell-by-functional-cluster TF and TF-IDF matrices with `top_k=100`.

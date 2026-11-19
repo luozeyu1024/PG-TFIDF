@@ -6,11 +6,11 @@ protein/gene-cluster TF-IDF (PG-TFIDF) embeddings and the linked analyses.
 ## Workflow
 
 1. L2-normalize pretrained gene embeddings and cluster genes with a cosine kNN graph plus Leiden.
-2. Annotate each gene functional cluster through structured OpenRouter output.
+2. Annotate each gene functional cluster through structured OpenRouter output; see [the functional-cluster prompt](docs/prompts.md#functional-cluster-annotation).
 3. Select the 100 most highly expressed genes within the supplied HVG set for each cell, map genes to functional clusters, and construct row-L2-normalized TF and TF-IDF vectors.
 4. Aggregate cell PG-TFIDF weights by biological label or unsupervised cell cluster.
 5. Compute RNA/ADT one-vs-rest markers.
-6. Run the full cluster-annotation prompt, no-TFIDF ablation, or TFIDF-only ablation.
+6. Run the [full cluster-annotation prompt, no-TFIDF ablation, or TFIDF-only ablation](docs/prompts.md#cell-cluster-prediction). The guide links each Python function, task specification and complete system-template excerpt.
 7. Map cluster-level LLM labels back to cells and evaluate cell-type annotation predictions.
 
 ## Repository layout

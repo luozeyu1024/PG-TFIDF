@@ -1,5 +1,7 @@
 # Agent-based PG-TFIDF analysis framework
 
+See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+
 This repository module packages the skill-driven workflow used to combine
 cell-level PG-TFIDF functional-program evidence, RNA/ADT markers, cell-state
 context and literature-supported interpretation. The expert-evaluation design

@@ -30,7 +30,7 @@ machine-readable result tables.
 
 ## Run isolation
 
-- Kimi-code reports: `Results_1`, `Results_2`, `Results_3`.
-- Codex reports: `Results_4`, `Results_5`, `Results_6`.
+- Kimi Code (kimi 2.6) reports: `Results_1`, `Results_2`, `Results_3`.
+- Codex (GPT 5.5) reports: `Results_4`, `Results_5`, `Results_6`.
 - Clear prior conversational memory and do not share result files between runs.
 - Preserve raw agent outputs locally before expert review, outside the public module.

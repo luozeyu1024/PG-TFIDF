@@ -1,5 +1,7 @@
 # Cell embedding construction across representation models
 
+See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+
 This module collects the publication-facing wrappers and pooling scripts used to construct cell representations from raw RNA counts, CITE-seq RNA/ADT measurements, pretrained single-cell models, gene embeddings, and protein-derived gene embeddings.
 
 The Python files derive from the selected experiment records. The public maintenance update resolves preprocessing paths before changing directory and limits the Geneformer preview to available rows; numerical model operations are unchanged. Formula checks and local source paths are kept outside this folder under `local-audit-do-not-upload/`.
@@ -56,7 +58,7 @@ paired RNA + ADT
 | Gene2vec | 200-dimensional gene vectors; top 100 genes; mean pooling; unmatched genes skipped; all-unmatched cells become zero vectors |
 | totalVI | paired RNA/ADT; latent 40; hidden 256; 20 epochs; batch 128 |
 | ADT | no HVG step; top 100 measured features where applicable; cell-wise CLR for the direct baseline |
-| GenePT-s ADT | `text-embedding-3-large`; requested dimension 1,024; batch 32; 3-second inter-batch delay; credentials supplied only at runtime |
+| ADT_GenePT_s_GPT_large | `text-embedding-3-large`; requested dimension 1,024; batch 32; 3-second inter-batch delay; credentials supplied only at runtime |
 
 The commands in `examples/commands.md` make every command-line parameter explicit and document fixed wrapper defaults. Dataset90_2 and Dataset90_4 are the recorded exceptions that use `--skip_qc` in scVI/totalVI workflows. Zheng68K is used for most RNA examples; the scNET section records the GSE223779 and Dataset81_QC2 runs, and Dataset81 is also used where paired ADT is required.
 

@@ -19,7 +19,7 @@
 | Item | Setting |
 |---|---|
 | Datasets | Dataset81 and SKCM_GSE115978_aPD1 |
-| Agent families | Kimi Code and Codex |
+| Agent families | Kimi Code (kimi 2.6) and Codex (GPT 5.5), as recorded in Supplementary Methods Section 5.1 |
 | Runs | three independent runs per agent family and dataset |
 | Result mapping | Results_1–3: Kimi Code; Results_4–6: Codex |
 | Isolation | memory cleared; output directories isolated; no cross-run reads |

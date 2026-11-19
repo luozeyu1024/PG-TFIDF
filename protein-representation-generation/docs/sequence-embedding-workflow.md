@@ -12,7 +12,7 @@ Place one or more `.fasta` or `.fa` files in a directory. Each record must have 
 | ESM2-650M all-token | `ESM2_650M_all_token_feature_extraction_fasta.py` | the same ESM2 model and tokenizer |
 | ESMC-600M | `ESMC_600M_feature_extraction_fasta.py` | ESMC weights and an ESM tokenizer |
 | ESMC-600M all-token | `ESMC_600M_all_token_feature_extraction_fasta.py` | the same ESMC assets |
-| PAIR-ESM2 | `PAIR_feature_extraction_fasta.py` | ESM2-650M plus PAIR token assets |
+| PAIR (ESM2-650M backbone) | `PAIR_feature_extraction_fasta.py` | ESM2-650M plus PAIR token assets |
 | xTrimoPGLM-3B | `xTrimoPGLM_feature_extraction_fasta_interrupt_continue.py` | `biomap-research/proteinglm-3b-mlm` or a local copy |
 
 The pooled ESM2, ESMC and PAIR scripts request CLS, EOS, mean and ten segment-level summaries from the bundled feature-extractor helpers. The all-token scripts retain token-level outputs. xTrimoPGLM exports mean-pooled vectors and supports checkpointed continuation for long runs.

@@ -1,5 +1,7 @@
 # Prompt map
 
+See [analysis objects](manuscript-nomenclature.md#objects-and-statistical-units) for the distinction between functional clusters, cell clusters and cell-level evaluation.
+
 | Level | Purpose | Source and guide |
 |---|---|---|
 | Protein text input | Encode UniProt IDs and GO descriptions | [GO text input](../protein-representation-generation/docs/prompts.md) |

@@ -1,5 +1,7 @@
 # Output formats
 
+Object names follow [manuscript nomenclature](../../docs/manuscript-nomenclature.md): UniProt-indexed outputs are protein vectors, while `STATE_tok_5120_Emb.h5ad` is a gene-indexed ESM2-15B table. The STATE cell model produces a separate cell-by-feature matrix.
+
 ## Sequence models
 
 The pooled ESM2, ESMC and PAIR scripts write a NumPy matrix, an identifier/feature-column Excel table and a filtered input table for each FASTA file. Rows follow the retained FASTA record order. The all-token scripts write token-level representations and their matching identifiers.
@@ -10,7 +12,7 @@ xTrimoPGLM writes the final matrix as `.npy` and the retained identifiers as `_f
 
 The GPT and Qwen scripts support JSON, Excel and NPZ outputs. NPZ is preferred for downstream numerical analysis. The UniProt identifiers are stored in the same order as the embedding rows.
 
-## STATE protein table
+## ESM2-15B gene table supplied with STATE
 
 `STATE_tok_5120_Emb.h5ad` has genes as observations and 5,120 embedding dimensions as variables. The AnnData metadata records STATE as the source and ESM2-15B as the protein representation model.
 

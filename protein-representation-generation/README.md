@@ -1,5 +1,7 @@
 # Protein representation generation
 
+See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+
 This module documents the two protein-representation routes used by the study.
 
 1. Protein language models encode amino-acid sequences from FASTA files.
@@ -47,7 +49,7 @@ GO text embedding is a separate workflow. `step1_protein_GO_JSON_preprocessed.py
 
 Pass API credentials through environment variables as shown in [`docs/go-text-embedding-workflow.md`](docs/go-text-embedding-workflow.md).
 
-## STATE 5,120-dimensional protein table
+## ESM2-15B gene embedding table supplied with STATE
 
 `scripts/state/STATE_tok_5120_Emb_extract.py` reads `protein_embeddings.pt` from the STATE SE-600M release and writes `STATE_tok_5120_Emb.h5ad`, `gene_list.txt` and `gene_embedding_metadata.md`. The matrix rows are genes and the columns are 5,120 ESM2-15B protein features.
 

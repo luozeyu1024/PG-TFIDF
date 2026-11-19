@@ -1,5 +1,7 @@
 # Protein → Gene → Cell Embedding Pipelines
 
+Manuscript names and historical output aliases are mapped in [the nomenclature guide](../../../../docs/manuscript-nomenclature.md). `STATE_5120_emb` means the ESM2-15B static gene-vector source, not STATE cell inference. The NMF and other optional routes below are reusable capabilities; their presence does not make them part of the manuscript comparison.
+
 > Methods for converting protein-level language model embeddings into cell-level representations. All pipelines assume: **protein embedding (per gene) → gene selection / weighting → cell aggregation**.
 
 ---
@@ -136,7 +138,7 @@
 | Interpretable biology | `NMF` or `TF-IDF` key gene selection |
 | Maximum discrimination | `top_hvg_nmf_tfidf` combined |
 | Ablation / control | Raw expression concat (`top_gene_exp.npy`) |
-| Large model (STATE 5120-dim) | Any pipeline; 5120-dim is very expressive |
+| Static ESM2-15B gene vectors supplied with STATE | 5,120-dimensional gene-vector input; select the cell-construction route defined for the experiment |
 
 ---
 

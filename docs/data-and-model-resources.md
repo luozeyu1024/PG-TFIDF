@@ -1,5 +1,7 @@
 # Data and model resources
 
+Dataset-specific assay names and label hierarchies are listed in [manuscript nomenclature](manuscript-nomenclature.md#dataset-names-and-annotation-hierarchy).
+
 For protein adaptation, [fine-tuning data preparation](../esm2-lora-finetuning-protein-level-evaluation/docs/finetuning-data-preparation.md) describes the structural-label conversion, localization matching and fold requirements. [Complete available Human localization input tables](../esm2-lora-finetuning-protein-level-evaluation/data/training-inputs/README.md) contain 18,352 proteins before training filters; they are distinct from the raw 18,432-entry human UniProt snapshot below.
 
 Complete dataset dimensions, annotation levels, validation splits, model settings and preprocessing details are provided in the manuscript Supplementary Methods. This page summarizes the source resources and the corresponding repository inputs.
@@ -37,7 +39,8 @@ Exact filtering rules, sequence counts and split definitions are reported in Sup
 | PAIR | PAIR-ESM2 with the ESM2-650M backbone | [PAIR-ESM2](https://huggingface.co/h4duan/PAIR-esm2) and [local extraction workflow](../protein-representation-generation/docs/sequence-embedding-workflow.md) |
 | scFoundation | 100M-parameter model with the 19,264-gene index | [scFoundation repository](https://github.com/biomap-research/scFoundation) |
 | Geneformer | Geneformer v1, `gf-12L-30M-i2048` | [Geneformer resources](https://huggingface.co/ctheodoris/Geneformer/tree/main/gf-12L-30M-i2048) |
-| STATE | SE-600M; its `protein_embeddings.pt` asset supplies gene-indexed 5,120-dimensional ESM2-15B vectors | [SE-600M](https://huggingface.co/arcinstitute/SE-600M), [STATE repository](https://github.com/ArcInstitute/state) and [export instructions](../data_util/README.md#representation-sources) |
+| STATE | SE-600M cell model; 2,058-dimensional cell output | [SE-600M](https://huggingface.co/arcinstitute/SE-600M) and [STATE repository](https://github.com/ArcInstitute/state) |
+| ESM2-15B | Gene-indexed 5,120-dimensional protein-derived vectors supplied in STATE's `protein_embeddings.pt`, used separately for static cell construction | [SE-600M protein asset](https://huggingface.co/arcinstitute/SE-600M) and [export instructions](../data_util/README.md#representation-sources) |
 | scVI and totalVI | Dataset-trained latent-variable models; no pretrained checkpoint | [scvi-tools](https://docs.scvi-tools.org/) |
 | scNET | Dataset-trained graph model | [scNET repository](https://github.com/madilabcode/scNET) |
 | GenePT | GenePT-ada and GenePT-GPT-large gene-summary embeddings; full matrices are not duplicated in this repository | [GenePT repository and released embeddings](https://github.com/yiqunchen/GenePT) and [local data note](../data_util/README.md#representation-sources) |

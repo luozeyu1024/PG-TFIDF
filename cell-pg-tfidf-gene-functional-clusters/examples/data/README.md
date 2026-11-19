@@ -1,5 +1,7 @@
 # Example data and experiment workflow
 
+The `state_gene_*` filenames refer to ESM2-15B-derived gene functional clusters supplied through STATE resources. `cell_clusters_32cells.xlsx` contains partitions of cells, a different object and identifier namespace. See [manuscript nomenclature](../../../docs/manuscript-nomenclature.md).
+
 The uploadable example is centered on **Zheng68K PBMC**. All cell-level files use the same 32 Cell IDs and ordering. The only dataset-independent input is the pretrained STATE gene embedding used to define gene functional clusters.
 
 These reduced files are for schema, alignment, CLI, and prompt-construction checks. They are too small to reproduce manuscript performance or support biological conclusions.
@@ -35,6 +37,6 @@ The bundled `zheng68k_tfidf_32cells.npy`, `tfidf_vocab.json`, `tfidf-stats/`, ma
 | STATE gene embedding | Dataset-independent gene representation used before all cell cohorts. |
 | MM_GSE161801 and SKCM_GSE115978 | Additional PG-TFIDF construction cohorts; use the same construction interface with their prepared HVG h5ad files. |
 | Dataset81_QC2 | External cell-type benchmark used for TF-IDF analysis and LLM annotation evaluation; not required for this unified example. |
-| Dataset90_4_QC2 | RNA+ADT/CITE-seq branch used when ADT marker and concordance analysis is required. Zheng68K is RNA-only, so no ADT example is fabricated here. |
+| Dataset90_4_QC2 | Processed Dataset90_4 Abseq RNA+ADT branch used for ADT marker and concordance analysis. `QC2` is a processing suffix, not annotation L2. Zheng68K is RNA-only. |
 
 Before redistribution, verify upstream dataset licenses and attribution requirements. Full datasets, API credentials, and generated outputs are not included.

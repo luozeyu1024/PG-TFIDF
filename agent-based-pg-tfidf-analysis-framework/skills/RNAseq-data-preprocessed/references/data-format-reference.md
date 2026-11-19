@@ -1,5 +1,7 @@
 # Reference: Expected Input/Output Formats from Yuhang-GB Pipeline
 
+L1/L2/L3 denote source cell-type annotation hierarchy; `QC2` denotes a processing variant. Use [the analysis-specific level map](../../../../docs/manuscript-nomenclature.md#dataset-names-and-annotation-hierarchy) when preparing manuscript inputs; a script capable of exporting L2 does not establish that L2 was used in every analysis.
+
 > **Read-only reference**. This documents the formats produced by the reference pipeline at `single_cell_data_processed\Yuhang_GB_bench_data\code`. Use it to understand target shapes, but **always inspect the user's actual raw data first**—their format may differ.
 
 ---

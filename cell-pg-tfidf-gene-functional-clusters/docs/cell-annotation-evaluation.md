@@ -1,5 +1,7 @@
 # LLM prompt cell-annotation evaluation
 
+The prediction unit is a cell cluster, the mapping unit is a cell, and metrics here are cell-level after identifier alignment. Source annotation L1/L2 is a separate choice; see [analysis levels and objects](../../docs/manuscript-nomenclature.md).
+
 ## Evaluation flow
 
 1. `prompt_annotation_full.py` predicts one label per `Cluster_UID`.

@@ -1,5 +1,7 @@
 # Reproducible command chains
 
+Display names follow [the manuscript name map](../../docs/manuscript-nomenclature.md). `top_gene_cell_embedding_STATE_v.py` pools ESM2-15B gene vectors and does not run the STATE cell model. Output-directory aliases retain their recorded names.
+
 Run commands from this module directory. Paths beginning with `<...>` are user-supplied full-data or model assets.
 
 ## 0. Shared dependency path
@@ -157,7 +159,7 @@ python ../agent-based-pg-tfidf-analysis-framework/skills/cell-cluster-marker-tfi
 
 The same command is used for ESM2 model sizes, ESMC, xTrimoPGLM, PAIR, GO-text vectors, chemistry/evolution vectors, and fine-tuned protein embeddings by changing only `--embedding_dir`.
 
-### STATE gene vectors
+### ESM2-15B gene vectors supplied with STATE
 
 ```bash
 python scripts/protein-to-cell/top_gene_cell_embedding_STATE_v.py \
@@ -196,7 +198,7 @@ python scripts/foundation-models/totalvi_combine_feature_extraction.py \
 
 The small example uses `--skip_qc` because it contains only 64 RNA genes. For the full Dataset81 experiment, omit `--skip_qc`; keep it only for the recorded Dataset90_2 and Dataset90_4 exceptions.
 
-## 9. ADT-only baseline and GenePT-s
+## 9. ADT-only baseline and ADT_GenePT_s_GPT_large
 
 ```bash
 python scripts/foundation-models/baseline_embedding_inference_ADT.py \

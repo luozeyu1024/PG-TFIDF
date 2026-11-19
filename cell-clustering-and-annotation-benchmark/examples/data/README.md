@@ -1,5 +1,7 @@
 # Example data
 
+Example basenames retain source aliases: `esm2-state-5120` corresponds to ESM2-15B, `ESM_C` to ESMC, and `Dataset81_QC2` to the processed Dataset81 object. These aliases do not specify an annotation level. See [the manuscript map](../../../docs/manuscript-nomenclature.md).
+
 These files are small, real-data subsets intended to demonstrate interfaces and command flow.
 
 | Directory | Dataset | Used by | Main schema |

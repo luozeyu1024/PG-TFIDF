@@ -1,5 +1,7 @@
 # Cell Clustering and Annotation Benchmark
 
+See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+
 This module reproduces the cell-level benchmarking used for fixed cell embeddings. It covers supervised annotation, open-set inference, clustering quality, LLM-derived cell-label evaluation, cross-model prediction agreement, nuisance-prior-adjusted biological gain, marker-signature similarity, and gene-cluster AMI.
 
 The public scripts are preserved from the selected experiment code. Example commands replace local absolute paths with repository-relative paths.
@@ -94,7 +96,7 @@ This aligns predictions and truth by cell ID and reports closed- and open-set ac
 ```bash
 python scripts/model-comparison/model_prediction_similarity_kappa.py \
   --predict "examples/data/zheng68k/esm2-state-5120_cell_predictions_66cells.xlsx,examples/data/zheng68k/scvi-cluster_cell_predictions_66cells.xlsx,examples/data/zheng68k/state-cluster_cell_predictions_66cells.xlsx" \
-  --model_names "ESM2_state_5120,scVI_cluster,STATE_cluster" \
+  --model_names "ESM2-15B,scVI (cluster prompt),STATE (cluster prompt)" \
   --true examples/data/zheng68k/zheng68k_labels_66cells.xlsx \
   --save_path examples/output/model-comparison \
   --predict_cell_ID Cell_ID \
@@ -122,7 +124,7 @@ python scripts/prior-adjusted-gain/blood_systema_celltype_stats.py \
   --file_regex "(?P<foundation_model_id>[^/\\]+)[/\\]Zheng68K_PBMC[/\\](?P<dataset_id>Blood)[/\\](?P<head_id>[^/\\]+)[/\\]predict_prob_all_label[/\\]predictions_prob_all_label\\.(?:xlsx|csv)$"
 ```
 
-Blood uses `sample_id` as the default nuisance group. The full Dataset103 workflow uses `dataset103_systema_celltype_stats.py`, an aligned metadata CSV, `donor,lane`, 50 matched repeats, and a default minimum of 20 cells per class for composition matching.
+Blood uses `sample_id` as the default nuisance group. The full Dataset103_2 (L2 annotations) workflow uses `dataset103_systema_celltype_stats.py`, an aligned metadata CSV, `donor,lane`, 50 matched repeats, and a default minimum of 20 cells per class for composition matching.
 
 ## 6. Cross-model RNA/ADT marker-signature similarity
 
@@ -149,7 +151,7 @@ python scripts/marker-similarity/analyze_markers_cross_models_results_statistica
   --dpi 300
 ```
 
-The script reads full marker sheets, filters RNA and ADT markers, builds top-10 cluster signatures, and computes symmetric best-hit Jaccard similarity in each modality and in a modality-weighted combined matrix.
+The script reads full marker sheets, filters RNA and ADT markers, builds top-10 cluster-method signatures, and computes symmetric best-hit Jaccard similarity at the representation-pair level in each modality and in a modality-weighted combined matrix. With both `Louvain_Cluster` and `Kmeans_Cluster` selected, both partitions contribute signatures; this is not a direct Louvain-versus-K-means comparison.
 
 ## 7. Gene-cluster agreement
 
@@ -159,8 +161,8 @@ python scripts/gene-cluster-ami/gene_cluster_similarity_ami.py \
   --save_path examples/output/gene-cluster-ami \
   --gene_id_col gene_id \
   --cluster_col cluster \
-  --model_names "ESM2_650M,ESM_C" \
-  --model_order "ESM2_650M,ESM_C" \
+  --model_names "ESM2-650M,ESMC" \
+  --model_order "ESM2-650M,ESMC" \
   --min_common_genes 10 \
   --average_method arithmetic \
   --fig_format pdf \

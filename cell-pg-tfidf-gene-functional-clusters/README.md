@@ -1,5 +1,7 @@
 # Cell PG-TFIDF embedding from gene functional clusters
 
+See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+
 Publication-oriented, non-duplicated code bundle for constructing cell-level
 protein/gene-cluster TF-IDF (PG-TFIDF) embeddings and the linked analyses.
 

@@ -8,7 +8,7 @@ These files are small, derived inputs for inspecting schemas and command wiring.
 
 - `zheng68k/zheng68k_rna_32cells_96genes.h5ad`: raw-count RNA subset for I/O inspection and lightweight scVI/baseline checks.
 - `zheng68k/zheng68k_hvg_32cells_128genes.h5ad`: HVG raw-count subset for top-gene pooling.
-- `zheng68k/state_gene_embeddings_128.h5ad`: STATE gene vectors aligned to the 128-gene example.
+- `zheng68k/state_gene_embeddings_128.h5ad`: ESM2-15B gene vectors supplied with STATE, aligned to the 128-gene example.
 - `zheng68k/gene2vec_zheng68k_genes.npz`: Gene2vec vectors for matched example genes.
 - `zheng68k/esm2-protein-example/`: HGNC-to-UniProt mapping, protein IDs, and real ESM2 vectors for a small set of matched genes.
 
@@ -23,14 +23,14 @@ The files contain the same 16 cell IDs and support paired-input inspection for t
 
 ## Routing the full experimental datasets
 
-RNA-only datasets—including GSE112274, GSE186960, GSE223779, GSE108383 A375/X451, GSE117872, GSE140440, GSE149214, GSE149383, Zheng68K PBMC, and the Tabula Sapiens blood/immune tissues—follow the same sequence:
+The seven GEO drug-response datasets in Supplementary Methods Section 1.1—GSE112274, GSE117872, GSE140440, GSE149214, GSE149383, GSE186960 and GSE223779—together with Zheng68K PBMC and the Tabula Sapiens immune tissues follow the same RNA sequence:
 
 ```text
 raw-count h5ad -> foundation-model inference
                  or baseline preprocessing -> HVG raw counts -> gene/protein pooling
 ```
 
-CITE-seq datasets—including Dataset75_1, Dataset81, Dataset103_2, seurat_bmcite, Dataset90_2, and Dataset90_4—use aligned RNA and ADT `.h5ad` files:
+Paired RNA/ADT datasets use aligned `.h5ad` files: Dataset75_1, Dataset81 and seurat_bmcite are CITE-seq; Dataset90_2 and Dataset90_4 are Abseq; Dataset103_2 is ECCITE-seq. Their annotation levels depend on the analysis, as listed in [the dataset-level map](../../../docs/manuscript-nomenclature.md#dataset-names-and-annotation-hierarchy):
 
 ```text
 paired RNA + ADT -> totalVI

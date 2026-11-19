@@ -1,5 +1,9 @@
 # ESM2 LoRA fine-tuning and protein-level evaluation
 
+In cell-representation comparisons, the adapted representations are named ESM2-TM-FT and ESM2-SubLoc-FT. The supervised TM-score predictor retains the task-specific name `ESM2_PEFT_finetune`. Historical `scRNA-seq_*` VQ-VAE entry-point filenames operate on protein-feature rows in this module.
+
+See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+
 This module links the protein-level workflows used for TM-score regression, subcellular-localization prediction, integrated-gradients attribution, attribution clustering, and EMA VQ-VAE analysis. Publication scripts are copied without source-code edits; commands below replace workstation-specific paths with repository-relative paths and explicit placeholders.
 
 ## Scope and release boundary

@@ -1,5 +1,7 @@
 # Input formats and alignment
 
+See [model names and annotation levels](manuscript-nomenclature.md). L1/L2/L3 are source label hierarchies; row resolution, clustering partition and Euclidean L2 normalization are separate concepts.
+
 ## Cell-level inputs
 
 | Input | Contract |

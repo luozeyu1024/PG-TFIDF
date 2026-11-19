@@ -1,5 +1,7 @@
 # Protein-informed single-cell analysis
 
+[Model names, dataset annotation levels and analysis objects](docs/manuscript-nomenclature.md) follow the Supplementary Information; the guide maps historical filenames to manuscript display names.
+
 This repository contains six modules for generating protein representations, constructing and evaluating cell representations, injecting protein-task knowledge through ESM2 LoRA adaptation, constructing protein/gene-cluster TF-IDF (PG-TFIDF) evidence, and integrating that evidence with RNA/ADT markers for cell annotation and agent-assisted interpretation of drug resistance and relapse.
 
 ## Modules
@@ -44,7 +46,7 @@ cd cell-pg-tfidf-gene-functional-clusters
 python scripts/build_cell_pg_tfidf.py --h5ad_file examples/data/zheng68k/zheng68k_hvg_32cells_128genes.h5ad --cluster_xlsx examples/data/zheng68k/state_gene_clusters_128.xlsx --cluster_protein_id_col gene_id --cluster_id_col cluster --cluster_rep_id_col representative_gene --top_k 100 --seed 42 --save_path outputs/example/pg_tfidf
 ```
 
-The example uses STATE-derived gene clusters for interface demonstration. Use the manuscript's ESM2-derived gene clusters, annotation registry and matching vocabulary together when reproducing the protein-informed analysis. Do not mix cluster identifiers from independently generated partitions.
+The example uses a subset of ESM2-15B-derived gene functional clusters from the gene vectors supplied with STATE. Use the full matching gene-functional-cluster vocabulary and annotation registry described in Supplementary Data 1 for manuscript-scale analysis. Do not mix cluster identifiers from independently generated partitions.
 
 The core builder expects an existing HVG subset; its top-100 selection ranks expression within that subset. The agent module has a separate builder with optional internal HVG selection. Detailed commands and manuscript overrides are in each module's `examples/commands.md`.
 

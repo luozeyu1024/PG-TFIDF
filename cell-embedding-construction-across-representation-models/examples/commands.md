@@ -105,7 +105,7 @@ python scripts/foundation-models/Embedding.py \
   --batch_size 2
 ```
 
-Use the `gf-12L-30M-i2048` model assets for the selected 512-dimensional experiment.
+Download the legacy Geneformer package and `gf-12L-30M-i2048` checkpoint through the [scATD Geneformer instructions](https://github.com/doriszmr/scATD#geneformer). Use its matching tokenizer and gene dictionaries, and pass the extracted model directory to `--open_path_conference_data` for the 512-dimensional route.
 
 ## 6. scNET
 

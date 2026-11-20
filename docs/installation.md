@@ -22,7 +22,7 @@ Run the small examples in module READMEs after activating the shared environment
 |---|---|
 | ESM2 LoRA and attribution | PyTorch, Transformers, PEFT, Lightning and Captum, together with `facebook/esm2_t33_650M_UR50D` checkpoint and tokenizer. |
 | scFoundation | Upstream source, model checkpoint and 19,264-gene index. Keep the upstream `model` directory importable. |
-| Geneformer | The bundled tokenizer and embedding-extractor wrappers, matching Geneformer checkpoint and gene dictionaries. |
+| Geneformer | Obtain the legacy source, `gf-12L-30M-i2048` checkpoint and matching tokenizer/dictionaries through [scATD](https://github.com/doriszmr/scATD#geneformer), then use the bundled extraction wrappers. |
 | STATE | Arc STATE source and the SE-600M model directory specified in [data and model resources](data-and-model-resources.md). |
 | scVI/totalVI | A separate compatible scvi-tools environment. These wrappers train on the supplied dataset and export latent representations. |
 | scNET | Upstream scNET with its graph-learning dependencies and human PPI assets. |

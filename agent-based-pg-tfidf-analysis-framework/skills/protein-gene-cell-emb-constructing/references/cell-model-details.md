@@ -52,6 +52,7 @@ Model names and analysis levels follow [the nomenclature guide](../../../../docs
 | Property | Value |
 |----------|-------|
 | **Source** | `ctheodoris/Geneformer` (HuggingFace) |
+| **Legacy model download** | [scATD Geneformer instructions](https://github.com/doriszmr/scATD#geneformer): archived source, `gf-12L-30M-i2048` checkpoint and matching tokenizer/dictionaries |
 | **Architecture** | Geneformer v1; `gf-12L-30M-i2048` by default, with 12 layers and 512-dimensional cell output; the 6-layer variant gives 256 dimensions |
 | **Input** | `.h5ad` → ranked gene token IDs (Ensembl IDs) |
 | **Output** | Cell embedding `.npy` |

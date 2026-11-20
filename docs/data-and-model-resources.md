@@ -29,7 +29,7 @@
 | ESMC / PAIR / xTrimoPGLM | [ESMC-600M](https://huggingface.co/biohub/esmc-600m-2024-12), [PAIR-esm2](https://huggingface.co/h4duan/PAIR-esm2), [proteinglm-3b-mlm](https://huggingface.co/biomap-research/proteinglm-3b-mlm) |
 | STATE / ESM2-15B export | [STATE source](https://github.com/ArcInstitute/state) and [SE-600M](https://huggingface.co/arcinstitute/SE-600M); static ESM2-15B pooling uses its separate `protein_embeddings.pt` asset |
 | scFoundation | [Source, checkpoint and 19,264-gene index](https://github.com/biomap-research/scFoundation) |
-| Geneformer | [gf-12L-30M-i2048](https://huggingface.co/ctheodoris/Geneformer/tree/main/gf-12L-30M-i2048), tokenizer and gene dictionaries |
+| Geneformer | `gf-12L-30M-i2048`, matching tokenizer and gene dictionaries: follow the [scATD Geneformer download instructions](https://github.com/doriszmr/scATD#geneformer) for the archived package and checkpoint |
 | scVI / totalVI / scNET | [scvi-tools](https://docs.scvi-tools.org/) or [scNET](https://github.com/madilabcode/scNET); trained on supplied inputs |
 | GenePT | [Released gene-summary vectors](https://github.com/yiqunchen/GenePT): ada and GPT-large variants |
 | GO text | `text-embedding-3-small`, `text-embedding-3-large` or `text-embedding-v4`; [API command examples](../protein-representation-generation/docs/go-text-embedding-workflow.md) |

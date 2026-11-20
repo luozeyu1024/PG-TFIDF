@@ -31,12 +31,10 @@ pip install git+https://github.com/luozeyu1024/Protloc_mex_basline_model.git
 
 ## Geneformer
 
+Obtain the archived Geneformer source and `gf-12L-30M-i2048` checkpoint using the [scATD Geneformer download instructions](https://github.com/doriszmr/scATD#geneformer), which point to the Figshare distribution. Keep the matching tokenizer and gene dictionaries from that package.
+
 ```bash
-# Requires git-lfs for model weights
-git lfs install
-git clone https://huggingface.co/ctheodoris/Geneformer
-cd Geneformer
-pip install .
+python -m pip install "<EXTRACTED_LEGACY_GENEFORMER_SOURCE_DIR>"
 ```
 
 **Pinned versions**: `transformers==4.21.3`, `datasets==2.5.2`, `scanpy==1.9.1`, `anndata==0.8.0`, `matplotlib==3.6.3`, `pyarrow==8.0.0`

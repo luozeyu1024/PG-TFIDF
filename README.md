@@ -40,3 +40,7 @@ The example writes TF/TF-IDF arrays, a functional-cluster vocabulary and cell-ID
 [Documentation](docs/README.md) · [Installation](docs/installation.md) · [Input formats](docs/input-formats.md) · [Data and models](docs/data-and-model-resources.md) · [Prompts](docs/prompts.md) · [Tutorials](tutorials/README.md)
 
 Model inference and training use separate environments. Cluster annotation needs an OpenRouter credential; agent interpretation also needs an agent runtime. Third-party assets retain their original licenses.
+
+## License
+
+Project code and documentation are available under the [MIT License](LICENSE). Third-party code, datasets and model weights retain their original licenses.

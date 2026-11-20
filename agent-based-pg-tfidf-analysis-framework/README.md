@@ -1,73 +1,21 @@
-# Agent-based PG-TFIDF analysis framework
+# Functional-program interpretation
 
-See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+Combine PG-TFIDF programs, RNA/ADT markers and dataset metadata into evidence-based biological reports using the bundled analysis skills.
 
-This repository module packages the skill-driven workflow used to combine
-cell-level PG-TFIDF functional-program evidence, RNA/ADT markers, cell-state
-context and literature-supported interpretation. The expert-evaluation design
-is documented, but expert-scoring code, score files, derived results and agent
-outputs are intentionally excluded from the public module.
+## Quick start: prepare RNA inputs
 
-## Core contents
-
-```text
-skills/cell-cluster-marker-tfidf-analysis/  Complete PG-TFIDF/marker skill
-skills/RNAseq-data-preprocessed/            Complete RNA/ADT preprocessing skill
-skills/protein-gene-cell-emb-constructing/  Protein, gene and cell representation skill
-docs/workflow-and-reproducibility.md        Data-to-report workflow
-docs/experiment-parameters.md               Manuscript parameters and run design
-docs/expert-scoring.md                      Rubric and pooling definition
-examples/commands.md                        Runnable command chain
-examples/agent-prompts.md                   One non-duplicated prompt per dataset
-examples/data/                              Small public examples
-```
-
-The skill scripts retain their original filenames. Two required imports,
-`top_gene_cell_embedding.py` and `gene_to_protein_embedding_mapper.py`, are
-placed at the root of the PG-TFIDF skill because its preset builders import
-them from that location.
-
-The representation skill reuses the canonical scripts in the protein- and
-cell-representation modules. Its `references/repository-script-map.md` records
-the repository path for each shared implementation so that differing copies
-of the same script are not distributed.
-
-## Workflow
-
-See [the prompt guide](docs/prompts.md) for dataset instructions, skill rules and their relationship to the Python evidence scripts.
-
-1. Convert or validate RNA/ADT inputs and aligned labels.
-2. Audit whether the RNA h5ad is already an HVG subset.
-3. Build cell-by-functional-cluster TF and TF-IDF matrices with `top_k=100`.
-4. Calculate label-specific TF-IDF profiles, presence and specificity.
-5. Calculate RNA and optional ADT markers from predefined labels.
-6. Ask an isolated agent run to synthesize local evidence and literature into a structured report.
-7. Pool three independent expert assessments across three reports, giving nine ratings per dataset, agent family and criterion.
-
-See `examples/commands.md` for the exact script-input-output chain.
-
-## Installation
+In the [shared environment](../docs/installation.md), run from this directory:
 
 ```bash
-conda env create -f environment.yml
-conda activate agent-pg-tfidf
+python skills/RNAseq-data-preprocessed/scripts/convert_GBY_to_h5ad.py \
+  --open_path examples/data/zheng68k-preprocessing \
+  --save_path outputs/zheng68k-preprocessed
 ```
 
-RDS-based preprocessing additionally requires R, `Rscript` and the Seurat
-package. No API credential is required by the bundled Python scripts.
+The example converts an eight-cell RNA table and labels into `converted_data.h5ad` and `converted_labels.xlsx`. Continue with HVG checking, PG-TFIDF construction and markers before interpretation.
 
-## Data policy
+## Continue
 
-The small preprocessing smoke example uses Zheng68K PBMC throughout. The
-manuscript agent evaluation itself cannot be replaced by Zheng68K: Dataset81
-provides diagnosis/relapse and paired RNA/ADT evidence, whereas
-SKCM_GSE115978_aPD1 provides anti-PD-1 treatment, cell-type and cohort context.
-These exceptions are described in `examples/data/README.md`.
+[Command chain](examples/commands.md) · [Agent prompts](examples/agent-prompts.md) · [Example data](examples/data/README.md) · [Workflow and alignment](docs/workflow-and-reproducibility.md) · [Settings](docs/experiment-parameters.md) · [Review rubric](docs/expert-scoring.md)
 
-## Reproducibility boundary
-
-The public commands preserve the selected manuscript parameters and original
-script names. Full Dataset81 and SKCM analyses require the deposited processed
-matrices, aligned metadata, agent runtime and source literature. Agent memory
-clearing and run isolation are procedural controls and cannot be enforced by a
-Python script alone.
+The three bundled [skills](skills/) cover input conversion, representation construction and PG-TFIDF/marker interpretation. Python computes the evidence; an independently installed agent runtime synthesizes it. RDS conversion also needs R and Seurat. Use isolated output directories and distinguish computed evidence from literature-based hypotheses.

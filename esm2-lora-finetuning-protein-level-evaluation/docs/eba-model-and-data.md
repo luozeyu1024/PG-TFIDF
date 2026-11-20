@@ -1,6 +1,6 @@
 # EBA model and benchmark data
 
-Names follow [the protein-task map](../../docs/manuscript-nomenclature.md#protein-task-names): EBA embedding-alignment scores, structural TM labels and supervised TM-score predictions are different quantities.
+Names follow [the protein-task map](../../docs/reference/names-and-data.md#protein-task-names): EBA embedding-alignment scores, structural TM labels and supervised TM-score predictions are different quantities.
 
 EBA is an alignment algorithm, not a fitted neural checkpoint. The repository includes the required Apache-2.0 implementation files under `scripts/eba-analysis/EBA_dependence/`:
 

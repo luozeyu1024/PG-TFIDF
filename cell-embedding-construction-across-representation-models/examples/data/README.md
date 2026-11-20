@@ -23,14 +23,14 @@ The files contain the same 16 cell IDs and support paired-input inspection for t
 
 ## Routing the full experimental datasets
 
-The seven GEO drug-response datasets in Supplementary Methods Section 1.1—GSE112274, GSE117872, GSE140440, GSE149214, GSE149383, GSE186960 and GSE223779—together with Zheng68K PBMC and the Tabula Sapiens immune tissues follow the same RNA sequence:
+The GEO drug-response examples—GSE112274, GSE117872, GSE140440, GSE149214, GSE149383, GSE186960 and GSE223779—together with Zheng68K PBMC and the Tabula Sapiens immune tissues follow the same RNA sequence:
 
 ```text
 raw-count h5ad -> foundation-model inference
                  or baseline preprocessing -> HVG raw counts -> gene/protein pooling
 ```
 
-Paired RNA/ADT datasets use aligned `.h5ad` files: Dataset75_1, Dataset81 and seurat_bmcite are CITE-seq; Dataset90_2 and Dataset90_4 are Abseq; Dataset103_2 is ECCITE-seq. Their annotation levels depend on the analysis, as listed in [the dataset-level map](../../../docs/manuscript-nomenclature.md#dataset-names-and-annotation-hierarchy):
+Paired RNA/ADT datasets use aligned `.h5ad` files: Dataset75_1, Dataset81 and seurat_bmcite are CITE-seq; Dataset90_2 and Dataset90_4 are Abseq; Dataset103_2 is ECCITE-seq. Their annotation levels depend on the analysis, as listed in [the dataset-level map](../../../docs/reference/names-and-data.md#dataset-names-and-annotation-hierarchy):
 
 ```text
 paired RNA + ADT -> totalVI
@@ -41,4 +41,3 @@ RNA only         -> the same RNA workflow used above
 Cell IDs must be intersected and ordered identically before totalVI. Use `--skip_qc` only for the dataset-specific exceptions recorded in the experiment commands. Do not apply RNA HVG selection to the restricted ADT panel.
 
 No local absolute paths, labels, expert scores, API outputs, or private model assets are included here.
-

@@ -1074,7 +1074,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--canonical_model_labels",
         action="store_true",
-        help="Use the manuscript model names used in Fig. 1 for MLP and prompt-based rows.",
+        help="Use canonical representation names for MLP and cluster-prompt rows.",
     )
     parser.add_argument("--predict_path_model_set", default=None, help="Root directory for recursive prediction file discovery.")
     parser.add_argument(

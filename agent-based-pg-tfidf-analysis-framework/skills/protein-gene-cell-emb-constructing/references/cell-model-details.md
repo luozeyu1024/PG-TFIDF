@@ -2,7 +2,7 @@
 
 > Models that produce cell-level embeddings directly from gene expression, or gene-level embeddings that are aggregated to cells.
 
-Manuscript names and analysis levels follow [the nomenclature guide](../../../../docs/manuscript-nomenclature.md). scGPT and scBERT entries describe optional skill capabilities, not additional models in the reported comparison.
+Model names and analysis levels follow [the nomenclature guide](../../../../docs/reference/names-and-data.md). scGPT and scBERT entries describe optional skill capabilities, not additional models in the reported comparison.
 
 ---
 
@@ -16,7 +16,7 @@ Manuscript names and analysis levels follow [the nomenclature guide](../../../..
 | **Output** | `embedded_cells.npy` (n_cells × hidden_dim) + `preprocessed.h5ad` |
 | **Environment** | `scNET` conda env (PyTorch Geometric required) |
 | **Key script** | `cell-embedding-construction-across-representation-models/scripts/foundation-models/scnet/feature_extraction.py` |
-| **Manuscript scope** | GSE223779 and Dataset81 RNA only in Methods Section 2.1; an ADT input branch is not established by that experiment description. |
+| **Reference scope** | The supplied reference runs use GSE223779 and Dataset81 RNA. An ADT inference branch is not part of that configuration. |
 
 ---
 

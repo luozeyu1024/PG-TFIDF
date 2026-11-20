@@ -20,8 +20,8 @@ The full input matrices are not redistributed here.
 | Dataset | Workflow use | Modalities and context |
 |---|---|---|
 | Zheng68K PBMC | Public smoke workflow | RNA and cell-type labels |
-| Dataset81 | Manuscript agent evaluation | Paired RNA/ADT, diagnosis/relapse and label metadata |
-| SKCM_GSE115978_aPD1 | Manuscript agent evaluation | RNA, anti-PD-1 state, cell type and cohort metadata |
+| Dataset81 | Diagnosis/treatment interpretation | Paired RNA/ADT, diagnosis/relapse and label metadata |
+| SKCM_GSE115978_aPD1 | Diagnosis/treatment interpretation | RNA, anti-PD-1 state, cell type and cohort metadata |
 
 Zheng68K is used wherever the module permits a common validation source.
 Dataset81 and SKCM are necessary exceptions because the evaluated questions

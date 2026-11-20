@@ -5,7 +5,7 @@
 1. Gene embedding NPZ must contain `gene_names` and a two-dimensional `embeddings` array with matching rows.
 2. The gene-cluster table must contain the configured entity, cluster and representative columns.
 3. Cell PG-TFIDF rows always follow `adata.obs_names`; preserve this order in the exported Cell_ID table.
-4. PG-TFIDF construction requires an upstream prepared HVG subset. The selected `exp.md` uses `HVG_gene_count.h5ad`; the exact released script does not expose an internal `--hvg` option.
+4. PG-TFIDF construction requires an upstream prepared HVG subset. Use `HVG_gene_count.h5ad` or an equivalent HVG count subset; the builder has no internal `--hvg` option.
 5. Use `top_k=100` for gene-to-cluster mapping. `top_gene_exp=10` only controls the auxiliary per-cell gene list.
 6. Before cluster-level statistics or prompt construction, verify exact Cell_ID overlap and row alignment among embeddings, labels, RNA markers, ADT markers and PG-TFIDF tables.
 
@@ -15,8 +15,8 @@
 
 ## Reproducing the prompt experiments
 
-The values in `docs/experiment-parameters.md` and `examples/commands.md` are transcribed from the selected local `exp.md` command blocks. They intentionally override the conservative script defaults. Use `--cluster_prompt_output` to inspect prompts before API inference when supported by the selected v4 script. Store the API key only in `OPENROUTER_API_KEY`.
+The explicit flags in [commands](../examples/commands.md) and [parameters](experiment-parameters.md) define the reference configuration and override omitted script defaults. Use `--cluster_prompt_output` to inspect prompts before API inference when supported by the selected v4 script. Store the API key only in `OPENROUTER_API_KEY`.
 
 ## Validation expectations
 
-Run each selected script with `--help` after installation to inspect its CLI. A publication run should archive the exact command, package versions, input checksums, Cell_ID overlap report, output checksums and the OpenRouter model identifier/date without storing credentials.
+Run each selected script with `--help` after installation to inspect its CLI. A full-data run should archive the exact command, package versions, input checksums, Cell_ID overlap report, output checksums and the OpenRouter model identifier/date without storing credentials.

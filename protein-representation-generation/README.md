@@ -1,58 +1,28 @@
-# Protein representation generation
+# Protein and gene representations
 
-See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+Encode protein sequences, embed UniProt GO text, or export ESM2-15B gene vectors supplied with STATE.
 
-This module documents the two protein-representation routes used by the study.
+| Route | Input → output |
+|---|---|
+| ESM2, ESMC, PAIR, xTrimoPGLM | FASTA → protein or residue vectors |
+| GPT-small/large, Qwen | UniProt ID plus GO text → annotation vectors |
+| ESM2-15B export | STATE `protein_embeddings.pt` → gene-by-feature table |
 
-1. Protein language models encode amino-acid sequences from FASTA files.
-2. Text embedding models encode UniProt identifiers together with their GO annotation text.
+## Example: ESM2 sequence vectors
 
-These routes produce different representations and should not be treated as interchangeable. The module also provides the conversion used to export the 5,120-dimensional protein table supplied with STATE.
-
-Supply the input directory, output directory and model location explicitly in each command.
-
-## Sequence representations
-
-The scripts under `scripts/sequence/` cover ESM2-650M, ESMC-600M, PAIR-ESM2 and xTrimoPGLM-3B. They read every `.fasta` or `.fa` file in the input directory and retain the FASTA identifier order in the exported identifier table.
-
-ESM2 example:
+Install the model-specific [environment and assets](../docs/installation.md), then run from this directory:
 
 ```bash
-python protein-representation-generation/scripts/sequence/ESM2_650M_feature_extraction_fasta.py \
+python scripts/sequence/ESM2_650M_feature_extraction_fasta.py \
   --model_path facebook/esm2_t33_650M_UR50D \
-  --open_path inputs/fasta \
-  --save_path outputs/esm2 \
-  --sys_path protein-representation-generation/scripts/sequence \
-  --device cuda:0 \
-  --batch_size 1
+  --open_path inputs/fasta --save_path outputs/esm2 \
+  --sys_path scripts/sequence --device cuda:0 --batch_size 1
 ```
 
-PAIR uses the ESM2 tokenizer/model path together with the PAIR token asset:
+Supply `.fasta`/`.fa` files with stable IDs. Keep each exported identifier table alongside its matrix for HGNC mapping and [cell construction](../cell-embedding-construction-across-representation-models/README.md).
 
-```bash
-python protein-representation-generation/scripts/sequence/PAIR_feature_extraction_fasta.py \
-  --model_path facebook/esm2_t33_650M_UR50D \
-  --token_path models/PAIR \
-  --open_path inputs/fasta \
-  --save_path outputs/pair \
-  --sys_path protein-representation-generation/scripts/sequence \
-  --device cuda:0
-```
+## Continue
 
-The ESMC scripts require a local ESMC weight file and tokenizer path. The xTrimoPGLM script accepts either `biomap-research/proteinglm-3b-mlm` or a local copy through `--model_path`. Full commands and output conventions are listed in [`docs/sequence-embedding-workflow.md`](docs/sequence-embedding-workflow.md).
+[Commands](examples/commands.md) · [Sequence workflow](docs/sequence-embedding-workflow.md) · [GO-text workflow](docs/go-text-embedding-workflow.md) · [Output schemas](docs/output-formats.md) · [GO input formatter](docs/prompts.md) · [Reference data](../data_util/README.md)
 
-## GO annotation text representations
-
-The [text-input guide](docs/prompts.md) identifies the exact `build_prompts()` functions and formatting used by GPT and Qwen embedding requests.
-
-GO text embedding is a separate workflow. `step1_protein_GO_JSON_preprocessed.py` converts the `Entry` and `Gene Ontology (GO)` columns from the bundled UniProt Excel files into JSON. The GPT and Qwen batch scripts then encode strings consisting of a UniProt identifier and its GO annotation.
-
-Pass API credentials through environment variables as shown in [`docs/go-text-embedding-workflow.md`](docs/go-text-embedding-workflow.md).
-
-## ESM2-15B gene embedding table supplied with STATE
-
-`scripts/state/STATE_tok_5120_Emb_extract.py` reads `protein_embeddings.pt` from the STATE SE-600M release and writes `STATE_tok_5120_Emb.h5ad`, `gene_list.txt` and `gene_embedding_metadata.md`. The matrix rows are genes and the columns are 5,120 ESM2-15B protein features.
-
-## Data
-
-The reviewed UniProt snapshots, HGNC mapping, Gene2vec file and cluster-function annotation are under [`data_util`](../data_util/). Large model weights and generated representation matrices remain outside the repository.
+GO embedding uses API credentials; sequence inference uses model weights. The STATE-supplied gene-vector export does not run the STATE cell model.

@@ -1,6 +1,6 @@
 # Protein and gene representation registry
 
-The manuscript representations are defined in Supplementary Methods Sections 2.2–2.3 and [the repository name map](../../../../docs/manuscript-nomenclature.md). Sequence encoders produce protein vectors; GO-text encoders produce UniProt-indexed annotation vectors; GenePT and gene2vec provide gene vectors. Their identifier spaces and input objects differ. ESM3, ProtT5, SaProt and other optional entries below describe broader skill capabilities rather than additional manuscript comparisons.
+Representation inputs and identifiers are defined in [the repository name map](../../../../docs/reference/names-and-data.md). Sequence encoders produce protein vectors; GO-text encoders produce UniProt-indexed annotation vectors; GenePT and gene2vec provide gene vectors. Their identifier spaces and input objects differ. ESM3, ProtT5, SaProt and other optional entries below describe broader skill capabilities rather than additional reference comparisons.
 
 ---
 
@@ -18,7 +18,7 @@ The manuscript representations are defined in Supplementary Methods Sections 2.2
 **Key notes:**
 - `protloc-mex-x` wraps ESM2 extraction with batching and caching.
 - For cell-level use, typically aggregate gene-level embeddings (mean of top-N genes per cell).
-- The manuscript ESM2-15B route exports released 5,120-dimensional gene vectors supplied with STATE rather than rerunning the 15B encoder. STATE cell inference is a separate SE-600M route.
+- The ESM2-15B export route exports released 5,120-dimensional gene vectors supplied with STATE rather than rerunning the 15B encoder. STATE cell inference is a separate SE-600M route.
 
 ---
 
@@ -27,7 +27,7 @@ The manuscript representations are defined in Supplementary Methods Sections 2.2
 | Property | Value |
 |----------|-------|
 | **Source** | EvolutionaryScale; `EvolutionaryScale/esmc-600m-2024-12` |
-| **Manuscript backbone** | ESMC-600M; display name ESMC, historical alias `ESM_C` |
+| **Backbone** | ESMC-600M; display name ESMC, historical alias `ESM_C` |
 | **Aggregation modes** | CLS, EOS, mean and segment means in protein analyses; specify the selected readout |
 | **Object** | Protein-sequence-derived vectors, mapped to genes before cell pooling |
 
@@ -60,7 +60,7 @@ The manuscript representations are defined in Supplementary Methods Sections 2.2
 |----------|-------|
 | **Source** | `h4duan/PAIR-esm2`; ESM2-650M backbone adapted using UniProt text annotations |
 | **Example output** | `<output>/PAIR/<dataset>/mean_hvg_filter/top_gene_cell_embedding.npy` |
-| **Notes** | Manuscript display name PAIR. The supplied extractor uses sequence input and PAIR token assets; this route does not require an MSA input. |
+| **Notes** | Display name PAIR. The supplied extractor uses sequence input and PAIR token assets; this route does not require an MSA input. |
 
 ---
 
@@ -79,7 +79,7 @@ The manuscript representations are defined in Supplementary Methods Sections 2.2
 | Property | Value |
 |----------|-------|
 | **Source** | BioMap |
-| **Manuscript variant** | `biomap-research/proteinglm-3b-mlm`; historical alias `xTrimoPGLM_3B` |
+| **Variant** | `biomap-research/proteinglm-3b-mlm`; historical alias `xTrimoPGLM_3B` |
 | **Readout** | Mean pooling over valid amino-acid hidden states |
 | **Object** | Protein vector before gene mapping and cell pooling |
 
@@ -91,7 +91,7 @@ The manuscript representations are defined in Supplementary Methods Sections 2.2
 |----------|-------|
 | **Source** | Alibaba Cloud `text-embedding-v4` applied to UniProt ID plus GO text |
 | **Example output** | `<output>/qwen_embedding/<dataset>/mean_hvg_filter/top_gene_cell_embedding.npy` |
-| **Notes** | Annotation-derived protein vectors are mapped to genes before cell aggregation. The manuscript does not describe project fine-tuning of this text embedding model. |
+| **Notes** | Annotation-derived protein vectors are mapped to genes before cell aggregation. This branch encodes text without project-specific text-model fine-tuning. |
 
 ---
 
@@ -151,7 +151,7 @@ The manuscript representations are defined in Supplementary Methods Sections 2.2
 | ESM2-8M | PLM | 8M | Seq | No |
 | ESM2-650M | PLM | 650M | Seq | 8–16 GB |
 | ESM2-3B | PLM | 3B | Seq | 24 GB |
-| ESM2-15B | Released protein-derived gene vectors | 15B encoder source | Precomputed | No encoder inference for the manuscript route |
+| ESM2-15B | Released protein-derived gene vectors | 15B encoder source | Precomputed | No encoder inference for this route |
 | ESMC | PLM | 600M in this study | Seq | For sequence inference |
 | ProtT5 | PLM | 3B | Seq | 16 GB |
 | PAIR | Annotation-adapted PLM | ESM2-650M backbone | Seq | For sequence inference |

@@ -307,7 +307,7 @@ def _best_kmeans_labels(X_embed, y_true, n_clusters, random_state=42):
 
 def compute_avgbio_on_embedding(X_embed: np.ndarray, y_true: np.ndarray, 
                                clustering_method: str = "louvain", n_neighbors: int = 15):
-    """Compute the manuscript AvgBIO metric: (ASW_cell_scaled + NMI + ARI) / 3。
+    """Compute AvgBIO: (ASW_cell_scaled + NMI + ARI) / 3。
     
     Args:
         X_embed: High-dimensional embeddings (n_cells, n_features)

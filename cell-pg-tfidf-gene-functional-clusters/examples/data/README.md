@@ -1,10 +1,10 @@
 # Example data and experiment workflow
 
-The `state_gene_*` filenames refer to ESM2-15B-derived gene functional clusters supplied through STATE resources. `cell_clusters_32cells.xlsx` contains partitions of cells, a different object and identifier namespace. See [manuscript nomenclature](../../../docs/manuscript-nomenclature.md).
+The `state_gene_*` filenames refer to ESM2-15B-derived gene functional clusters supplied through STATE resources. `cell_clusters_32cells.xlsx` contains partitions of cells, a different object and identifier namespace. See [names and analysis levels](../../../docs/reference/names-and-data.md).
 
 The uploadable example is centered on **Zheng68K PBMC**. All cell-level files use the same 32 Cell IDs and ordering. The only dataset-independent input is the pretrained STATE gene embedding used to define gene functional clusters.
 
-These reduced files are for schema, alignment, CLI, and prompt-construction checks. They are too small to reproduce manuscript performance or support biological conclusions.
+These reduced files are for schema, alignment, CLI, and prompt-construction checks. They are too small to reproduce full-data performance or support biological conclusions.
 
 ## Code, input, output, and next-step chain
 
@@ -23,7 +23,7 @@ The bundled `zheng68k_tfidf_32cells.npy`, `tfidf_vocab.json`, `tfidf-stats/`, ma
 
 ## Recommended use
 
-1. Follow `../commands.md`, which transcribes the selected local `exp.md` parameters without local absolute paths or credentials.
+1. Follow [commands](../commands.md); use their explicit flags and matching inputs.
 2. Preserve Cell_ID order when pairing a TF-IDF matrix with `cell_id_table_32cells.xlsx`.
 3. For LLM calls, set the API key only through `OPENROUTER_API_KEY`; the selected command explicitly passes `--model anthropic/claude-sonnet-4.6`.
 4. Always pass `--cluster_prediction_xlsx` explicitly to the original cluster-to-cell script.

@@ -225,7 +225,7 @@ If the user asks for a data summary, analysis report, or metadata explanation af
 ```
 
 **Rules for filling the template:**
-- **Metadata definitions**: If the user asks "what does column X mean," search the web (GEO, publication, or supplementary materials) and cite the source.
+- **Metadata definitions**: If the user asks "what does column X mean," search the web (GEO or original-study documentation) and cite the source.
 - **Statistics**: For every categorical metadata column with <50 unique values, include a frequency table.
 - **Literature**: Always include PMID, first author, journal, and year if available.
 - **Downstream advice**: Tailor to the dataset's known issues (e.g., 10x multi-sample → suggest Harmony/Scanorama; SMART-Seq2 → deeper sequencing but smaller cell count; treatment timepoints → suggest pseudotime or paired DE).

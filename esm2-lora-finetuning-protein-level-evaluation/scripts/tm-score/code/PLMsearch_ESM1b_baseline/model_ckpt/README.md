@@ -2,7 +2,7 @@
 
 The third-party checkpoint is not redistributed in this repository. Download the PLMSearch experiment-data archive from the official release linked in the parent `README.md`, and provide the downloaded `plmsearch.sav` through `--checkpoint_path`.
 
-The local checkpoint referenced for the manuscript experiments had:
+The reference checkpoint identifier is:
 
 ```text
 filename: plmsearch.sav

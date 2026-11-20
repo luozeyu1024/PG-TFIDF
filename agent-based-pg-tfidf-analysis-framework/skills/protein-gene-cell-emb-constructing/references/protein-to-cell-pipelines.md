@@ -1,6 +1,6 @@
 # Protein → Gene → Cell Embedding Pipelines
 
-Manuscript names and historical output aliases are mapped in [the nomenclature guide](../../../../docs/manuscript-nomenclature.md). `STATE_5120_emb` means the ESM2-15B static gene-vector source, not STATE cell inference. The NMF and other optional routes below are reusable capabilities; their presence does not make them part of the manuscript comparison.
+Model names and historical output aliases are mapped in [the nomenclature guide](../../../../docs/reference/names-and-data.md). `STATE_5120_emb` means the ESM2-15B static gene-vector source, not STATE cell inference. The NMF and other optional routes below are reusable capabilities; their presence does not make them part of the reference comparison.
 
 > Methods for converting protein-level language model embeddings into cell-level representations. All pipelines assume: **protein embedding (per gene) → gene selection / weighting → cell aggregation**.
 

@@ -1,6 +1,6 @@
 # Output formats
 
-Object names follow [manuscript nomenclature](../../docs/manuscript-nomenclature.md): UniProt-indexed outputs are protein vectors, while `STATE_tok_5120_Emb.h5ad` is a gene-indexed ESM2-15B table. The STATE cell model produces a separate cell-by-feature matrix.
+Object names follow [names and analysis levels](../../docs/reference/names-and-data.md): UniProt-indexed outputs are protein vectors, while `STATE_tok_5120_Emb.h5ad` is a gene-indexed ESM2-15B table. The STATE cell model produces a separate cell-by-feature matrix.
 
 ## Sequence models
 

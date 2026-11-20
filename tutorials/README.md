@@ -1,11 +1,11 @@
 # Tutorials
 
-Use [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model names, source annotation levels and historical filename aliases. STATE cell inference and the STATE-supplied ESM2-15B gene-vector export are separate routes.
+Run these notebooks from the `tutorials/` directory after selecting the matching environment.
 
-- [`human-protein-representation-workflow.ipynb`](human-protein-representation-workflow.ipynb): prepare reviewed human UniProt records; obtain ESM2 and ESMC sequence representations, GO-text and STATE-supplied protein representations; and load the bundled Gene2vec baseline.
-- [`cell-embedding-computation-workflow.ipynb`](cell-embedding-computation-workflow.ipynb): construct the cell representations compared in Fig. 1 from raw RNA counts, paired RNA/ADT data, transcriptomic foundation models, and static protein or gene representations.
-- [`pg-tfidf-computation-workflow.ipynb`](pg-tfidf-computation-workflow.ipynb): reconstruct PG-TFIDF manually, run the released scripts, and use the `cell-cluster-marker-tfidf-analysis` workflow.
+| Walkthrough | Purpose |
+|---|---|
+| [Protein and gene representations](human-protein-representation-workflow.ipynb) | Prepare UniProt inputs, extract sequence/GO vectors and export ESM2-15B gene vectors |
+| [Cell representations](cell-embedding-computation-workflow.ipynb) | RNA baselines, model inference, gene/protein pooling and paired RNA/ADT |
+| [PG-TFIDF](pg-tfidf-computation-workflow.ipynb) | Inspect the calculation and run the provided scripts |
 
-Dataset81 and SKCM_GSE115978_aPD1 workflow prompts are provided in [`pg-tfidf-agent-skill-prompts.md`](pg-tfidf-agent-skill-prompts.md).
-
-The three workflow skills used by these tutorials are available under [`agent-based-pg-tfidf-analysis-framework/skills`](../agent-based-pg-tfidf-analysis-framework/skills/).
+[Agent prompt templates](pg-tfidf-agent-skill-prompts.md) cover dataset interpretation. Start with [documentation](../docs/README.md) for installation, assets and command entry points.

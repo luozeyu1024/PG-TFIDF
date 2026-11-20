@@ -27,7 +27,7 @@ python scripts/cluster_function_annotation.py `
 
 ## 3. Cell PG-TFIDF construction
 
-The exact `exp.md` script expects an already prepared HVG h5ad. Perform HVG selection
+The builder expects an already prepared HVG count h5ad. Perform HVG selection
 upstream; this script has no internal `--hvg` option.
 
 ```powershell
@@ -151,7 +151,7 @@ See `docs/cell-annotation-evaluation.md` for alignment rules and metric definiti
 
 ## Bundled Zheng68K smoke data
 
-The bundled files share the same 32 Cell IDs. They are too small for manuscript metrics.
+The bundled files share the same 32 Cell IDs. They are too small for full-data metrics.
 
 ```powershell
 # PG-TFIDF construction
@@ -171,7 +171,7 @@ python scripts/cell_cluster_tfidf_analysis.py `
   --cell_cluster_cols "Louvain_Cluster,Kmeans_Cluster" `
   --cluster_label_name zheng68k_example --save_path outputs/example/tfidf_stats
 
-# RNA-only marker analysis (Zheng68K has no ADT input in the selected experiment)
+# RNA-only marker analysis (Zheng68K supplies RNA only)
 python scripts/rna_adt_marker_analysis.py `
   --open_path_rna_h5ad examples/data/zheng68k/zheng68k_rna_32cells_96genes.h5ad `
   --open_path_cluster_xlsx examples/data/zheng68k/cell_clusters_32cells.xlsx `

@@ -12,7 +12,7 @@
 | Cluster statistics | `cell_tfidf_cluster_analysis.py` | TF-IDF matrix; vocabulary; Cell_ID table; labels | specificity, profiles, presence and statistics | agent interpretation |
 | Molecular markers | `ADT_silhouette_and_markers_calculate.py` | RNA h5ad; optional ADT h5ad; aligned labels | up/down/comprehensive marker tables | agent interpretation |
 | Evidence synthesis | `cell-cluster-marker-tfidf-analysis` skill | TF-IDF tables, markers, annotations and metadata | structured integrated report | expert review |
-| Expert evaluation | Internal, not distributed | three expert rubric tables | pooled criterion counts and fractions | manuscript figure |
+| Expert evaluation | Internal, not distributed | three expert rubric tables | pooled criterion counts and fractions | review summary |
 
 ## Alignment checks
 

@@ -2,7 +2,7 @@
 
 ## Fixed computational parameters
 
-| Component | Parameter | Manuscript setting |
+| Component | Parameter | Reference setting |
 |---|---|---|
 | HVG selection | `--hvg_n_top_genes` | `3000` when the input is full-gene or uncertain |
 | Cell-to-module mapping | `--top_k` | `100` expressed genes from the verified/preset HVG space |
@@ -10,7 +10,7 @@
 | Specificity | denominator | unweighted mean of label-level mean TF-IDF values plus `1e-9` |
 | RNA/ADT markers | grouping | predefined labels; one-versus-rest |
 | RNA differential test | method | Wilcoxon with adjusted P values |
-| Silhouette | default manuscript run | disabled for large datasets |
+| Silhouette | reference run | disabled for large datasets |
 | RNA input | Dataset81 run | counts |
 | RNA–ADT concordance | Dataset81 run | intersection |
 
@@ -19,7 +19,7 @@
 | Item | Setting |
 |---|---|
 | Datasets | Dataset81 and SKCM_GSE115978_aPD1 |
-| Agent families | Kimi Code (kimi 2.6) and Codex (GPT 5.5), as recorded in Supplementary Methods Section 5.1 |
+| Agent families | Kimi Code (kimi 2.6) and Codex (GPT 5.5); reference run identifiers |
 | Runs | three independent runs per agent family and dataset |
 | Result mapping | Results_1–3: Kimi Code; Results_4–6: Codex |
 | Isolation | memory cleared; output directories isolated; no cross-run reads |

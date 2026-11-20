@@ -1,6 +1,6 @@
 # Example data
 
-Example basenames retain source aliases: `esm2-state-5120` corresponds to ESM2-15B, `ESM_C` to ESMC, and `Dataset81_QC2` to the processed Dataset81 object. These aliases do not specify an annotation level. See [the manuscript map](../../../docs/manuscript-nomenclature.md).
+Example basenames retain source aliases: `esm2-state-5120` corresponds to ESM2-15B, `ESM_C` to ESMC, and `Dataset81_QC2` to the processed Dataset81 object. These aliases do not specify an annotation level. See [the names and analysis levels](../../../docs/reference/names-and-data.md).
 
 These files are small, real-data subsets intended to demonstrate interfaces and command flow.
 
@@ -13,5 +13,4 @@ These files are small, real-data subsets intended to demonstrate interfaces and 
 
 The common Zheng68K subset is used wherever the method supports it. Blood is required for nuisance-group priors, Dataset81 is required for paired RNA/ADT marker analysis, and gene-cluster AMI compares model-derived gene partitions rather than a cell dataset.
 
-Do not interpret metrics from these small subsets as manuscript results. Use the full datasets and the commands/parameters in the root README for reproduction.
-
+Do not interpret metrics from these small subsets as full-data results. Use the full datasets and the commands/parameters in the root README for reproduction.

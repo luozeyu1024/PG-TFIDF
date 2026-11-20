@@ -1,6 +1,6 @@
 # Fine-tuning data preparation
 
-TM-score and localization adaptation train separate protein tasks with ESM2 LoRA. They do not fine-tune the cell-annotation chat model. Selected training hyperparameters remain in [the module README](../README.md).
+TM-score and localization adaptation train separate protein tasks with ESM2 LoRA. They do not fine-tune the cell-annotation chat model. Selected training hyperparameters remain in [the command page](../examples/commands.md).
 
 ## Structural-similarity inputs
 
@@ -67,7 +67,7 @@ python scripts/subcellular/code/ESM2_lora_finetune/esm2_subloc_train.py \
   --output_dir outputs/subcellular/full-human-fold0 --device cuda:0
 ```
 
-Fold-specific homology filtering uses [the existing MMseqs2 command](../README.md#2-subcellular-localization-lora) with the full tables/folds. Its identity threshold enforces no minimum alignment coverage.
+Fold-specific homology filtering uses [the MMseqs2 command](../examples/commands.md#2-subcellular-localization-lora) with the full tables/folds. Its identity threshold enforces no minimum alignment coverage.
 
 ## Model assets
 

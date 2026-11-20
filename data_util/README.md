@@ -15,7 +15,7 @@ The four Excel files under `uniprot/` are unchanged local snapshots downloaded f
 | `uniprotkb_eukaryota_reviewed_2025-06-26.xlsx` | 90,538 | accession, protein and gene names, organism, sequence, GO annotations and localization |
 | `uniprotkb_human_reviewed_2025-02-28.xlsx` | 18,432 | the fields above plus GO identifiers, KEGG, glycosylation and post-translational modification |
 
-Archaea, Bacteria and Eukaryota are taxonomic groups rather than individual species. These packaged reference snapshots are distinct from the February 2025 analysis collections in Supplementary Methods Section 1.1: 3,136 archaeal, 27,157 bacterial and 89,681 eukaryotic sequences, and the 18,352-protein human localization/GO input. The [full available human analysis tables](../esm2-lora-finetuning-protein-level-evaluation/data/training-inputs/README.md) are provided separately; the larger packaged snapshots do not establish the analysis population.
+Archaea, Bacteria and Eukaryota are taxonomic groups rather than individual species. These packaged reference snapshots are distinct from the February 2025 reference analysis collections: 3,136 archaeal, 27,157 bacterial and 89,681 eukaryotic sequences, and the 18,352-protein human localization/GO input. The [full available human analysis tables](../esm2-lora-finetuning-protein-level-evaluation/data/training-inputs/README.md) are provided separately; the larger packaged snapshots do not establish the analysis population.
 
 ### Identifier mapping
 
@@ -43,4 +43,4 @@ python protein-representation-generation/scripts/state/STATE_tok_5120_Emb_extrac
   --save_path outputs/STATE_tok_5120_Emb
 ```
 
-The resulting `STATE_tok_5120_Emb.h5ad` is a gene-by-feature matrix containing ESM2-15B protein-derived vectors supplied with STATE. The manuscript display name for this source is ESM2-15B; STATE denotes the separate SE-600M cell model. The `state_gene_*` functional-annotation files likewise contain ESM2-15B-derived gene functional clusters.
+The resulting `STATE_tok_5120_Emb.h5ad` is a gene-by-feature matrix containing ESM2-15B protein-derived vectors supplied with STATE. The display name for this source is ESM2-15B; STATE denotes the separate SE-600M cell model. The `state_gene_*` functional-annotation files likewise contain ESM2-15B-derived gene functional clusters.

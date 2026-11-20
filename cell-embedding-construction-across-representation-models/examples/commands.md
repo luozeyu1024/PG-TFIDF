@@ -1,6 +1,6 @@
 # Reproducible command chains
 
-Display names follow [the manuscript name map](../../docs/manuscript-nomenclature.md). `top_gene_cell_embedding_STATE_v.py` pools ESM2-15B gene vectors and does not run the STATE cell model. Output-directory aliases retain their recorded names.
+Display names follow [the names and analysis levels](../../docs/reference/names-and-data.md). `top_gene_cell_embedding_STATE_v.py` pools ESM2-15B gene vectors and does not run the STATE cell model. Output-directory aliases retain their recorded names.
 
 Run commands from this module directory. Paths beginning with `<...>` are user-supplied full-data or model assets.
 
@@ -69,7 +69,7 @@ python scripts/foundation-models/get_embedding_sc_ATD2.py \
   --OS_scRNA_gene_index_path <OS_scRNA_gene_index.19264.tsv>
 ```
 
-The selected experiment record contained two `--tgthighres` occurrences; `f1` was last and therefore effective. The public command states the effective value once.
+Use `--tgthighres f1` for the reference four-readout configuration.
 
 ## 4. STATE
 

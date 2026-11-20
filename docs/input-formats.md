@@ -1,6 +1,6 @@
 # Input formats and alignment
 
-See [model names and annotation levels](manuscript-nomenclature.md). L1/L2/L3 are source label hierarchies; row resolution, clustering partition and Euclidean L2 normalization are separate concepts.
+See [model names and annotation levels](reference/names-and-data.md). L1/L2/L3 are source label hierarchies; row resolution, clustering partition and Euclidean L2 normalization are separate concepts.
 
 ## Cell-level inputs
 
@@ -15,7 +15,7 @@ See [model names and annotation levels](manuscript-nomenclature.md). L1/L2/L3 ar
 
 The RNA marker script supports `--rna_input_type counts`, `log` or `auto`, and `--rna_layer`. Prefer an explicit input state for reproducibility. ADT marker detection can use the counts layer for detection fractions while expression comparisons use the configured matrix; the direct ADT embedding baseline applies cell-wise CLR. These are separate branches.
 
-The PG-TFIDF core builder selects the highest-expression genes within its supplied feature space. Supply an HVG count subset for the manuscript setting. The agent builder can instead perform HVG selection with `--hvg`. Do not treat a full-gene input as an HVG subset merely because top-k selection is enabled.
+The PG-TFIDF core builder selects the highest-expression genes within its supplied feature space. Supply an HVG count subset for the reference top-gene setting. The agent builder can instead perform HVG selection with `--hvg`. Do not treat a full-gene input as an HVG subset merely because top-k selection is enabled.
 
 ## Gene and protein inputs
 

@@ -22,7 +22,7 @@ Workflow:
 
 `eba-benchmark/` contains eight short proteins selected from the same EBA benchmark source used by the local ESM2 analysis. It includes the original ESM2 all-token matrices, the aligned ESM2 mean-pooled vectors and index, sequence metadata, and the corresponding directional TM-score pair rows. The subset is intended only to demonstrate file contracts and command wiring; it is not a scientific benchmark.
 
-Run the two commands in the main README to reproduce the input-to-output flow:
+Run the two EBA commands in [the command page](../commands.md) to reproduce the input-to-output flow:
 
 ```text
 esm2_all_tokens_example.npz + TM_min/TM_max tables

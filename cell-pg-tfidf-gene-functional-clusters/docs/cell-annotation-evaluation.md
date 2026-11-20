@@ -1,6 +1,6 @@
 # LLM prompt cell-annotation evaluation
 
-The prediction unit is a cell cluster, the mapping unit is a cell, and metrics here are cell-level after identifier alignment. Source annotation L1/L2 is a separate choice; see [analysis levels and objects](../../docs/manuscript-nomenclature.md).
+The prediction unit is a cell cluster, the mapping unit is a cell, and metrics here are cell-level after identifier alignment. Source annotation L1/L2 is a separate choice; see [analysis levels and objects](../../docs/reference/names-and-data.md).
 
 ## Evaluation flow
 
@@ -25,4 +25,4 @@ Macro averages weight cell types equally; weighted averages use class support; m
 
 ## Reproduction parameters
 
-The selected experiment commands use `Cell_ID` as the join key, evaluate Louvain and K-means prediction columns separately, and use `Unknown` for unmatched/open-set predictions. Exact reference and prediction column names are dataset-specific and must be recorded with the run command.
+The reference commands use `Cell_ID` as the join key, evaluate Louvain and K-means prediction columns separately, and use `Unknown` for unmatched/open-set predictions. Exact reference and prediction column names are dataset-specific and must be recorded with the run command.

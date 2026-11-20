@@ -21,7 +21,7 @@ The input contract for each SCOPe40/CATHS40 split is:
 <FASTA>,<aligned dense TM-score matrix.npy>,<ID-keyed all-token embeddings.npz>
 ```
 
-The selected experiments retained upper-triangular protein pairs with TM-score greater than `0.5`, removed the first and last model tokens before mean pooling, and fitted a sigmoid bilinear regression head with five-fold KFold splitting.
+The reference configuration retains upper-triangular protein pairs with TM-score greater than `0.5`, removes the first and last model tokens before mean pooling, and fits a sigmoid bilinear regression head with five-fold KFold splitting.
 
 ### Train the five bilinear heads
 

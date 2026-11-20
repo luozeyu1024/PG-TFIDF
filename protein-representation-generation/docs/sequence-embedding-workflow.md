@@ -1,5 +1,7 @@
 # Sequence embedding workflow
 
+Run these commands from the repository root; [module-relative commands](../examples/commands.md) are also available.
+
 ## Input
 
 Place one or more `.fasta` or `.fa` files in a directory. Each record must have a stable identifier and an amino-acid sequence. Keep the same identifiers when joining the generated protein vectors to UniProt or HGNC mappings.

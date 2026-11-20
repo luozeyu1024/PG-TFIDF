@@ -1,7 +1,6 @@
 # Reproducible command chain
 
-Run commands from the module root. Paths are relative so that the public
-workflow does not depend on the authors' workstation.
+Run commands from this module directory.
 
 ## 1. Create the environment
 
@@ -97,8 +96,7 @@ python skills/cell-cluster-marker-tfidf-analysis/scripts/ADT_silhouette_and_mark
 ```
 
 For Dataset81, add the aligned ADT h5ad and use
-`--concordance_mode intersection`; the full-data command used in the
-manuscript is summarized in `docs/experiment-parameters.md`.
+`--concordance_mode intersection`; [settings](../docs/experiment-parameters.md) list the other required choices.
 
 ## 7. Run isolated agent interpretations
 
@@ -107,6 +105,6 @@ three times per agent family in a fresh context and write to separate
 `Results_1` through `Results_6` directories. Do not reuse generated conclusions
 between runs.
 
-The manuscript expert-scoring implementation, expert-score files, derived
+Automated expert-score aggregation code, expert-score files, derived
 scores and agent outputs are intentionally not distributed. The evaluation
 design and pooling definition are documented in `docs/expert-scoring.md`.

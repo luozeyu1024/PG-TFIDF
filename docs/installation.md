@@ -8,17 +8,25 @@ The shared specification uses Python 3.11 with compatible NumPy, AnnData, Scanpy
 
 The supervised benchmark additionally requires PyTorch. Install the CPU or CUDA build appropriate for the target system from [PyTorch](https://pytorch.org/get-started/locally/) in the benchmark environment.
 
+GO-text and ADT sentence-embedding entry points additionally import the OpenAI client:
+
+```bash
+python -m pip install openai
+```
+
+Run the small examples in module READMEs after activating the shared environment. Model extraction and training use the separate dependencies below; their commands explicitly name the required checkpoint and source directory.
+
 ## Model-specific environments
 
 | Branch | Installation requirement |
 |---|---|
-| ESM2 LoRA and attribution | PyTorch, Transformers, PEFT, Lightning and Captum, together with the ESM2 checkpoint specified in Supplementary Methods. |
+| ESM2 LoRA and attribution | PyTorch, Transformers, PEFT, Lightning and Captum, together with `facebook/esm2_t33_650M_UR50D` checkpoint and tokenizer. |
 | scFoundation | Upstream source, model checkpoint and 19,264-gene index. Keep the upstream `model` directory importable. |
 | Geneformer | The bundled tokenizer and embedding-extractor wrappers, matching Geneformer checkpoint and gene dictionaries. |
 | STATE | Arc STATE source and the SE-600M model directory specified in [data and model resources](data-and-model-resources.md). |
 | scVI/totalVI | A separate compatible scvi-tools environment. These wrappers train on the supplied dataset and export latent representations. |
 | scNET | Upstream scNET with its graph-learning dependencies and human PPI assets. |
-| Protein extraction | Use the model source, tokenizer and checkpoint listed in [data and model resources](data-and-model-resources.md) and Supplementary Methods. |
+| Protein extraction | Use the model source, tokenizer and checkpoint listed in [data and model resources](data-and-model-resources.md). |
 | Agent preprocessing | Core analysis dependencies; RDS conversion additionally requires R, Rscript and Seurat. The agent runtime is installed separately. |
 
 The foundation-model branches use separate environments because their upstream dependency stacks differ. Record the model, tokenizer and source revisions used for each run.

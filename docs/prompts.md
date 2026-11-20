@@ -1,6 +1,6 @@
 # Prompt map
 
-See [analysis objects](manuscript-nomenclature.md#objects-and-statistical-units) for the distinction between functional clusters, cell clusters and cell-level evaluation.
+See [analysis objects](reference/names-and-data.md#objects-and-statistical-units) for the distinction between functional clusters, cell clusters and cell-level evaluation.
 
 | Level | Purpose | Source and guide |
 |---|---|---|

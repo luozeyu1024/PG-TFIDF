@@ -1,5 +1,7 @@
 # Workflow Guide
 
+Run the commands below from the skill directory containing `SKILL.md`, not the repository or module root.
+
 ## Contents
 
 1. Pipeline

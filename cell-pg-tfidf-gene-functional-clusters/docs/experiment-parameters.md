@@ -2,7 +2,7 @@
 
 ## Core construction parameters
 
-| Stage | Parameter | Script default | Manuscript experiment |
+| Stage | Parameter | Script default | Reference configuration |
 |---|---:|---:|---:|
 | Gene kNN | `n_neighbors` | 30 | 30 unless a dataset command records otherwise |
 | Gene graph | `metric` | cosine | cosine |
@@ -20,7 +20,7 @@
 
 ## LLM functional annotation
 
-| Parameter | Publication setting |
+| Parameter | Reference setting |
 |---|---:|
 | Model | `anthropic/claude-sonnet-4.6` |
 | Temperature | 0.0 |
@@ -30,7 +30,7 @@
 
 ## Cluster-level prompt experiment
 
-The three prompt modes use the publication settings below.
+The three prompt modes use the reference settings below.
 
 | Parameter | Full prompt | No-TFIDF | TFIDF-only |
 |---|---:|---:|---:|
@@ -51,7 +51,7 @@ Provider-side token and model limits are external state. Recheck them before a n
 
 ## Cell-annotation evaluation
 
-| Parameter | Publication setting |
+| Parameter | Reference setting |
 |---|---|
 | Join key | `Cell_ID` (set both prediction and truth column arguments explicitly) |
 | Prediction columns | evaluate Louvain and K-means outputs separately |

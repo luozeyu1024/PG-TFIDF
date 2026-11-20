@@ -1,5 +1,7 @@
 # GO annotation text embedding workflow
 
+Run these commands from the repository root; [module-relative commands](../examples/commands.md) are also available.
+
 The workflow encodes UniProt identifiers and their Gene Ontology annotation text. It does not use the amino-acid sequence.
 
 ## Prepare JSON input
@@ -18,12 +20,13 @@ This creates one JSON file for each input workbook.
 
 ## Qwen text embeddings
 
+The Qwen entry point uses `text-embedding-v4` internally and has no `--model` option.
+
 ```bash
 python protein-representation-generation/scripts/go_text/step2_protein_Qwen_embedding_batch.py \
   --open_path outputs/go_json \
   --save_path outputs/go_qwen \
   --save_format npz \
-  --model text-embedding-v4 \
   --dim 1024 \
   --api_key "$DASHSCOPE_API_KEY"
 ```

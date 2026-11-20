@@ -1,6 +1,6 @@
 # Agent interpretation instructions
 
-The reported agent systems are Kimi Code (kimi 2.6) and Codex (GPT 5.5). Claude Sonnet 4.6 is the separate structured functional/cell-cluster annotation backend. These names record the manuscript runs rather than current platform defaults.
+The reported agent systems are Kimi Code (kimi 2.6) and Codex (GPT 5.5). Claude Sonnet 4.6 is the separate structured functional/cell-cluster annotation backend. These names record the supplied reference runs rather than current platform defaults.
 
 The dataset-level prompts are in [examples/agent-prompts.md](../examples/agent-prompts.md), with one section for Dataset81 diagnosis/relapse and one for SKCM_GSE115978_aPD1. They specify data references, evidence generation, literature checks, run isolation and report outputs. [The tutorial](../../tutorials/pg-tfidf-agent-skill-prompts.md) provides longer worked instructions.
 

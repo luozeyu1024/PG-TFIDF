@@ -1,60 +1,29 @@
-# Cell PG-TFIDF embedding from gene functional clusters
+# PG-TFIDF and cell annotation
 
-See [manuscript nomenclature](../docs/manuscript-nomenclature.md) for model aliases, input objects and analysis-specific annotation levels.
+Construct cell-by-functional-program TF/TF-IDF representations, summarize program specificity, calculate RNA/ADT markers and annotate cell clusters.
 
-Publication-oriented, non-duplicated code bundle for constructing cell-level
-protein/gene-cluster TF-IDF (PG-TFIDF) embeddings and the linked analyses.
+## Quick start
 
-## Workflow
-
-1. L2-normalize pretrained gene embeddings and cluster genes with a cosine kNN graph plus Leiden.
-2. Annotate each gene functional cluster through structured OpenRouter output; see [the functional-cluster prompt](docs/prompts.md#functional-cluster-annotation).
-3. Select the 100 most highly expressed genes within the supplied HVG set for each cell, map genes to functional clusters, and construct row-L2-normalized TF and TF-IDF vectors.
-4. Aggregate cell PG-TFIDF weights by biological label or unsupervised cell cluster.
-5. Compute RNA/ADT one-vs-rest markers.
-6. Run the [full cluster-annotation prompt, no-TFIDF ablation, or TFIDF-only ablation](docs/prompts.md#cell-cluster-prediction). The guide links each Python function, task specification and complete system-template excerpt.
-7. Map cluster-level LLM labels back to cells and evaluate cell-type annotation predictions.
-
-## Repository layout
-
-```text
-scripts/                         Core runnable Python scripts
-docs/experiment-parameters.md    Defaults and manuscript experiment overrides
-docs/code-selection.md           Duplicate-resolution and publication choices
-docs/reproducibility-notes.md    Reproduction logic and validation expectations
-docs/cell-annotation-evaluation.md Cluster-to-cell mapping and evaluation metrics
-examples/commands.md             Credential-safe example commands
-examples/data/                   Small, internally aligned data subsets for smoke runs
-environment.yml                  Conda environment specification
-requirements.txt                 Equivalent pip requirements
-```
-
-## Installation
+Activate the [shared environment](../docs/installation.md), then run from this directory:
 
 ```bash
-conda env create -f environment.yml
-conda activate cell-pg-tfidf
+python scripts/build_cell_pg_tfidf.py \
+  --h5ad_file examples/data/zheng68k/zheng68k_hvg_32cells_128genes.h5ad \
+  --cluster_xlsx examples/data/zheng68k/state_gene_clusters_128.xlsx \
+  --cluster_protein_id_col gene_id --cluster_id_col cluster \
+  --cluster_rep_id_col representative_gene --top_k 100 --seed 42 \
+  --save_path outputs/example/pg_tfidf
 ```
 
-Set the API credential only through the environment; never paste it into a command file:
+Input: an HVG count matrix and gene-to-functional-cluster table. Output: dense/sparse TF and TF-IDF arrays, vocabulary, IDF/DF arrays and ordered cell mappings. This example uses ESM2-15B-derived gene clusters and makes no API call.
 
-```powershell
-$env:OPENROUTER_API_KEY = "<your-key>"
-```
+## Continue
 
-## Quick verification
+`Gene clustering → functional annotation → PG-TFIDF → statistics/markers → cluster prediction → cell mapping → evaluation`
 
-```bash
-python scripts/gene_clustering.py --help
-python scripts/build_cell_pg_tfidf.py --help
-```
+- [All commands](examples/commands.md) and [example inputs](examples/data/README.md).
+- [Parameters](docs/experiment-parameters.md) and [alignment rules](docs/reproducibility-notes.md).
+- [Full and ablation prompts](docs/prompts.md), including offline request export.
+- [Cell-level evaluation](docs/cell-annotation-evaluation.md).
 
-See `examples/commands.md` for end-to-end templates and `examples/data/README.md` for the
-small real-data-derived examples. Full input datasets, API credentials, and generated outputs
-are intentionally excluded.
-
-## Reproducibility boundary
-
-The public commands document the intended CLI and data flow. Full end-to-end execution
-requires the original h5ad, embedding, mapping, annotation, label, and marker files.
-OpenRouter model availability and provider token limits can change over time.
+Functional and cell-cluster annotation require `OPENROUTER_API_KEY`. A gene functional cluster and a cluster of cells use separate identifier namespaces.
